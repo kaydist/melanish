@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply font-Assistant;
+  }
+
+  body {
+    @apply bg-[#030303] text-[#FFFFFF];
+  }
+
+  @font-face {
+    font-family: Assistant;
+    src: url("../../fonts/assistant/Assistant-Light.ttf");
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Assistant;
+    src: url("../../fonts/assistant/Assistant-Bold.ttf");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Assistant;
+    src: url("../../fonts/assistant/Assistant-Bold.ttf");
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Assistant;
+    src: url("../../fonts/assistant/Assistant-Medium.ttf");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: CormorantGaramond;
+    src: url("../../fonts/CG/CormorantGaramond-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  input,
+  textarea select,
+  button {
+    @apply outline-0;
+  }
+
+  button {
+    @apply font-medium text-white;
+  }
+
+  .border-color {
+    @apply border-muted;
+  }
+
+  .constraint {
+    @apply container;
+  }
+
+  .explainer {
+    @apply md:text-[2.5vw] leading-normal mb-10 font-Assistant md:mx-[1.94em];
+  }
+
+  .small-text {
+    @apply text-sm md:text-[1.2vw];
+  }
+
+  .no-fill-text {
+    -webkit-text-stroke: 2px darkgrey;
+    -webkit-text-fill-color: #ffffff00;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mask {
+    background-image: radial-gradient(
+      circle,
+      #030303 3%,
+      #03030390 60%,
+      #03030385 37%
+    );
+  }
+
+  .content-min-h{
+    min-height: calc(100vh - 10vw)
+  }
+}
+
+@layer utilities {
+  /* Rows */
+  .inline-start {
+    @apply inline-flex items-center justify-start;
+  }
+
+  .inline-center {
+    @apply inline-flex items-center justify-center;
+  }
+
+  .inline-end {
+    @apply inline-flex items-center justify-end;
+  }
+
+  .inline-between {
+    @apply inline-flex items-center justify-between;
+  }
+
+  .inline-evenly {
+    @apply inline-flex items-center justify-evenly;
+  }
+
+  .start {
+    @apply flex items-center justify-start;
+  }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .end {
+    @apply flex items-center justify-end;
+  }
+
+  .between {
+    @apply flex flex-row items-center justify-between;
+  }
+
+  .evenly {
+    @apply flex items-center justify-evenly;
+  }
+
+  .around {
+    @apply flex items-center justify-around;
+  }
+
+  /* Cols */
+  .col-start {
+    @apply flex flex-col items-start justify-center;
+  }
+
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .col-end {
+    @apply flex flex-col items-end justify-center;
+  }
+
+  .col-between {
+    @apply flex flex-col items-start justify-between;
+  }
+}
