@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 export default function GalleryView({ projects }) {
   return (
-    <div className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h">
+    <div className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h" id="portfolio-gallery-view-container">
       {projects.map((project) => {
         const { id, projectTitle } = project.node || {};
         const images = getImage(project?.node?.mainProjectImage) || {};
