@@ -1,16 +1,27 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
+import { navigate } from "gatsby";
 
 function Nav() {
-  const openMenu=()=>{
-    document.getElementById('menu').classList.toggle('hidden')
-  }
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const openMenu = () => {
+    document.getElementById("menu").classList.toggle("hidden");
+    setMenuOpen(!menuOpen);
+  };
+
+  const path = window.location.pathname;
+
   return (
     <nav className="fixed w-full z-50 mt-half-body mix-blend-difference">
       <div className="between mx-body">
-        <Link to="/contact">
-          <div className="cursor-pointer small-text font-medium">Contact</div>
-        </Link>
+        <div className="cursor-pointer small-text font-medium">
+          {path === "/" ? (
+            <Link to="/contact">Contact</Link>
+          ) : (
+            <span onClick={() => navigate(-1)}>Back </span>
+          )}
+        </div>
 
         <Link to="/">
           <div className="text-xl md:text-[2vw] font-bold cursor-pointer relative">
@@ -19,7 +30,12 @@ function Nav() {
           </div>
         </Link>
 
-        <button className="cursor-pointer small-text font-medium" onClick={openMenu}>Menu</button>
+        <button
+          className="cursor-pointer small-text font-medium"
+          onClick={openMenu}
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
       </div>
     </nav>
   );

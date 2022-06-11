@@ -1,13 +1,16 @@
-import { Link } from "gatsby";
 import React from "react";
 
-function Footer() {
+function Footer({ isListView, setIsListView, totalCount }) {
   return (
     <div className="between px-body bottom-[3%] absolute w-full small-text font-medium">
-      <div>
-        <Link to="/list">Index</Link>
+      <div
+        onClick={() => setIsListView(!isListView)}
+        className="cursor-pointer"
+      >
+        {isListView ? <span>Gallery</span> : <span>List</span>}
       </div>
-      <div>05/20</div>
+
+      <div>05/{totalCount > 9 ? "" + totalCount : "0" + totalCount}</div>
     </div>
   );
 }

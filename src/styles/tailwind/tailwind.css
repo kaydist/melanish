@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply bg-[#030303] text-[#FFFFFF];
+    @apply bg-[#030303] text-[#FFFFFF] dark:bg-white dark:text-[#030303];
   }
 
   @font-face {
@@ -64,11 +64,11 @@
   }
 
   button {
-    @apply font-medium text-white;
+    @apply font-medium;
   }
 
   .border-color {
-    @apply border-muted;
+    @apply border-muted dark:text-[#030303];
   }
 
   .constraint {
@@ -96,12 +96,21 @@
     display: none;
   }
 
-  .mask {
+  .dark-mask {
     background-image: radial-gradient(
       circle,
       #030303 3%,
       #03030390 60%,
       #03030385 37%
+    );
+  }
+
+  .light-mask {
+    background-image: radial-gradient(
+      circle,
+      #FFFFFF 3%,
+      #FFFFFF90 60%,
+      #FFFFFF85 37%
     );
   }
 
