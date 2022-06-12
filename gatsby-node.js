@@ -40,6 +40,10 @@ exports.createPages = ({ graphql, actions }) => {
                   title
                   gatsbyImageData
                 }
+                image7 {
+                  title
+                  gatsbyImageData
+                }
                 otherImages {
                   title
                   gatsbyImageData
@@ -73,6 +77,7 @@ exports.createPages = ({ graphql, actions }) => {
               image4: edge.node.image4,
               image5: edge.node.image5,
               image6: edge.node.image6,
+              image7: edge.node.image7,
               otherImages: edge.node.otherImages,
               creditTitles: edge.node.creditTitles,
               creditNames: edge.node.creditNames,

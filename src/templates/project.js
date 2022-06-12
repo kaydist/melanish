@@ -69,38 +69,12 @@ function Project(props) {
                 />
               </div>
 
-              <div className="end mt-body w-full md:-mb-32">
-                <div className="w-[46.14%] h-[58.47vw]">
-                  <GatsbyImage
-                    image={getImage(image3?.gatsbyImageData)}
-                    alt={image3?.title}
-                    className="w-full h-full"
-                    imgStyle={{
-                      maxWidth: "100%",
-                      width: "auto",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div className="">
-                <div className="w-[66.14%] md:w-[46.14%] h-auto  relative">
-                  <GatsbyImage
-                    image={getImage(image4?.gatsbyImageData)}
-                    alt={image4?.title}
-                    className="w-full h-full"
-                    imgStyle={{
-                      maxWidth: "100%",
-                      width: "auto",
-                      height: "100%",
-                    }}
-                  />
-
-                  <div className="w-[66.14%] md:w-[46.14%] h-[50%] overflow-hidden absolute -bottom-[20%] -right-[10%]">
+              {image3 ? (
+                <div className="end mt-body w-full md:-mb-32">
+                  <div className="w-[46.14%] h-[58.47vw]">
                     <GatsbyImage
-                      image={getImage(image5?.gatsbyImageData)}
-                      alt={image2?.title}
+                      image={getImage(image3?.gatsbyImageData)}
+                      alt={image3?.title}
                       className="w-full h-full"
                       imgStyle={{
                         maxWidth: "100%",
@@ -110,13 +84,64 @@ function Project(props) {
                     />
                   </div>
                 </div>
+              ) : null}
+
+              <div className="">
+                {image4 || image5 ? (
+                  <div className="w-[66.14%] md:w-[46.14%] h-auto  relative">
+                    {image4 ? (
+                      <GatsbyImage
+                        image={getImage(image4?.gatsbyImageData)}
+                        alt={image4?.title}
+                        className="w-full h-full"
+                        imgStyle={{
+                          maxWidth: "100%",
+                          width: "auto",
+                          height: "100%",
+                        }}
+                      />
+                    ) : null}
+
+                    {image5 ? (
+                      <div className="w-[66.14%] md:w-[46.14%] h-[50%] overflow-hidden absolute -bottom-[20%] -right-[10%]">
+                        <GatsbyImage
+                          image={getImage(image5?.gatsbyImageData)}
+                          alt={image5?.title}
+                          className="w-full h-full"
+                          imgStyle={{
+                            maxWidth: "100%",
+                            width: "auto",
+                            height: "100%",
+                          }}
+                        />
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
 
-              <div className="end mr-[10%] mt-[10vw]">
-                <div className="w-[46.14%] h-auto">
+              {image6 ? (
+                <div className="end mr-[10%] mt-[10vw]">
+                  <div className="w-[46.14%] h-auto">
+                    <GatsbyImage
+                      image={getImage(image6?.gatsbyImageData)}
+                      alt={image6?.title}
+                      className="w-full h-full"
+                      imgStyle={{
+                        maxWidth: "100%",
+                        width: "auto",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : null}
+
+              {image7 ? (
+                <div className="mx-auto w-auto max-w-[80%] h-[49.1vw] mt-[10vw]">
                   <GatsbyImage
-                    image={getImage(image6?.gatsbyImageData)}
-                    alt={image5?.title}
+                    image={getImage(image7?.gatsbyImageData)}
+                    alt={image7?.title}
                     className="w-full h-full"
                     imgStyle={{
                       maxWidth: "100%",
@@ -125,16 +150,7 @@ function Project(props) {
                     }}
                   />
                 </div>
-              </div>
-
-              <div className="mx-auto w-auto max-w-[80%] h-[49.1vw] mt-[10vw]">
-                <GatsbyImage
-                  image={getImage(image7?.gatsbyImageData)}
-                  alt={image2?.title}
-                  className="w-full h-full"
-                  imgStyle={{ maxWidth: "100%", width: "auto", height: "100%" }}
-                />
-              </div>
+              ) : null}
             </div>
 
             <div className="col-center text-left md:text-center uppercase my-2xbody text-muted dark:text-[#0C0C0C] md:text-[1.2vw]">
@@ -300,6 +316,10 @@ export const pageQuery = graphql`
         gatsbyImageData
       }
       image6 {
+        title
+        gatsbyImageData
+      }
+      image7 {
         title
         gatsbyImageData
       }
