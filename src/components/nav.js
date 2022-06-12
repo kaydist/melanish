@@ -16,7 +16,7 @@ function Nav() {
     <nav className="fixed w-full z-50 mt-half-body mix-blend-difference">
       <div className="between mx-body">
         <div className="cursor-pointer small-text font-medium">
-          {path === "/" ? (
+          {path === "/" || path === "/portfolio" ? (
             <Link to="/contact">Contact</Link>
           ) : (
             <span onClick={() => navigate(-1)}>Back </span>

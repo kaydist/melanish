@@ -1,11 +1,9 @@
-import { useState } from "react";
-import * as React from "react";
-import Footer from "../components/footer";
+import React, { useState, useLayoutEffect } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
-import ListView from "../components/list-view";
-import GalleryView from "../components/gallery-view";
+import { Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 // markup
 const IndexPage = () => {
@@ -14,9 +12,13 @@ const IndexPage = () => {
       allContentfulProjects {
         edges {
           node {
-            projectTitle
-            id
             mainProjectImage {
+              title
+              url
+              gatsbyImageData
+            }
+
+            image2{
               title
               url
               gatsbyImageData
@@ -27,23 +29,42 @@ const IndexPage = () => {
     }
   `);
 
+  const [currentImage, setCurrentImage] = useState(0);
+
   const projects = data.allContentfulProjects.edges;
 
-  const [isListView, setIsListView] = useState(false);
+  let images = getImage(projects[currentImage].node?.image2) || {};
+
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      if (currentImage === projects.length - 1) {
+        setCurrentImage(0);
+      } else {
+        setCurrentImage(currentImage + 1);
+      }
+    }, 2000);
+  }, [currentImage]);
 
   return (
     <Layout>
-      {!isListView ? (
-        <GalleryView projects={projects} />
-      ) : (
-        <ListView projects={projects} />
-      )}
+      <div className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h">
+        <Link to="/portfolio">
+          <div className="min-w-[100vw] h-[60vh] center relative">
+            <div className="scale-[0.8]">
+              <GatsbyImage
+                image={images}
+                alt={images?.title}
+                className="h-full w-auto object-contain"
+                imgStyle={{ objectPosition: "center" }}
+              />
+            </div>
 
-      <Footer
-        isListView={isListView}
-        setIsListView={setIsListView}
-        totalCount={projects.length}
-      />
+            <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-0 absolute z-10">
+              Melanish
+            </h2>
+          </div>
+        </Link>
+      </div>
     </Layout>
   );
 };

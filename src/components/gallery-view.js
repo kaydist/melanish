@@ -20,7 +20,7 @@ export default function GalleryView({ projects }) {
                 />
               </div>
 
-              <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-[25%] md:bottom-[10%] absolute z-10">
+              <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-[25%] md:bottom-[0] absolute z-10">
                 {projectTitle}
               </h2>
             </div>

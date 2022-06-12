@@ -24,7 +24,7 @@ function Menu() {
                 <li className="my-2 md:my-[2.5vw]">Home</li>
               </Link>
 
-              <Link to="/">
+              <Link to="/portfolio">
                 <li className="my-2 md:my-[2.5vw]">Portfolio</li>
               </Link>
 
@@ -38,10 +38,7 @@ function Menu() {
             </ul>
           </div>
 
-          <div
-            className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer"
-            onClick={changeMode}
-          >
+          <div className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer">
             Dark Mode
           </div>
 

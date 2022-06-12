@@ -55,7 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
         result.data.allContentfulProjects.edges.forEach((edge, idx) => {
           let nextIdx = 0;
-          if (idx === (result.data.allContentfulProjects.edges.length -1)) {
+          if (idx === result.data.allContentfulProjects.edges.length - 1) {
             nextIdx = 0;
           } else {
             nextIdx = idx + 1;
