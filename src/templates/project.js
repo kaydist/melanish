@@ -14,6 +14,7 @@ function Project(props) {
     image4,
     image5,
     image6,
+    image7,
     otherImages,
     creditTitles,
     creditNames,
@@ -98,7 +99,7 @@ function Project(props) {
 
                   <div className="w-[66.14%] md:w-[46.14%] h-[50%] overflow-hidden absolute -bottom-[20%] -right-[10%]">
                     <GatsbyImage
-                      image={getImage(image2?.gatsbyImageData)}
+                      image={getImage(image5?.gatsbyImageData)}
                       alt={image2?.title}
                       className="w-full h-full"
                       imgStyle={{
@@ -114,7 +115,7 @@ function Project(props) {
               <div className="end mr-[10%] mt-[10vw]">
                 <div className="w-[46.14%] h-auto">
                   <GatsbyImage
-                    image={getImage(image5?.gatsbyImageData)}
+                    image={getImage(image6?.gatsbyImageData)}
                     alt={image5?.title}
                     className="w-full h-full"
                     imgStyle={{
@@ -128,7 +129,7 @@ function Project(props) {
 
               <div className="mx-auto w-auto max-w-[80%] h-[49.1vw] mt-[10vw]">
                 <GatsbyImage
-                  image={getImage(image2?.gatsbyImageData)}
+                  image={getImage(image7?.gatsbyImageData)}
                   alt={image2?.title}
                   className="w-full h-full"
                   imgStyle={{ maxWidth: "100%", width: "auto", height: "100%" }}
