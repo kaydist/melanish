@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply dark:bg-[#030303] dark:text-[#FFFFFF] bg-white text-[#030303];
+    @apply bg-[#030303] text-[#FFFFFF] dark:bg-white dark:text-[#030303];
   }
 
   @font-face {

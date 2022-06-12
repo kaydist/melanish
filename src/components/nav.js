@@ -10,7 +10,7 @@ function Nav() {
     setMenuOpen(!menuOpen);
   };
 
-  const path = window.location.pathname;
+  const path = document.location.pathname;
 
   return (
     <nav className="fixed w-full z-50 mt-half-body mix-blend-difference">
