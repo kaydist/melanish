@@ -57,6 +57,10 @@
     font-display: swap;
   }
 
+  h2{
+    @apply tracking-tighter;
+  }
+
   input,
   textarea select,
   button {

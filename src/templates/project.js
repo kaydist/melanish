@@ -25,13 +25,13 @@ function Project(props) {
   return (
     <Layout>
       <div className="">
-        <div className="w-full h-full px-body mt-[10vh]">
-          <div className="hero w-full col-center relative">
+        <div className="w-full h-full mt-[10vh]">
+          <div className="hero px-body w-full col-center relative">
             <h2 className=" absolute top-0 uppercase font-CormorantGaramond text-[15.28vw] leading-[0.85] text-center z-10">
               {projectTitle}
             </h2>
 
-            <div className="mt-[15%] w-full h-[58.61vw] center">
+            <div className="mt-[15%] w-full h-[50vh] md:h-[58.61vw] center">
               <GatsbyImage
                 image={getImage(mainProjectImage?.gatsbyImageData)}
                 alt={mainProjectImage?.title}
@@ -40,7 +40,7 @@ function Project(props) {
             </div>
           </div>
 
-          <div className="my-6 md:my-[8.625rem]">
+          <div className="my-6 md:my-[8.625rem] px-body">
             <p className="explainer">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam
               velit vel sed sit ullamcorper eget. Sapien ligula consectetur
@@ -50,7 +50,7 @@ function Project(props) {
           </div>
 
           <div className="relative">
-            <div className="w-full absolute top-[40vw] overflow-hidden">
+            <div className="px-body w-full absolute top-[40vw] overflow-hidden">
               <div className="absolute min-w-full min-h-full dark-mask z-[1]" />
               <div className="text-center opacity-20">
                 <h2 className="capitalize font-CormorantGaramond text-[15.28vw] whitespace-nowrap">
@@ -60,7 +60,7 @@ function Project(props) {
             </div>
 
             <div className="z-20 relative">
-              <div className="mx-auto md:mx-0 w-auto max-w-[80%] h-[49.1vw]">
+              <div className="px-body mx-auto md:mx-0 w-auto max-w-[80%] h-[50vh] md:h-[49.1vw]">
                 <GatsbyImage
                   image={getImage(image2?.gatsbyImageData)}
                   alt={image2?.title}
@@ -70,8 +70,8 @@ function Project(props) {
               </div>
 
               {image3 ? (
-                <div className="end mt-body w-full md:-mb-32">
-                  <div className="w-[46.14%] h-[58.47vw]">
+                <div className="px-body end mt-body w-full md:-mb-32">
+                  <div className="w-[46.14%] md:[66.14%] h-[50vh] md:h-[58.47vw]">
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -88,22 +88,28 @@ function Project(props) {
 
               <div className="">
                 {image4 || image5 ? (
-                  <div className="w-[66.14%] md:w-[46.14%] h-auto  relative">
-                    {image4 ? (
-                      <GatsbyImage
-                        image={getImage(image4?.gatsbyImageData)}
-                        alt={image4?.title}
-                        className="w-full h-full"
-                        imgStyle={{
-                          maxWidth: "100%",
-                          width: "auto",
-                          height: "100%",
-                        }}
-                      />
-                    ) : null}
+                  <div className="max-w-max">
+                    <div className="w-[66.14%] md:w-[46.14vw] h-[50vh] md:h-[58.47vw]  relative">
+                      {image4 ? (
+                        <GatsbyImage
+                          image={getImage(image4?.gatsbyImageData)}
+                          alt={image4?.title}
+                          className="w-full h-full"
+                          imgStyle={{
+                            maxWidth: "100%",
+                            width: "auto",
+                            height: "100%",
+                          }}
+                        />
+                      ) : null}
+                    </div>
 
                     {image5 ? (
-                      <div className="w-[66.14%] md:w-[46.14%] h-[50%] overflow-hidden absolute -bottom-[20%] -right-[10%]">
+                      <div
+                        className={`w-[100%] md:w-[26.14vw] h-auto max-h-[30vh] md:max-h-[26vw] overflow-hidden relative md:left-[50%] ${
+                          image6 ? `my-20 md:-my-[25%]` : `mt-20 md:-mt-[25%]`
+                        }`}
+                      >
                         <GatsbyImage
                           image={getImage(image5?.gatsbyImageData)}
                           alt={image5?.title}
@@ -121,8 +127,8 @@ function Project(props) {
               </div>
 
               {image6 ? (
-                <div className="end mr-[10%] mt-[10vw]">
-                  <div className="w-[46.14%] h-auto">
+                <div className="end mr-[10%] mt-20 md:mt-[10vw]">
+                  <div className="w-[66.16%] md:w-[46.14%] h-auto">
                     <GatsbyImage
                       image={getImage(image6?.gatsbyImageData)}
                       alt={image6?.title}
@@ -137,16 +143,48 @@ function Project(props) {
                 </div>
               ) : null}
 
+              <div className="grid grid-rows-2 md:grid-cols-2 mt-20 md:mt-[10vw] md:max-h-[120vh] gap-20 md:gap-[5vw]">
+                <div className="center row-span-1 md:col-span-1">
+                  <div className="w-full h-auto max-h-full">
+                    <GatsbyImage
+                      image={getImage(image5?.gatsbyImageData)}
+                      alt={image5?.title}
+                      className="w-full h-full"
+                      imgStyle={{
+                        maxHeight: "100%",
+                        width: "auto",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div className="center row-span-1 md:col-span-1">
+                  <div className="w-full h-auto max-h-full">
+                    <GatsbyImage
+                      image={getImage(image3?.gatsbyImageData)}
+                      alt={image3?.title}
+                      className="w-full h-full"
+                      imgStyle={{
+                        maxWidth: "100%",
+                        width: "auto",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
               {image7 ? (
-                <div className="mx-auto w-auto max-w-[80%] h-[49.1vw] mt-[10vw]">
+                <div className="mx-auto w-full h-auto mt-20 md:mt-[10vw]">
                   <GatsbyImage
                     image={getImage(image7?.gatsbyImageData)}
                     alt={image7?.title}
                     className="w-full h-full"
                     imgStyle={{
                       maxWidth: "100%",
-                      width: "auto",
-                      height: "100%",
+                      width: "100%",
+                      height: "auto",
                     }}
                   />
                 </div>
