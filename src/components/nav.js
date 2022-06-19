@@ -1,9 +1,11 @@
 import { Link } from "gatsby";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../controller/context";
 import { navigate } from "gatsby";
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, setTheme } = useContext(AppContext);
 
   const openMenu = () => {
     document.getElementById("menu").classList.toggle("hidden");
@@ -13,7 +15,7 @@ function Nav() {
   const path = typeof window !== "undefined" ? window.location.pathname : "";
 
   return (
-    <nav className="fixed w-full z-50 mt-half-body mix-blend-difference">
+    <nav className="fixed w-full z-50 mt-half-body text-white mix-blend-difference">
       <div className="between mx-body">
         <div className="cursor-pointer small-text font-medium">
           {path === "/" || path === "/portfolio" ? (

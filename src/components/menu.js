@@ -1,18 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
+import { AppContext } from "../controller/context";
 
 function Menu() {
-  const changeMode = () => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
+  const [theme, setTheme] = useContext(AppContext);
 
   return (
     <div className="hidden" id="menu">
@@ -38,7 +29,12 @@ function Menu() {
             </ul>
           </div>
 
-          <div className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer">
+          <div
+            className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer"
+            onClick={() => {
+              theme === "light" ? setTheme("dark") : setTheme("light");
+            }}
+          >
             Dark Mode
           </div>
 

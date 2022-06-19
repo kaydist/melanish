@@ -19,7 +19,7 @@
   }
 
   body {
-    @apply bg-[#030303] text-[#FFFFFF] dark:bg-white dark:text-[#030303];
+    @apply dark:bg-[#030303] dark:text-[#FFFFFF] bg-white text-[#030303];
   }
 
   @font-face {
@@ -57,7 +57,7 @@
     font-display: swap;
   }
 
-  h2{
+  h2 {
     @apply tracking-tighter;
   }
 
@@ -112,14 +112,14 @@
   .light-mask {
     background-image: radial-gradient(
       circle,
-      #FFFFFF 3%,
-      #FFFFFF90 60%,
-      #FFFFFF85 37%
+      #ffffff 3%,
+      #ffffff90 60%,
+      #ffffff85 37%
     );
   }
 
-  .content-min-h{
-    min-height: calc(100vh - 10vw)
+  .content-min-h {
+    min-height: calc(100vh - 10vw);
   }
 }
 
