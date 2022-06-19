@@ -23,11 +23,11 @@ function Project(props) {
 
   const nextProject = props?.pageContext?.nextProject?.node;
 
-  const [theme, setTheme] = useContext(AppContext);
+  const [theme] = useContext(AppContext);
   return (
     <Layout>
       <div className="">
-        <div className="w-full h-full mt-40 md:mt-[10vh]">
+        <div className="w-full h-full pt-40 md:mt-[10vh]">
           <div className="hero md:px-body w-full col-center relative">
             <div className="absolute top-0 z-10">
               <h2 className="uppercase font-CormorantGaramond text-[15.28vw] leading-[0.85] text-center">
@@ -211,7 +211,7 @@ function Project(props) {
               ) : null}
             </div>
 
-            <div className="col-center text-left md:text-center uppercase my-2xbody text-muted dark:text-[#0C0C0C] md:text-[1.2vw]">
+            <div className="col-center text-left md:text-center uppercase my-2xbody dark:text-muted text-[#0C0C0C] md:text-[1.2vw]">
               <h6 className="">CREDITS</h6>
 
               <div className="around w-fit flex-wrap md:flex-nowrap gap-[7.177%] md:text-[1.5vw] leading-normal whitespace-nowrap">

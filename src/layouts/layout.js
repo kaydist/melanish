@@ -8,7 +8,7 @@ function Layout({ children }) {
       <Nav />
 
       <Menu />
-      <div className="pt-body min-h-screen">{children}</div>
+      <div className="md:pt-body min-h-screen">{children}</div>
     </div>
   );
 }

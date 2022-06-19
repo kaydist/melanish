@@ -35,13 +35,18 @@ function Menu() {
               theme === "light" ? setTheme("dark") : setTheme("light");
             }}
           >
-            Dark Mode
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
           </div>
 
-          <div className="absolute right-0 top-[60vh] text-[10vw] font-bold w-fit text-right leading-[8vw] hidden md:block">
+          <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block">
             <span className="">MELA-</span>
             <br />
-            <span className="mr-[10vw]">NISH</span>
+            <span className="mr-[15vw] relative">
+              NISH{" "}
+              <sup className="text-[30%] absolute top-[30%] -right-[10%]">
+                o
+              </sup>
+            </span>
           </div>
         </div>
       </div>

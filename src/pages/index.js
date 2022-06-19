@@ -18,7 +18,7 @@ const IndexPage = () => {
               gatsbyImageData
             }
 
-            image2{
+            image2 {
               title
               url
               gatsbyImageData
@@ -60,7 +60,10 @@ const IndexPage = () => {
             </div>
 
             <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-0 absolute z-10">
-              Melanish
+              Melanish{" "}
+              <sup className="text-[30%] absolute top-[30%] -right-[10%]">
+                o
+              </sup>
             </h2>
           </div>
         </Link>
