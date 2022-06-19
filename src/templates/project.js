@@ -23,10 +23,9 @@ function Project(props) {
 
   const nextProject = props?.pageContext?.nextProject?.node;
 
-  const [theme] = useContext(AppContext);
-
+  const [theme, setTheme] = useContext(AppContext);
   return (
-    <Layout>{console.log(theme)}
+    <Layout>
       <div className="">
         <div className="w-full h-full mt-40 md:mt-[10vh]">
           <div className="hero md:px-body w-full col-center relative">
@@ -43,7 +42,7 @@ function Project(props) {
                 className="object-contain h-full w-full"
               />
 
-              <div className="text-sm absolute top-[5vw] -rotate-90 -left-[5vw] text-right">
+              <div className="text-sm absolute top-[5vw] -rotate-90 -left-[5vw] text-right tracking-widest">
                 OCT. 2022
               </div>
 
@@ -63,8 +62,12 @@ function Project(props) {
           </div>
 
           <div className="relative">
-            <div className="px-body w-full absolute top-[40vw] overflow-hidden">
-              <div className={`absolute min-w-full min-h-full z-[1] ${theme === 'light' ? `light-mask` : `dark-mask`}`} />
+            <div className="w-full absolute top-[40vw] overflow-hidden">
+              <div
+                className={`absolute min-w-full min-h-full z-[1] ${
+                  theme === "light" ? `light-mask` : `dark-mask`
+                }`}
+              />
               <div className="text-center opacity-20">
                 <h2 className="capitalize font-CormorantGaramond text-[15.28vw] whitespace-nowrap">
                   {projectTitle}
@@ -78,7 +81,11 @@ function Project(props) {
                   image={getImage(image2?.gatsbyImageData)}
                   alt={image2?.title}
                   className="w-full h-full"
-                  imgStyle={{ maxWidth: "100%", width: "auto", height: "100%" }}
+                  imgStyle={{
+                    maxWidth: "100%",
+                    width: "auto",
+                    height: "100%",
+                  }}
                 />
               </div>
 
@@ -276,8 +283,8 @@ function Project(props) {
 
         {nextProject ? (
           <Link to={`/${nextProject?.projectTitle}`}>
-            <div className="center bg-[#0C0C0C] dark:bg-[#e8e8e8] h-[80vw] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer">
-              <div className="col-center text-center uppercase z-20 dark:text-[#FFFFFF]">
+            <div className="center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[80vw] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer">
+              <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
                 <p className="experience">NEXT PROJECT</p>
                 <h2 className="uppercase font-CormorantGaramond text-[10.69vw]">
                   {nextProject?.projectTitle}

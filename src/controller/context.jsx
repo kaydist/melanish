@@ -42,24 +42,6 @@ function AppState({ children }) {
       default:
         break;
     }
-
-    // if (lastTheme === null) {
-    //   window.localStorage.setItem("theme", JSON.stringify("light"));
-    // } else {
-    //   if (lastTheme === "light" && theme === "dark") {
-    //     document.documentElement.classList.add("dark");
-    //     window.localStorage.setItem("theme", JSON.stringify("dark"));
-    //   } else if (lastTheme === "dark" && theme === "light") {
-    //     document.documentElement.classList.remove("dark");
-    //     window.localStorage.setItem("theme", JSON.stringify("light"));
-    //   } else if (lastTheme === "dark" && theme === "") {
-    //     document.documentElement.classList.add("dark");
-    //     setTheme("dark");
-    //   } else if (lastTheme === "light" && theme === "") {
-    //     document.documentElement.classList.remove("dark");
-    //     setTheme("light");
-    //   }
-    // }
   }, [theme]);
 
   return (
