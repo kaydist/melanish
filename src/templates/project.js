@@ -1,10 +1,11 @@
 import { Link } from "gatsby";
-import React, { useContext } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Layout from "../layouts/layout";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { AppContext } from "../controller/context";
+import { otherSectionAnimation } from "../animations/project";
 
 function Project(props) {
   const {
@@ -24,6 +25,11 @@ function Project(props) {
   const nextProject = props?.pageContext?.nextProject?.node;
 
   const [theme] = useContext(AppContext);
+
+  useLayoutEffect(()=>{
+
+    otherSectionAnimation()
+  }, [])
   return (
     <Layout>
       <div className="">
@@ -231,7 +237,7 @@ function Project(props) {
           </div>
         </div>
 
-        <div className="center md:mb-2xbody">
+        <div className="center md:mb-2xbody" id="project-other-images">
           <div className="w-full absolute overflow-hidden">
             <div className="sticky top-1/2 text-center">
               <h2 className="uppercase no-fill-text font-CormorantGaramond text-[15.28vw] z-10 whitespace-nowrap">
@@ -257,7 +263,7 @@ function Project(props) {
                 return (
                   <div
                     key={idx}
-                    className="w-[80vw] md:w-[70vw] min-h-full center"
+                    className="w-[80vw] md:w-[70vw] min-h-full center panel"
                   >
                     <div
                       className={`w-auto max-w-[62%] md:max-w-[48%] max-h-[80%] center overflow-hidden`}
