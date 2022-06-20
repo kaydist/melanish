@@ -122,6 +122,23 @@
     min-height: calc(100vh - 10vw);
   }
 
+  /* Scroll Bar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    max-height: 5px;
+    
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply dark:bg-white bg-[#030303];
+    border-radius: 10px;
+    margin-right: 5px;
+  }
+
   /* .bg-field::before, .bg-field::after {
     background-color: white;
     mix-blend-mode: difference;
