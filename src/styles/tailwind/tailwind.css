@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  /* * {
-    transition: all 0.5s ease-in-out;
+  * {
+    /* transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  } */
+  }
 
   html {
     @apply font-Assistant;
@@ -87,9 +87,10 @@
     @apply text-sm md:text-[1.2vw];
   }
 
-  .no-fill-text {
-    -webkit-text-stroke: 2px darkgrey;
-    -webkit-text-fill-color: #ffffff00;
+  @supports (-webkit-text-stroke: 2px #030303) {
+    .no-fill-text {
+      -webkit-text-stroke: 2px #030303;
+    }
   }
 
   .no-scrollbar {
@@ -126,7 +127,6 @@
   ::-webkit-scrollbar {
     width: 5px;
     max-height: 5px;
-    
   }
 
   ::-webkit-scrollbar-track {
@@ -137,6 +137,19 @@
     @apply dark:bg-white bg-[#030303];
     border-radius: 10px;
     margin-right: 5px;
+  }
+
+  .image-wrapper {
+    @apply relative;
+  }
+
+  .image-wrapper-mask {
+    @apply absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @apply dark:bg-[#030303] bg-white;
   }
 
   /* .bg-field::before, .bg-field::after {
