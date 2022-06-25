@@ -1,16 +1,10 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import gsap from "gsap";
-import {
-  nextProjectHoverActive,
-  nextProjectHoverIn,
-  nextProjectHoverOut,
-} from "../animations/project";
 
 export default function NextProject({ nextProject }) {
   var timer = 0;
-  let tl = gsap.timeline();
 
   useLayoutEffect(() => {
     const footerContainer = document.querySelector(".next-project-footer");
@@ -20,7 +14,11 @@ export default function NextProject({ nextProject }) {
     const footerImage = document.querySelectorAll(".next-project-image");
 
     const nextProjectHoverIn = () => {
-      var tl = gsap.timeline();
+      var tl = gsap.timeline({
+        defaults: {
+          ease: "ease.in"
+        }
+      });
       tl.to(footerImage[0], {
         x: "30%",
         y: "10%",
@@ -39,7 +37,11 @@ export default function NextProject({ nextProject }) {
     };
 
     const nextProjectHoverOut = () => {
-      var tl = gsap.timeline();
+      var tl = gsap.timeline({
+        defaults: {
+          ease: "ease.out"
+        }
+      });
       tl.to(footerImage[0], {
         x: 0,
         y: 0,
@@ -110,7 +112,7 @@ export default function NextProject({ nextProject }) {
       nextProjectHoverIn(footerImage);
     });
 
-    touchContainer.addEventListener("touchcancel", () => {
+    touchContainer.addEventListener("touchend", () => {
       tl.clear();
       clearTimeout(timer);
       nextProjectHoverIn(footerImage);

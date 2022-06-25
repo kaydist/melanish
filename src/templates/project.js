@@ -280,7 +280,7 @@ function Project(props) {
           </div>
 
           <div className="max-w-[100vw] min-h-max no-scrollbar overflow-hidden relative">
-            <div className="start flex-nowrap space-x-6 h-[85vh] md:min-h-screen center w-fit">
+            <div className="start flex-nowrap space-x-6 min-h-screen w-fit">
               {otherImages.map((image, idx) => {
                 let rotationAngle =
                   Math.random() < 0.5
@@ -293,7 +293,7 @@ function Project(props) {
                     className="w-[80vw] md:w-[70vw] min-h-full center panel"
                   >
                     <div
-                      className={`w-auto max-w-[62%] md:max-w-[48%] max-h-[80%] center overflow-hidden`}
+                      className={`w-auto max-w-[90%] md:max-w-[48%] max-h-[80%] center overflow-hidden`}
                       style={{ transform: `rotate(${rotationAngle}deg)` }}
                     >
                       <GatsbyImage
