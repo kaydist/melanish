@@ -11,32 +11,37 @@ import {
 export default function NextProject({ nextProject }) {
   var timer = 0;
   let tl = gsap.timeline();
-  const footerContainer = document.querySelector(".next-project-footer");
 
-  const footerImage = document.querySelectorAll(".next-project-image");
+  useLayoutEffect(() => {
+    const footerContainer = document.querySelector(".next-project-footer");
+
+    const footerImage = document.querySelectorAll(".next-project-image");
+    
+    footerContainer.addEventListener("mouseenter", () => {
+      nextProjectHoverIn(footerImage);
+    });
+
+    footerContainer.addEventListener("mouseleave", () => {
+      nextProjectHoverOut(footerImage);
+    });
+
+    footerContainer.addEventListener("mousedown", () => {
+      nextProjectHoverActive(footerImage);
+
+      timer = setTimeout(() => {
+        navigate(`/${nextProject?.projectTitle}`);
+      }, 1500);
+    });
+
+    footerContainer.addEventListener("mouseup", () => {
+      tl.clear();
+      clearTimeout(timer);
+      nextProjectHoverIn(footerImage);
+    });
+  }, []);
 
   return (
-    <div
-      className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[80vw] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer"
-      onMouseDown={() => {
-        nextProjectHoverActive(footerImage);
-
-        timer = setTimeout(() => {
-          navigate(`/${nextProject?.projectTitle}`);
-        }, 1500);
-      }}
-      onMouseUp={() => {
-        tl.clear();
-        clearTimeout(timer);
-        nextProjectHoverIn(footerImage);
-      }}
-      onMouseEnter={() => {
-        nextProjectHoverIn(footerImage);
-      }}
-      onMouseLeave={() => {
-        nextProjectHoverOut(footerImage);
-      }}
-    >
+    <div className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[80vw] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer">
       <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
         <p className="experience">NEXT PROJECT</p>
         <h2 className="uppercase font-CormorantGaramond text-[10.69vw] next-project-title">

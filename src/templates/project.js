@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React, { useContext, useLayoutEffect, useEffect } from "react";
 import PropTypes from "prop-types";
 import Layout from "../layouts/layout";
@@ -10,7 +9,6 @@ import {
   imageAnimation,
   textAnimation,
   highlightTextAnimation,
-  nextProjectHoverAnimation,
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
 
@@ -165,16 +163,18 @@ function Project(props) {
                       >
                         <i className="image-wrapper-mask z-10" />
 
-                        <GatsbyImage
-                          image={getImage(image5?.gatsbyImageData)}
-                          alt={image5?.title}
-                          className="w-full h-full image-content"
-                          imgStyle={{
-                            maxWidth: "100%",
-                            width: "auto",
-                            height: "100%",
-                          }}
-                        />
+                        <div className="image-content">
+                          <GatsbyImage
+                            image={getImage(image5?.gatsbyImageData)}
+                            alt={image5?.title}
+                            className="w-full h-full "
+                            imgStyle={{
+                              maxWidth: "100%",
+                              width: "auto",
+                              height: "100%",
+                            }}
+                          />
+                        </div>
                       </div>
                     ) : null}
                   </div>
@@ -185,18 +185,16 @@ function Project(props) {
                 <div className="image-wrapper end mr-[10%] mt-20 md:mt-[10vw]">
                   <i className="image-wrapper-mask z-10" />
 
-                  <div className="image-content w-[66.16%] md:w-[46.14%] h-auto">
-                    <GatsbyImage
-                      image={getImage(image6?.gatsbyImageData)}
-                      alt={image6?.title}
-                      className="w-full h-full"
-                      imgStyle={{
-                        maxWidth: "100%",
-                        width: "auto",
-                        height: "100%",
-                      }}
-                    />
-                  </div>
+                  <GatsbyImage
+                    image={getImage(image6?.gatsbyImageData)}
+                    alt={image6?.title}
+                    className="w-[66.16%] md:w-[46.14%] h-auto image-content"
+                    imgStyle={{
+                      maxWidth: "100%",
+                      width: "auto",
+                      height: "100%",
+                    }}
+                  />
                 </div>
               ) : null}
 
@@ -322,11 +320,7 @@ function Project(props) {
           </div>
         </div>
 
-        {nextProject ? (
-          // <Link to={`/${nextProject?.projectTitle}`}>
-          <NextProject nextProject={nextProject} />
-        ) : // </Link>
-        null}
+        {nextProject ? <NextProject nextProject={nextProject} /> : null}
       </div>
     </Layout>
   );

@@ -142,7 +142,7 @@
   /* text selection */
 
   .image-wrapper {
-    @apply relative;
+    @apply relative overflow-hidden;
   }
 
   .image-wrapper-mask {

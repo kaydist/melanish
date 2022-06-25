@@ -37,7 +37,7 @@ export const imageAnimation = () => {
         y: "-15%",
         scrollTrigger: {
           trigger: mask,
-          start: "top 10%",
+          start: startPoint,
           scrub: true,
         },
       },
