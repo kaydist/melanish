@@ -4,20 +4,27 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const imageAnimation = () => {
-  gsap.utils.toArray(".image-wrapper").forEach((wrapper) => {
+  gsap.utils.toArray(".image-wrapper").forEach((wrapper, idx) => {
     let mask = wrapper.querySelector(".image-wrapper-mask");
     let image = wrapper.querySelector(".image-content");
+
+    let startPoint = "";
+    if (idx === 0) {
+      startPoint = "top bottom";
+    } else {
+      startPoint = "top 30%";
+    }
 
     var tl = gsap.timeline({
       scrollTrigger: {
         trigger: mask,
-        start: "top 30%",
+        start: startPoint,
       },
     });
 
     tl.to(mask, {
       y: "-100%",
-      duration: 1,
+      duration: 1.5,
       ease: "power4.out",
     });
 
@@ -40,29 +47,33 @@ export const imageAnimation = () => {
 };
 
 export const textAnimation = () => {
-  function hide(elem) {
-    gsap.set(elem, { autoAlpha: 0 });
-  }
+  const allParagragh = document.querySelectorAll(".animated-text");
 
-  gsap.utils.toArray(".animated-text").forEach((elem) => {
-    hide(elem);
-    var y = 50;
-    elem.style.opacity = "0";
-    gsap.fromTo(
-      elem,
-      { y: y, autoAlpha: 0 },
-      {
-        duration: 1.25,
-        y: 0,
-        autoAlpha: 1,
-        ease: "expo",
-        overwrite: "auto",
-        scrollTrigger: {
-          trigger: elem,
-          start: "top 80%",
-        },
-      }
-    );
+  allParagragh.forEach((paragraph) => {
+    let word = paragraph.textContent.split(" ");
+    paragraph.textContent = "";
+    word.forEach((word) => {
+      paragraph.innerHTML += `<span class="word-overflow-container overflow-hidden inline-block"><div class="paragrah-word ">${word} </div></span> `;
+    });
+
+    gsap.utils.toArray(".paragrah-word").forEach((text) => {
+      var y = "200%";
+      text.style.transform = "translateY:" + y;
+      gsap.fromTo(
+        text,
+        { y: y },
+        {
+          y: 0,
+          duration: 1.5,
+          ease: "expo",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: paragraph,
+            start: "top 80%",
+          },
+        }
+      );
+    });
   });
 };
 
@@ -79,7 +90,6 @@ export const otherSectionAnimation = () => {
         scrub: 1,
         end: "+=3000px",
         anticipatePin: 1,
-        pinSpacing: true,
       },
     });
   }
@@ -105,37 +115,66 @@ export const highlightTextAnimation = () => {
   });
 };
 
-export const nextProjectHoverAnimation = () => {
-  const footerContainer = document.querySelector(".next-project-footer");
-
-  const footerImage = document.querySelectorAll(".next-project-image");
-
-  footerContainer.addEventListener('mouseenter', ()=>{
-      gsap.to(footerImage[0], {
+export const nextProjectHoverIn = (footerImage, duration) => {
+  var tl = gsap.timeline();
+  tl.to(footerImage[0], {
     x: "30%",
     y: "10%",
     rotate: "-10deg",
   });
 
-  gsap.to(footerImage[1], {
-    x: "-30%",
-    y: "-10%",
-    rotate: "10deg"
-  });
-  })
+  tl.to(
+    footerImage[1],
+    {
+      x: "-30%",
+      y: "-10%",
+      rotate: "10deg",
+    },
+    "<"
+  );
+};
 
-  footerContainer.addEventListener('mouseleave', ()=>{
-      gsap.to(footerImage[0], {
+export const nextProjectHoverOut = (footerImage, duration) => {
+  var tl = gsap.timeline();
+  tl.to(footerImage[0], {
     x: 0,
     y: 0,
     rotate: "6deg",
   });
 
-  gsap.to(footerImage[1], {
-    x: 0,
-    y: 0,
-    rotate: "-8deg",
-  });
-  })
+  tl.to(
+    footerImage[1],
+    {
+      x: 0,
+      y: 0,
+      rotate: "-8deg",
+    },
+    "<"
+  );
+};
 
+export const nextProjectHoverActive = (footerImage, duration) => {
+  var tl = gsap.timeline({
+    defaults: {
+      duration: 1.5,
+    },
+  });
+
+  tl.to(footerImage[0], {
+    x: "0%",
+    y: "200%",
+    ease: "expo.in",
+    rotate: "-10deg",
+  });
+
+  tl.to(
+    footerImage[1],
+    {
+      x: "0%",
+      y: "200%",
+      ease: "expo.in",
+      rotate: "10deg",
+    },
+    "<"
+  );
 };

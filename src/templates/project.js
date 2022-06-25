@@ -12,6 +12,7 @@ import {
   highlightTextAnimation,
   nextProjectHoverAnimation,
 } from "../animations/project";
+import NextProject from "../components/next-project-footer";
 
 function Project(props) {
   const {
@@ -40,7 +41,6 @@ function Project(props) {
 
   useLayoutEffect(() => {
     otherSectionAnimation();
-    nextProjectHoverAnimation();
   }, []);
 
   return (
@@ -49,17 +49,21 @@ function Project(props) {
         <div className="w-full h-full pt-40 md:pt-[15vh]">
           <div className="hero md:px-body w-full col-center relative">
             <div className="absolute top-0 z-10">
-              <h2 className="uppercase font-CormorantGaramond text-[15.28vw] leading-[0.85] text-center">
+              <h2 className="uppercase font-CormorantGaramond text-[15.28vw] leading-[0.85] text-center animated-text">
                 {projectTitle}
               </h2>
             </div>
 
             <div className="mt-[15%] w-full h-[30rem] md:h-[58.61vw] center relative">
-              <GatsbyImage
-                image={getImage(mainProjectImage?.gatsbyImageData)}
-                alt={mainProjectImage?.title}
-                className="object-contain h-full w-full"
-              />
+              <div className="image-wrapper w-full h-full overflow-hidden">
+                <i className="image-wrapper-mask z-10" />
+
+                <GatsbyImage
+                  image={getImage(mainProjectImage?.gatsbyImageData)}
+                  alt={mainProjectImage?.title}
+                  className="image-content object-contain h-full w-full scale-[1.2]"
+                />
+              </div>
 
               <div className="text-sm absolute top-[5vw] -rotate-90 -left-[5vw] text-right tracking-widest">
                 OCT. 2022
@@ -248,16 +252,16 @@ function Project(props) {
               ) : null}
             </div>
 
-            <div className="col-center text-left md:text-center uppercase my-2xbody dark:text-muted text-[#0C0C0C] md:text-[1.2vw] animated-text">
+            <div className="col-center text-left md:text-center uppercase my-2xbody dark:text-muted text-[#0C0C0C] md:text-[1.2vw]">
               <h6 className="">CREDITS</h6>
 
               <div className="around w-fit flex-wrap md:flex-nowrap gap-[7.177%] md:text-[1.5vw] leading-normal whitespace-nowrap">
                 {[creditNames, creditTitles].map((credit, idx) => {
                   return (
                     <div key={idx} className="col-center mt-[7.177%]">
-                      <p>{creditTitles[idx]}</p>
+                      <p className="animated-text">{creditTitles[idx]}</p>
 
-                      <p className="font-CormorantGaramond">
+                      <p className="font-CormorantGaramond animated-text">
                         {creditNames[idx]}
                       </p>
                     </div>
@@ -320,62 +324,9 @@ function Project(props) {
 
         {nextProject ? (
           // <Link to={`/${nextProject?.projectTitle}`}>
-            <div className="center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[80vw] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer" 
-            
-            >
-              <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
-                <p className="experience">NEXT PROJECT</p>
-                <h2 className="uppercase font-CormorantGaramond text-[10.69vw]">
-                  {nextProject?.projectTitle}
-                </h2>
-              </div>
-
-              <div className="absolute center w-full h-full">
-                <div className="w-[25%] h-[50%] rotate-6 overflow-hidden -mt-16 next-project-image">
-                  <div className="absolute min-w-full min-h-full bg-[#00000090] z-10" />
-                  <GatsbyImage
-                    image={getImage(nextProject?.image2.gatsbyImageData)}
-                    alt={nextProject?.image2?.title}
-                    className="w-full h-full"
-                    imgStyle={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-
-                <div className="w-[25%] h-[50%] -rotate-[4deg] overflow-hidden -mx-5 z-10">
-                  <GatsbyImage
-                    image={getImage(
-                      nextProject?.mainProjectImage?.gatsbyImageData
-                    )}
-                    alt={nextProject?.mainProjectImage?.title}
-                    className="w-full h-full"
-                    imgStyle={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-
-                <div className="w-[25%] h-[50%] -rotate-[8deg] overflow-hidden mt-24 next-project-image">
-                  <div className="absolute min-w-full min-h-full bg-[#00000090] z-10" />
-                  <GatsbyImage
-                    image={getImage(
-                      nextProject?.otherImages[0]?.gatsbyImageData
-                    )}
-                    alt={nextProject?.otherImages[0]?.title}
-                    className="w-full h-full"
-                    imgStyle={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          // </Link>
-        ) : null}
+          <NextProject nextProject={nextProject} />
+        ) : // </Link>
+        null}
       </div>
     </Layout>
   );

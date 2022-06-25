@@ -58,7 +58,7 @@
   }
 
   h2 {
-    @apply tracking-tighter;
+    @apply tracking-tighter no-select;
   }
 
   input,
@@ -138,6 +138,8 @@
     border-radius: 10px;
     margin-right: 5px;
   }
+
+  /* text selection */
 
   .image-wrapper {
     @apply relative;
@@ -235,5 +237,14 @@
 
   .col-between {
     @apply flex flex-col items-start justify-between;
+  }
+
+  .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
