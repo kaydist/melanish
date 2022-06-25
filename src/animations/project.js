@@ -48,6 +48,11 @@ export const imageAnimation = () => {
           start: startPoint,
           scrub: true,
         },
+        onComplete: () => {
+          if (idx === 0) {
+            ScrollTrigger.refresh();
+          }
+        },
       },
       ">"
     );
@@ -65,8 +70,10 @@ export const textAnimation = () => {
     });
 
     gsap.utils.toArray(".paragrah-word").forEach((text) => {
-      var y = "300%";
+      var y = "500%";
+
       text.style.transform = "translateY:" + y;
+
       gsap.fromTo(
         text,
         { y: y },
@@ -121,68 +128,4 @@ export const highlightTextAnimation = () => {
 
     tl.fromTo(text, { color: "#030303" }, { color: "#FFFFFF00" }, "+=200%");
   });
-};
-
-export const nextProjectHoverIn = (footerImage, duration) => {
-  var tl = gsap.timeline();
-  tl.to(footerImage[0], {
-    x: "30%",
-    y: "10%",
-    rotate: "-10deg",
-  });
-
-  tl.to(
-    footerImage[1],
-    {
-      x: "-30%",
-      y: "-10%",
-      rotate: "10deg",
-    },
-    "<"
-  );
-};
-
-export const nextProjectHoverOut = (footerImage, duration) => {
-  var tl = gsap.timeline();
-  tl.to(footerImage[0], {
-    x: 0,
-    y: 0,
-    rotate: "6deg",
-  });
-
-  tl.to(
-    footerImage[1],
-    {
-      x: 0,
-      y: 0,
-      rotate: "-8deg",
-    },
-    "<"
-  );
-};
-
-export const nextProjectHoverActive = (footerImage, duration) => {
-  var tl = gsap.timeline({
-    defaults: {
-      duration: 1.5,
-    },
-  });
-
-  tl.to(footerImage[0], {
-    x: "0%",
-    y: "200%",
-    ease: "expo.in",
-    rotate: "-10deg",
-  });
-
-  tl.to(
-    footerImage[1],
-    {
-      x: "0%",
-      y: "200%",
-      ease: "expo.in",
-      rotate: "10deg",
-    },
-    "<"
-  );
 };

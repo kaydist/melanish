@@ -250,7 +250,7 @@ function Project(props) {
               ) : null}
             </div>
 
-            <div className="col-center text-left md:text-center uppercase my-2xbody dark:text-muted text-[#0C0C0C] md:text-[1.2vw]">
+            <div className="col-center text-left md:text-center uppercase my-2xbody text-muted-class md:text-[1.2vw]">
               <h6 className="">CREDITS</h6>
 
               <div className="around w-fit flex-wrap md:flex-nowrap gap-[7.177%] md:text-[1.5vw] leading-normal whitespace-nowrap">

@@ -75,6 +75,10 @@
     @apply border-muted dark:text-[#030303];
   }
 
+  .text-muted-class {
+    @apply dark:text-muted text-[#0C0C0C];
+  }
+
   .constraint {
     @apply container;
   }
