@@ -9,10 +9,18 @@ export const imageAnimation = () => {
     let image = wrapper.querySelector(".image-content");
 
     let startPoint = "";
+
     if (idx === 0) {
       startPoint = "top bottom";
     } else {
-      startPoint = "top 30%";
+      ScrollTrigger.matchMedia({
+        "(min-width: 768px)": function () {
+          startPoint = "top 30%";
+        },
+        "(max-width: 7687x)": function () {
+          startPoint = "top 60%";
+        },
+      });
     }
 
     var tl = gsap.timeline({
@@ -57,7 +65,7 @@ export const textAnimation = () => {
     });
 
     gsap.utils.toArray(".paragrah-word").forEach((text) => {
-      var y = "200%";
+      var y = "300%";
       text.style.transform = "translateY:" + y;
       gsap.fromTo(
         text,

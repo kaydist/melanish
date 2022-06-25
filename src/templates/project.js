@@ -47,7 +47,7 @@ function Project(props) {
         <div className="w-full h-full pt-40 md:pt-[15vh]">
           <div className="hero md:px-body w-full col-center relative">
             <div className="absolute top-0 z-10">
-              <h2 className="uppercase font-CormorantGaramond text-[15.28vw] leading-[0.85] text-center animated-text">
+              <h2 className="uppercase font-CormorantGaramond text-7xl md:text-[15.28vw] leading-[0.85] text-center animated-text">
                 {projectTitle}
               </h2>
             </div>
@@ -272,16 +272,10 @@ function Project(props) {
 
         <div className="center md:mb-2xbody" id="project-other-images">
           <div className="w-full absolute overflow-hidden">
-            <div className="highlight sticky top-1/2 text-center">
-              <h2 className="uppercase no-fill-text font-CormorantGaramond text-[15.28vw] z-10 whitespace-nowrap">
-                {projectTitle}
-              </h2>
-              <h2 className="uppercase no-fill-text font-CormorantGaramond text-[15.28vw] z-10 whitespace-nowrap">
-                {projectTitle}
-              </h2>
-              <h2 className="uppercase no-fill-text font-CormorantGaramond text-[15.28vw] z-10 whitespace-nowrap">
-                {projectTitle}
-              </h2>
+            <div className="highlight sticky top-1/2 text-center uppercase no-fill-text font-CormorantGaramond text-7xl md:text-[15.28vw] text-[15.28vw] whitespace-nowrap">
+              <h2 className=" z-10 ">{projectTitle}</h2>
+              <h2 className=" z-10 ">{projectTitle}</h2>
+              <h2 className=" z-10 ">{projectTitle}</h2>
             </div>
           </div>
 
