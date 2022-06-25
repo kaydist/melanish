@@ -16,8 +16,8 @@ export default function NextProject({ nextProject }) {
     const nextProjectHoverIn = () => {
       var tl = gsap.timeline({
         defaults: {
-          ease: "ease.in"
-        }
+          ease: "ease.in",
+        },
       });
       tl.to(footerImage[0], {
         x: "30%",
@@ -39,8 +39,8 @@ export default function NextProject({ nextProject }) {
     const nextProjectHoverOut = () => {
       var tl = gsap.timeline({
         defaults: {
-          ease: "ease.out"
-        }
+          ease: "ease.out",
+        },
       });
       tl.to(footerImage[0], {
         x: 0,
@@ -170,7 +170,7 @@ export default function NextProject({ nextProject }) {
         </div>
       </div>
 
-      <div className="touch-action border border-color w-24 h-24 center text-center text-muted-class rounded-full absolute bottom-body left-body lg:hidden">
+      <div className="text-xs font-light no-select touch-action border border-color w-24 h-24 center text-center text-muted-class rounded-full absolute bottom-body left-body lg:hidden">
         Touch <br />& <br /> Hold
       </div>
     </div>

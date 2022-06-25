@@ -105,7 +105,6 @@ export const otherSectionAnimation = () => {
         scrub: 1,
         end: "+=3000px",
         anticipatePin: 1,
-        markers: true,
       },
     });
   }

@@ -280,7 +280,7 @@ function Project(props) {
           </div>
 
           <div className="max-w-[100vw] min-h-max no-scrollbar overflow-hidden relative">
-            <div className="start flex-nowrap space-x-6 min-h-screen w-fit">
+            <div className="start flex-nowrap space-x-6Fixed other section  min-h-screen w-fit">
               {otherImages.map((image, idx) => {
                 let rotationAngle =
                   Math.random() < 0.5
