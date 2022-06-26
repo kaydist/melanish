@@ -120,7 +120,7 @@ export default function NextProject({ nextProject }) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" data-cursor-text="Click & Hold">
       <div className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer">
         <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
           <p className="experience">NEXT PROJECT</p>

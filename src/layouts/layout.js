@@ -1,10 +1,12 @@
 import React, { useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/project";
+import cursor from "../components/cursor";
 
 function Layout({ children }) {
   useLayoutEffect(() => {
     textSplit();
+    // cursor();
 
     const allVerticalParagragh = document.querySelectorAll(
       ".animated-text.vertical-anim"
@@ -17,7 +19,7 @@ function Layout({ children }) {
       let text = paragraph.querySelectorAll(".paragraph-word");
 
       text.forEach((text) => {
-        text.style.transform = "translateY: 500%"
+        text.style.transform = "translateY: 500%";
       });
     });
 
@@ -25,7 +27,7 @@ function Layout({ children }) {
       let text = paragraph.querySelectorAll(".paragraph-word");
 
       text.forEach((text) => {
-        text.style.transform = "translateX: 500%"
+        text.style.transform = "translateX: 500%";
       });
     });
   }, []);

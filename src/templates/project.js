@@ -11,6 +11,7 @@ import {
   highlightTextAnimation,
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
+import cursor from "../components/cursor";
 
 function Project(props) {
   const {
@@ -39,7 +40,7 @@ function Project(props) {
   useEffect(() => {
     imageAnimation();
     highlightTextAnimation();
-    // textVerticalAnimation();
+    cursor()
   }, []);
 
   return (
@@ -105,12 +106,13 @@ function Project(props) {
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
-                    className="w-full h-full"
+                    className="w-full h-full project-image"
                     imgStyle={{
                       maxWidth: "100%",
                       width: "auto",
                       height: "100%",
                     }}
+                    data-cursor-text={`${image2?.title}`}
                   />
                 </div>
               </section>
@@ -129,6 +131,7 @@ function Project(props) {
                         width: "auto",
                         height: "100%",
                       }}
+                      data-cursor-text={`${image3?.title}`}
                     />
                   </div>
                 </section>
@@ -151,6 +154,7 @@ function Project(props) {
                               width: "auto",
                               height: "100%",
                             }}
+                            data-cursor-text={`${image4?.title}`}
                           />
                         </>
                       ) : null}
@@ -174,6 +178,7 @@ function Project(props) {
                               width: "auto",
                               height: "100%",
                             }}
+                            data-cursor-text={`${image5?.title}`}
                           />
                         </div>
                       </div>
@@ -196,6 +201,7 @@ function Project(props) {
                         width: "auto",
                         height: "100%",
                       }}
+                      data-cursor-text={`${image6?.title}`}
                     />
                   </div>
                 </div>
@@ -215,6 +221,7 @@ function Project(props) {
                         width: "auto",
                         height: "100%",
                       }}
+                      data-cursor-text={`${image5?.title}`}
                     />
                   </div>
                 </div>
@@ -232,6 +239,7 @@ function Project(props) {
                         width: "auto",
                         height: "100%",
                       }}
+                      data-cursor-text={`${image3?.title}`}
                     />
                   </div>
                 </div>
@@ -250,6 +258,7 @@ function Project(props) {
                       width: "100%",
                       height: "auto",
                     }}
+                    data-cursor-text={`${image7?.title}`}
                   />
                 </section>
               ) : null}
@@ -262,7 +271,9 @@ function Project(props) {
                 {[creditNames, creditTitles].map((credit, idx) => {
                   return (
                     <div key={idx} className="col-center mt-[7.177%]">
-                      <p className="animated-text vertical-anim">{creditTitles[idx]}</p>
+                      <p className="animated-text vertical-anim">
+                        {creditTitles[idx]}
+                      </p>
 
                       <p className="font-CormorantGaramond animated-text vertical-anim">
                         {creditNames[idx]}
@@ -310,6 +321,7 @@ function Project(props) {
                           width: "auto",
                           height: "100%",
                         }}
+                        data-cursor-text={`${image?.title}`}
                       />
                     </div>
                   </div>
