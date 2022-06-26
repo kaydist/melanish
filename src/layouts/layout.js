@@ -5,6 +5,29 @@ import { textSplit } from "../animations/project";
 function Layout({ children }) {
   useLayoutEffect(() => {
     textSplit();
+
+    const allVerticalParagragh = document.querySelectorAll(
+      ".animated-text.vertical-anim"
+    );
+    const allHorizontalParagragh = document.querySelectorAll(
+      ".animated-text.horizontal-anim"
+    );
+
+    allVerticalParagragh.forEach((paragraph) => {
+      let text = paragraph.querySelectorAll(".paragraph-word");
+
+      text.forEach((text) => {
+        text.style.transform = "translateY: 500%"
+      });
+    });
+
+    allHorizontalParagragh.forEach((paragraph) => {
+      let text = paragraph.querySelectorAll(".paragraph-word");
+
+      text.forEach((text) => {
+        text.style.transform = "translateX: 500%"
+      });
+    });
   }, []);
 
   return (

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { textVerticalAnimation, textHorizontalAnimationIn } from "../animations/project";
 import Layout from "../layouts/layout";
 
 export default function ContactPage() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     textVerticalAnimation();
     textHorizontalAnimationIn();
   }, []);

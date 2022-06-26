@@ -160,7 +160,7 @@ export const otherSectionAnimation = () => {
   }
 };
 
-export const highlighttextVerticalAnimation = () => {
+export const highlightTextAnimation = () => {
   const highlightText = gsap.utils.toArray(".highlight h2");
   highlightText.forEach((text, idx) => {
     gsap.set(text, { color: "#FFFFFF00" });

@@ -8,8 +8,7 @@ import {
   otherSectionAnimation,
   imageAnimation,
   textVerticalAnimation,
-  highlighttextVerticalAnimation,
-  textSplit
+  highlightTextAnimation,
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
 
@@ -34,12 +33,13 @@ function Project(props) {
 
   useLayoutEffect(() => {
     otherSectionAnimation();
+    textVerticalAnimation();
   }, []);
 
   useEffect(() => {
     imageAnimation();
-    highlighttextVerticalAnimation();
-    textVerticalAnimation();
+    highlightTextAnimation();
+    // textVerticalAnimation();
   }, []);
 
   return (
