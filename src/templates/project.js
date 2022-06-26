@@ -7,8 +7,9 @@ import { AppContext } from "../controller/context";
 import {
   otherSectionAnimation,
   imageAnimation,
-  textAnimation,
-  highlightTextAnimation,
+  textVerticalAnimation,
+  highlighttextVerticalAnimation,
+  textSplit
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
 
@@ -31,14 +32,14 @@ function Project(props) {
 
   const [theme] = useContext(AppContext);
 
-  useEffect(() => {
-    imageAnimation();
-    textAnimation();
-    highlightTextAnimation();
-  }, []);
-
   useLayoutEffect(() => {
     otherSectionAnimation();
+  }, []);
+
+  useEffect(() => {
+    imageAnimation();
+    highlighttextVerticalAnimation();
+    textVerticalAnimation();
   }, []);
 
   return (
@@ -47,7 +48,7 @@ function Project(props) {
         <div className="w-full h-full pt-40 md:pt-[15vh]">
           <div className="hero md:px-body w-full col-center relative">
             <div className="absolute top-0 z-10">
-              <h2 className="uppercase font-CormorantGaramond text-7xl md:text-[15.28vw] leading-[0.85] text-center animated-text">
+              <h2 className="uppercase font-CormorantGaramond text-7xl md:text-[15.28vw] leading-[0.85] text-center animated-text vertical-anim">
                 {projectTitle}
               </h2>
             </div>
@@ -74,7 +75,7 @@ function Project(props) {
           </div>
 
           <div className="my-6 md:my-[8.625rem] px-body">
-            <p className="explainer animated-text">
+            <p className="explainer animated-text vertical-anim">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam
               velit vel sed sit ullamcorper eget. Sapien ligula consectetur
               cursus sagittis vulputate aliquam tellus. Felis vitae, enim auctor
@@ -182,27 +183,29 @@ function Project(props) {
               </section>
 
               {image6 ? (
-                <div className="image-wrapper end mr-[10%] mt-20 md:mt-[10vw]">
-                  <i className="image-wrapper-mask z-10" />
+                <div className="end mr-[10%] mt-20 md:mt-[10vw]">
+                  <div className="image-wrapper w-[66.16%] md:w-[46.14%] h-fit">
+                    <i className="image-wrapper-mask z-10" />
 
-                  <GatsbyImage
-                    image={getImage(image6?.gatsbyImageData)}
-                    alt={image6?.title}
-                    className="w-[66.16%] md:w-[46.14%] h-auto image-content"
-                    imgStyle={{
-                      maxWidth: "100%",
-                      width: "auto",
-                      height: "100%",
-                    }}
-                  />
+                    <GatsbyImage
+                      image={getImage(image6?.gatsbyImageData)}
+                      alt={image6?.title}
+                      className="full h-auto image-content"
+                      imgStyle={{
+                        maxWidth: "100%",
+                        width: "auto",
+                        height: "100%",
+                      }}
+                    />
+                  </div>
                 </div>
               ) : null}
 
-              <section className="image-wrapper grid grid-rows-2 md:grid-rows-none md:grid-cols-2 mt-20 md:mt-[10vw] h-max gap-20 md:gap-[5vw]">
-                <i className="image-wrapper-mask z-10" />
+              <section className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 mt-20 md:mt-[10vw] h-max gap-20 md:gap-[5vw]">
+                <div className="image-wrapper center">
+                  <i className="image-wrapper-mask z-10" />
 
-                <div className="center image-content">
-                  <div className="w-full h-auto max-h-full">
+                  <div className="w-full h-auto max-h-full image-content">
                     <GatsbyImage
                       image={getImage(image5?.gatsbyImageData)}
                       alt={image5?.title}
@@ -216,8 +219,10 @@ function Project(props) {
                   </div>
                 </div>
 
-                <div className="center image-content">
-                  <div className="w-full h-auto max-h-full">
+                <div className="center image-wrapper">
+                  <i className="image-wrapper-mask z-10" />
+
+                  <div className="w-full h-auto max-h-full image-content">
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -257,9 +262,9 @@ function Project(props) {
                 {[creditNames, creditTitles].map((credit, idx) => {
                   return (
                     <div key={idx} className="col-center mt-[7.177%]">
-                      <p className="animated-text">{creditTitles[idx]}</p>
+                      <p className="animated-text vertical-anim">{creditTitles[idx]}</p>
 
-                      <p className="font-CormorantGaramond animated-text">
+                      <p className="font-CormorantGaramond animated-text vertical-anim">
                         {creditNames[idx]}
                       </p>
                     </div>

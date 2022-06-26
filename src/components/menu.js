@@ -1,36 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import { Link } from "gatsby";
 import { AppContext } from "../controller/context";
+import {
+  textHorizontalAnimationIn,
+  textVerticalAnimation,
+} from "../animations/project";
 
-function Menu() {
+function Menu({ menuOpen }) {
   const [theme, setTheme] = useContext(AppContext);
 
+  useLayoutEffect(() => {
+    if (menuOpen === true) {
+      textVerticalAnimation();
+      textHorizontalAnimationIn();
+    }
+  }, [menuOpen]);
+
   return (
-    <div className="hidden" id="menu">
+    <div className={`${menuOpen ? "" : `hidden`}`} id="menu">
       <div className="relative">
         <div className="w-screen min-h-screen fixed z-40 bg-white dark:bg-[#030303] text-[#030303] dark:text-[#FFFFFF] px-body">
           <div className="flex items-center justify-start min-h-[80vh]">
-            <ul className="text-2xl md:text-[3.8vw]">
+            <ul className="text-5xl md:text-[3.8vw] space-y-2 md:space-y-[1vw] leading-[1] col-start">
               <Link to="/">
-                <li className="my-2 md:my-[2.5vw]">Home</li>
+                <div className="animated-text vertical-anim">Home</div>
               </Link>
 
               <Link to="/portfolio">
-                <li className="my-2 md:my-[2.5vw]">Portfolio</li>
+                <div className="animated-text vertical-anim">Portfolio</div>
               </Link>
 
               <Link to="/free-roam">
-                <li className="my-2 md:my-[2.5vw]">Free Roam</li>
+                <div className="animated-text vertical-anim">Free Roam</div>
               </Link>
 
               <Link to="/contact">
-                <li className="my-2 md:my-[2.5vw]">Contact</li>
+                <div className="animated-text vertical-anim">Contact</div>
               </Link>
             </ul>
           </div>
 
           <div
-            className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer"
+            className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer animated-text vertical-anim"
             onClick={() => {
               theme === "light" ? setTheme("dark") : setTheme("light");
             }}
@@ -39,14 +50,15 @@ function Menu() {
           </div>
 
           <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block">
-            <span className="">MELA-</span>
+            <span className="animated-text horizontal-anim">MELA-</span>
             <br />
-            <span className="mr-[15vw] relative">
-              NISH{" "}
+            <div className="mr-[15vw] relative">
+              <div className="animated-text horizontal-anim">NISH</div>
+
               <sup className="text-[30%] absolute top-[30%] -right-[10%]">
                 o
               </sup>
-            </span>
+            </div>
           </div>
         </div>
       </div>

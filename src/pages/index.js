@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
@@ -35,15 +35,15 @@ const IndexPage = () => {
 
   let images = getImage(projects[currentImage].node?.image2) || {};
 
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      if (currentImage === projects.length - 1) {
-        setCurrentImage(0);
-      } else {
-        setCurrentImage(currentImage + 1);
-      }
-    }, 2000);
-  }, [currentImage]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     if (currentImage === projects.length - 1) {
+  //       setCurrentImage(0);
+  //     } else {
+  //       setCurrentImage(currentImage + 1);
+  //     }
+  //   }, 2000);
+  // }, [currentImage]);
 
   return (
     <Layout>

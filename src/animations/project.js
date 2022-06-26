@@ -28,6 +28,11 @@ export const imageAnimation = () => {
         trigger: mask,
         start: startPoint,
       },
+      onComplete: () => {
+        if (idx === 0) {
+          ScrollTrigger.getById("otherImageSectionTrigger").refresh();
+        }
+      },
     });
 
     tl.to(mask, {
@@ -36,7 +41,13 @@ export const imageAnimation = () => {
       ease: "power4.out",
     });
 
-    tl.to(mask, { autoAlpha: 0 }, ">");
+    tl.to(
+      mask,
+      {
+        autoAlpha: 0,
+      },
+      ">"
+    );
 
     tl.fromTo(
       image,
@@ -48,30 +59,34 @@ export const imageAnimation = () => {
           start: startPoint,
           scrub: true,
         },
-        onComplete: () => {
-          if (idx === 0) {
-            ScrollTrigger.refresh();
-          }
-        },
       },
       ">"
     );
   });
 };
 
-export const textAnimation = () => {
+export const textSplit = () => {
   const allParagragh = document.querySelectorAll(".animated-text");
-
   allParagragh.forEach((paragraph) => {
     let word = paragraph.textContent.split(" ");
     paragraph.textContent = "";
+
     word.forEach((word) => {
-      paragraph.innerHTML += `<span class="word-overflow-container overflow-hidden inline-block"><div class="paragrah-word ">${word} </div></span> `;
+      paragraph.innerHTML += `<span class="word-overflow-container overflow-hidden inline-block"><div class="paragraph-word">${word}</div></span> `;
     });
+  });
+};
 
-    gsap.utils.toArray(".paragrah-word").forEach((text) => {
+export const textVerticalAnimation = () => {
+  const allParagragh = document.querySelectorAll(
+    ".animated-text.vertical-anim"
+  );
+
+  allParagragh.forEach((paragraph) => {
+    let text = paragraph.querySelectorAll(".paragraph-word");
+
+    text.forEach((text) => {
       var y = "500%";
-
       text.style.transform = "translateY:" + y;
 
       gsap.fromTo(
@@ -80,11 +95,41 @@ export const textAnimation = () => {
         {
           y: 0,
           duration: 1.5,
-          ease: "expo",
+          ease: "expo.out",
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
-            start: "top 80%",
+            start: "top 90%",
+          },
+        }
+      );
+    });
+  });
+};
+
+export const textHorizontalAnimationIn = () => {
+  const allParagragh = document.querySelectorAll(
+    ".animated-text.horizontal-anim"
+  );
+
+  allParagragh.forEach((paragraph) => {
+    let text = paragraph.querySelectorAll(".paragraph-word");
+
+    text.forEach((text) => {
+      var x = "500%";
+      text.style.transform = "translateX:" + x;
+
+      gsap.fromTo(
+        text,
+        { x: x },
+        {
+          x: 0,
+          duration: 1.5,
+          ease: "expo.out",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: paragraph,
+            start: "top 90%",
           },
         }
       );
@@ -95,22 +140,27 @@ export const textAnimation = () => {
 export const otherSectionAnimation = () => {
   const otherImagesCon = document.getElementById("project-other-images");
   const sections = document.querySelectorAll(".panel");
+
   if (sections.length > 1) {
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: otherImagesCon,
         pin: otherImagesCon,
         scrub: 1,
         end: "+=3000px",
         anticipatePin: 1,
+        id: "otherImageSectionTrigger",
       },
+    });
+
+    tl.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
     });
   }
 };
 
-export const highlightTextAnimation = () => {
+export const highlighttextVerticalAnimation = () => {
   const highlightText = gsap.utils.toArray(".highlight h2");
   highlightText.forEach((text, idx) => {
     gsap.set(text, { color: "#FFFFFF00" });

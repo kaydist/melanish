@@ -4,7 +4,10 @@ import React, {
   useEffect,
   createContext,
   useCallback,
+  useLayoutEffect,
 } from "react";
+
+import { textSplit } from "../animations/project";
 
 export const AppContext = createContext("");
 
