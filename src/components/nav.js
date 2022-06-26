@@ -6,7 +6,7 @@ import Menu from "./menu";
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const openMenu = () => {
+  const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
@@ -39,14 +39,14 @@ function Nav() {
         <div className="col-span-1 end">
           <button
             className="cursor-pointer small-text font-medium"
-            onClick={openMenu}
+            onClick={toggleMenu}
           >
             {menuOpen ? "Close" : "Menu"}
           </button>
         </div>
       </nav>
 
-      <Menu menuOpen={menuOpen} />
+      <Menu menuOpen={menuOpen} toggleMenu={toggleMenu} />
     </>
   );
 }

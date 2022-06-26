@@ -8,7 +8,7 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-screen" theme="light">
+    <div className="min-h-screen overflow-x-hidden" theme="light">
       <Nav />
 
       <div className="md:pt-body min-h-screen">{children}</div>

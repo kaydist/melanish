@@ -6,7 +6,7 @@ import {
   textVerticalAnimation,
 } from "../animations/project";
 
-function Menu({ menuOpen }) {
+function Menu({ menuOpen, toggleMenu }) {
   const [theme, setTheme] = useContext(AppContext);
 
   useLayoutEffect(() => {
@@ -22,21 +22,20 @@ function Menu({ menuOpen }) {
         <div className="w-screen min-h-screen fixed z-40 bg-white dark:bg-[#030303] text-[#030303] dark:text-[#FFFFFF] px-body">
           <div className="flex items-center justify-start min-h-[80vh]">
             <ul className="text-5xl md:text-[3.8vw] space-y-2 md:space-y-[1vw] leading-[1] col-start">
-              <Link to="/">
-                <div className="animated-text vertical-anim">Home</div>
-              </Link>
-
-              <Link to="/portfolio">
-                <div className="animated-text vertical-anim">Portfolio</div>
-              </Link>
-
-              <Link to="/free-roam">
-                <div className="animated-text vertical-anim">Free Roam</div>
-              </Link>
-
-              <Link to="/contact">
-                <div className="animated-text vertical-anim">Contact</div>
-              </Link>
+              {[
+                { label: "Home", link: "/" },
+                { label: "Portfolio", link: "/portfolio" },
+                { label: "Free Roam", link: "/free-roam" },
+                { label: "Contact", link: "/contact" },
+              ].map((item, idx) => {
+                return (
+                  <Link key={idx} to={item.link} onClick={toggleMenu}>
+                    <div className="animated-text vertical-anim capitalize">
+                      {item.label}
+                    </div>
+                  </Link>
+                );
+              })}
             </ul>
           </div>
 

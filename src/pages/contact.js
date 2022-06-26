@@ -41,7 +41,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="text-center center w-full animated-text vertical-anim">
+        <div className="text-center text-sm md:text-[1vw] center w-full">
           Developed By: Kay
         </div>
       </div>
