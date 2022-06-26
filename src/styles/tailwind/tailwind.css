@@ -84,11 +84,11 @@
   }
 
   .explainer {
-    @apply md:text-[2.5vw] leading-normal mb-10 font-Assistant md:mx-[1.94em];
+    @apply text-base md:text-[2.5vw] leading-normal mb-10 font-Assistant md:mx-[1.94em];
   }
 
   .small-text {
-    @apply text-sm md:text-[1.2vw];
+    @apply text-base md:text-[1.2vw];
   }
 
   @supports (-webkit-text-stroke: 2px #030303) {

@@ -27,7 +27,7 @@ function Nav() {
 
         <div className="col-span-2 center">
           <Link to="/">
-            <div className="text-xl md:text-[2vw] font-bold cursor-pointer relative">
+            <div className="text-2xl md:text-[2vw] font-bold cursor-pointer relative">
               MELANISH
               <sup className="text-[30%] absolute top-[30%] -right-[10%]">
                 o
