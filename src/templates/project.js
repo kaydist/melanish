@@ -11,7 +11,6 @@ import {
   highlightTextAnimation,
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
-import cursor from "../components/cursor";
 
 function Project(props) {
   const {
@@ -40,7 +39,6 @@ function Project(props) {
   useEffect(() => {
     imageAnimation();
     highlightTextAnimation();
-    cursor()
   }, []);
 
   return (
@@ -62,6 +60,7 @@ function Project(props) {
                   image={getImage(mainProjectImage?.gatsbyImageData)}
                   alt={mainProjectImage?.title}
                   className="image-content object-contain h-full w-full scale-[1.2]"
+                  data-cursor-text={`${mainProjectImage?.title}`}
                 />
               </div>
 
@@ -106,7 +105,7 @@ function Project(props) {
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
-                    className="w-full h-full project-image"
+                    className="w-full h-full"
                     imgStyle={{
                       maxWidth: "100%",
                       width: "auto",
@@ -331,7 +330,9 @@ function Project(props) {
           </div>
         </div>
 
-        {nextProject ? <NextProject nextProject={nextProject} /> : null}
+        {nextProject ? (
+          <NextProject nextProject={nextProject} theme={theme} />
+        ) : null}
       </div>
     </Layout>
   );

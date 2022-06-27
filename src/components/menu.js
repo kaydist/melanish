@@ -39,16 +39,19 @@ function Menu({ menuOpen, toggleMenu }) {
             </ul>
           </div>
 
-          <div
+          <button
             className="relative bottom-0 text-sm md:text-[1.25vw] cursor-pointer animated-text vertical-anim"
             onClick={() => {
               theme === "light" ? setTheme("dark") : setTheme("light");
             }}
           >
             {theme === "light" ? "Dark Mode" : "Light Mode"}
-          </div>
+          </button>
 
-          <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block">
+          <div
+            className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block"
+            data-cursor="-inverse"
+          >
             <span className="animated-text horizontal-anim">MELA-</span>
             <br />
             <div className="mr-[15vw] relative">

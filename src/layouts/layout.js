@@ -1,12 +1,11 @@
 import React, { useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/project";
-import cursor from "../components/cursor";
+import Cursor from "../components/cursor";
 
 function Layout({ children }) {
   useLayoutEffect(() => {
     textSplit();
-    // cursor();
 
     const allVerticalParagragh = document.querySelectorAll(
       ".animated-text.vertical-anim"
@@ -34,6 +33,8 @@ function Layout({ children }) {
 
   return (
     <div className="min-h-screen overflow-x-hidden" theme="light">
+      <Cursor />
+
       <Nav />
 
       <div className="md:pt-body min-h-screen">{children}</div>

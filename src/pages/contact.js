@@ -1,5 +1,8 @@
 import React, { useLayoutEffect } from "react";
-import { textVerticalAnimation, textHorizontalAnimationIn } from "../animations/project";
+import {
+  textVerticalAnimation,
+  textHorizontalAnimationIn,
+} from "../animations/project";
 import Layout from "../layouts/layout";
 
 export default function ContactPage() {
@@ -15,21 +18,25 @@ export default function ContactPage() {
           <div className="flex flex-col-reverse md:flex-row md:between w-full h-fit">
             <div className="pl-body space-y-5 md:space-y-[2vw] mt-14">
               <div>
-                <div className="animated-text vertical-anim">
+                <div className="block animated-text vertical-anim">
                   LAGOS, NIGERIA
                 </div>
-                <div className="animated-text vertical-anim">
+
+                <a className="block animated-text vertical-anim">
                   +2348 123 3578
-                </div>
-                <div className="animated-text vertical-anim">
+                </a>
+
+                <a className="block animated-text vertical-anim">
                   JOHN@ABURODOE.COM
-                </div>
+                </a>
               </div>
 
               <div>
-                <div className="animated-text vertical-anim">Instagram</div>
-                <div className="animated-text vertical-anim">Behance</div>
-                <div className="animated-text vertical-anim">Facebook</div>
+                <a className="block animated-text vertical-anim">Instagram</a>
+
+                <a className="block animated-text vertical-anim">Behance</a>
+
+                <a className="block animated-text vertical-anim">Facebook</a>
               </div>
             </div>
 

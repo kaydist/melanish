@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import gsap from "gsap";
 
-export default function NextProject({ nextProject }) {
+export default function NextProject({ nextProject, theme }) {
   var timer = 0;
 
   useLayoutEffect(() => {
@@ -120,8 +120,12 @@ export default function NextProject({ nextProject }) {
   }, []);
 
   return (
-    <div className="relative" data-cursor-text="Click & Hold">
-      <div className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer">
+    <div className="relative">
+      <div
+        className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer"
+        data-cursor-text="Click & Hold"
+        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
+      >
         <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
           <p className="experience">NEXT PROJECT</p>
           <h2 className="uppercase font-CormorantGaramond text-[10.69vw] next-project-title">

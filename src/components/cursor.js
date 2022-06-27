@@ -1,21 +1,19 @@
+import React from "react";
 import MouseFollower from "mouse-follower";
 import gsap from "gsap";
 MouseFollower.registerGSAP(gsap);
 
-export default function cursor() {
-  const cursor = new MouseFollower();
+export default function Cursor() {
+  const cursorElement = document.querySelector("cursor-element");
 
-  const imageEl = document.querySelectorAll("project-image");
+  const cursor = new MouseFollower({
+    el: cursorElement,
+    stateDetection: {
+      "-link-pointer": "a, button",
+    },
+  });
 
-  if (imageEl) {
-    imageEl.forEach((imageEl) => {
-      imageEl.addEventListener("mouseenter", () => {
-        cursor.setText("Helloo");
-      });
+  
 
-      imageEl.addEventListener("mouseleave", () => {
-        cursor.removeText();
-      });
-    });
-  }
+  return <div className="cursor-element" />;
 }

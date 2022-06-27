@@ -6,7 +6,7 @@ export default function ListView({ projects }) {
     <div className="content-min-h">
       <div className="">
         {projects.map((project) => {
-          const { id, projectTitle } = project.node || {};
+          const { id, projectTitle, mainProjectImage } = project.node || {};
 
           return (
             <Link href={`/${projectTitle}`}>
@@ -14,6 +14,7 @@ export default function ListView({ projects }) {
                 id={id}
                 key={id}
                 className="py-8 md:py-[2.5vw] border-b uppercase relative project"
+                data-cursor-img={`${mainProjectImage.url}`}
               >
                 <div className="font-CormorantGaramond text-xl md:text-[2vw] px-body">
                   <p className="">{projectTitle}</p>

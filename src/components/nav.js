@@ -21,7 +21,7 @@ function Nav() {
           ) : path === "/contact" ? (
             <Link to="/portfolio">Gallery</Link>
           ) : (
-            <span onClick={() => navigate(-1)}>Back </span>
+            <button onClick={() => navigate(-1)}>Back</button>
           )}
         </div>
 
