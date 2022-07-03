@@ -4,6 +4,7 @@ import { navigate } from "gatsby";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "./touch-and-hold";
+import { CSSRulePlugin } from "gsap/all";
 
 export default function NextProject({ nextProject, theme }) {
   const { setPageChange } = useContext(AppContext);
@@ -16,7 +17,20 @@ export default function NextProject({ nextProject, theme }) {
 
     const footerImage = document.querySelectorAll(".next-project-image");
 
+    let line = CSSRulePlugin.getRule(
+      ".next-project-footer .next-project-title::after"
+    );
+
+    gsap.set(line, { width: 0 });
+
     const nextProjectHoverIn = () => {
+      gsap.to(line, {
+        width: "0%",
+        left: "50%",
+        duration: 2,
+        ease: "power2.out",
+      });
+
       var tl = gsap.timeline({
         defaults: {
           ease: "ease.in",
@@ -64,6 +78,15 @@ export default function NextProject({ nextProject, theme }) {
 
     var tl = gsap.timeline();
     const nextProjectHoverActive = () => {
+      gsap.fromTo(
+        line,
+        {
+          width: "0%",
+          left: "50%",
+        },
+        { width: "100%", left: "0%", ease: "power2.out", duration: 2 }
+      );
+
       tl.to(footerImage[0], {
         x: "0%",
         y: "200%",
@@ -95,7 +118,6 @@ export default function NextProject({ nextProject, theme }) {
 
     footerContainer.addEventListener("mousedown", () => {
       nextProjectHoverActive(footerImage);
-
       timer = setTimeout(() => {
         setPageChange(true);
         navigate(`/${nextProject?.projectTitle}`);
@@ -132,7 +154,7 @@ export default function NextProject({ nextProject, theme }) {
       >
         <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
           <p className="experience">NEXT PROJECT</p>
-          <h2 className="uppercase font-CormorantGaramond text-[10.69vw] next-project-title">
+          <h2 className="uppercase font-CormorantGaramond text-[10.69vw] relative next-project-title after:bg-white after:content-[''] after:bottom-0 after:left-[50%] after:absolute after:h-1 after:w-0">
             {nextProject?.projectTitle}
           </h2>
         </div>

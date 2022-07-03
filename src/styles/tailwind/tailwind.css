@@ -178,6 +178,10 @@
     background-color: red;
     z-index: -1;
   } */
+
+  .next-project-footer .next-project-title::after {
+    background: none repeat scroll 0 0 #fff;
+  }
 }
 
 @layer utilities {

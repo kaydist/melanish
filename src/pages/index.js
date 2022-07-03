@@ -45,15 +45,15 @@ const IndexPage = () => {
 
   let images = getImage(projects[currentImage].node?.image2) || {};
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (currentImage === projects.length - 1) {
-  //       setCurrentImage(0);
-  //     } else {
-  //       setCurrentImage(currentImage + 1);
-  //     }
-  //   }, 2000);
-  // }, [currentImage]);
+  useMemo(() => {
+    setTimeout(() => {
+      if (currentImage === projects.length - 1) {
+        setCurrentImage(0);
+      } else {
+        setCurrentImage(currentImage + 1);
+      }
+    }, 1500);
+  }, [currentImage]);
 
   useLayoutEffect(() => {
     let timer = 0;
@@ -84,17 +84,6 @@ const IndexPage = () => {
       clearTimeout(timer);
     });
   }, []);
-
-  let timeout = 2000;
-  useMemo(() => {
-    setTimeout(() => {
-      if (currentImage === projects.length - 1) {
-        setCurrentImage(0);
-      } else {
-        setCurrentImage(currentImage + 1);
-      }
-    }, timeout);
-  }, [currentImage]);
 
   return (
     <Layout>
