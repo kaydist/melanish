@@ -32,8 +32,7 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden" theme="light">
-      <Cursor />
+    <div className="min-h-screen overflow-x-hidden layout" theme="light">
 
       <Nav />
 

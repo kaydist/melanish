@@ -7,7 +7,7 @@ import {
 } from "../animations/project";
 
 function Menu({ menuOpen, toggleMenu }) {
-  const [theme, setTheme] = useContext(AppContext);
+  const { theme, setTheme } = useContext(AppContext);
 
   useLayoutEffect(() => {
     if (menuOpen === true) {

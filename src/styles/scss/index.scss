@@ -22,4 +22,16 @@ html.dark {
       opacity: 0.3;
     }
   }
+
+  &.-text {
+    &:before {
+        opacity:0.85;
+        transform:scale(4);
+    }
+
+    &.-active:before {
+        transform:scale(3.5);
+        transition-duration:0.2s;
+    }
+}
 }

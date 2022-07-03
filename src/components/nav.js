@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <>
-      <nav className="fixed w-full z-50 mt-body md:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body">
+      <nav className="fixed w-full z-50 mt-body md:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body no-select">
         <div className="cursor-pointer small-text font-medium col-span-1 start">
           {path === "/" || path === "/portfolio" ? (
             <Link to="/contact">Contact</Link>

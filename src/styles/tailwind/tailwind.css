@@ -16,7 +16,6 @@
 
   html {
     @apply font-Assistant;
-    cursor: none;
   }
 
   body {

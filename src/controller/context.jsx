@@ -13,6 +13,7 @@ export const AppContext = createContext("");
 
 function AppState({ children }) {
   const [theme, setTheme] = useState("");
+  const [pageChange, setPageChange] = useState(false);
 
   useEffect(() => {
     let lastTheme = JSON.parse(window.localStorage.getItem("theme"));
@@ -47,8 +48,16 @@ function AppState({ children }) {
     }
   }, [theme]);
 
+  useEffect(() => {
+    const cursor = document.querySelector(".mf-cursor");
+    cursor.classList.remove("-text");
+    cursor.classList.remove("-link-pointer");
+
+    setPageChange(false);
+  }, [pageChange]);
+
   return (
-    <AppContext.Provider value={[theme, setTheme]}>
+    <AppContext.Provider value={{ theme, setTheme, pageChange, setPageChange }}>
       {children}
     </AppContext.Provider>
   );

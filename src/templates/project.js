@@ -29,7 +29,7 @@ function Project(props) {
 
   const nextProject = props?.pageContext?.nextProject?.node;
 
-  const [theme] = useContext(AppContext);
+  const { theme } = useContext(AppContext);
 
   useLayoutEffect(() => {
     otherSectionAnimation();

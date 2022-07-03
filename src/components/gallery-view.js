@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { AppContext } from "../controller/context";
 
 export default function GalleryView({ projects }) {
+  const { setPageChange } = useContext(AppContext);
+
   return (
     <div
       className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h"
@@ -13,7 +16,12 @@ export default function GalleryView({ projects }) {
 
         return (
           <Link to={`/${projectTitle}`} key={id}>
-            <div className="min-w-[100vw]  max-h-[60vh] center relative">
+            <div
+              className="min-w-[100vw]  max-h-[60vh] center relative"
+              onClick={() => {
+                setPageChange(true);
+              }}
+            >
               <div className="max-w-[60%] overflow-hidden">
                 <GatsbyImage
                   image={getImage(mainProjectImage)}

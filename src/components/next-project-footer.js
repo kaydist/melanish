@@ -1,9 +1,12 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useContext } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import gsap from "gsap";
+import { AppContext } from "../controller/context";
+import TouchAndHold from "./touch-and-hold";
 
 export default function NextProject({ nextProject, theme }) {
+  const { setPageChange } = useContext(AppContext);
   var timer = 0;
 
   useLayoutEffect(() => {
@@ -94,6 +97,7 @@ export default function NextProject({ nextProject, theme }) {
       nextProjectHoverActive(footerImage);
 
       timer = setTimeout(() => {
+        setPageChange(true);
         navigate(`/${nextProject?.projectTitle}`);
       }, 1500);
     });
@@ -174,9 +178,7 @@ export default function NextProject({ nextProject, theme }) {
         </div>
       </div>
 
-      <div className="text-xs font-light no-select touch-action border border-color w-24 h-24 center text-center text-muted-class rounded-full absolute bottom-body left-body lg:hidden">
-        Touch <br />& <br /> Hold
-      </div>
+      <TouchAndHold />
     </div>
   );
 }
