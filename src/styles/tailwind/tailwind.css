@@ -180,7 +180,15 @@
   } */
 
   .next-project-footer .next-project-title::after {
-    background: none repeat scroll 0 0 #fff;
+    @apply bg-white underline-hover;
+  }
+
+  .menu-link::after {
+    @apply dark:bg-white bg-[#030303] underline-hover transition-all duration-300 ease-in-out;
+  }
+
+  .menu-link:hover::after {
+    @apply w-full left-0;
   }
 }
 
@@ -258,6 +266,10 @@
 
   .word-spacing {
     word-spacing: normal;
+  }
+
+  .underline-hover {
+    @apply content-[''] bottom-0 left-[50%] absolute h-1 w-0 bg-repeat bg-left-top bg-scroll;
   }
 }
 

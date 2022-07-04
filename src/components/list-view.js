@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 export default function ListView({ projects }) {
   return (
-    <div className="content-min-h">
+    <div className="content-min-h mt-20 md:mt-0">
       <div className="">
         {projects.map((project) => {
           const { id, projectTitle, mainProjectImage } = project.node || {};

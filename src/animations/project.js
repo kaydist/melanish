@@ -166,6 +166,10 @@ export const highlightTextAnimation = () => {
     gsap.set(text, { color: "#FFFFFF00" });
 
     const tl = gsap.timeline({
+      defaults: {
+        ease: "sine.out",
+        duration: 2,
+      },
       scrollTrigger: {
         trigger: text,
         start: "top 90%",
@@ -174,8 +178,8 @@ export const highlightTextAnimation = () => {
       },
     });
 
-    tl.fromTo(text, { color: "#FFFFFF00" }, { color: "#030303" });
+    tl.fromTo(text, { color: "#FFFFFF00" }, { color: "inherit" });
 
-    tl.fromTo(text, { color: "#030303" }, { color: "#FFFFFF00" }, "+=200%");
+    tl.fromTo(text, { color: "inherit" }, { color: "#FFFFFF00" }, "+=200%");
   });
 };

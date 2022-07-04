@@ -20,7 +20,7 @@ export default function GalleryView({ projects }) {
             key={id}
           >
             <div
-              className="w-max center project-details"
+              className="w-fit center project-details"
               onClick={() => {
                 setPageChange(true);
                 navigate(`/${projectTitle}`);

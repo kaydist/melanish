@@ -4,8 +4,6 @@ import { textSplit } from "../animations/project";
 
 function Layout({ children }) {
   useLayoutEffect(() => {
-  
-
     textSplit();
 
     const allVerticalParagragh = document.querySelectorAll(

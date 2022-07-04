@@ -154,7 +154,7 @@ export default function NextProject({ nextProject, theme }) {
       >
         <div className="col-center text-center uppercase z-20 text-[#FFFFFF]">
           <p className="experience">NEXT PROJECT</p>
-          <h2 className="uppercase font-CormorantGaramond text-[10.69vw] relative next-project-title after:bg-white after:content-[''] after:bottom-0 after:left-[50%] after:absolute after:h-1 after:w-0">
+          <h2 className="uppercase font-CormorantGaramond text-[10.69vw] relative next-project-title">
             {nextProject?.projectTitle}
           </h2>
         </div>
