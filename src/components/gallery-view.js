@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "gatsby";
+import { navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { AppContext } from "../controller/context";
 
@@ -8,21 +8,25 @@ export default function GalleryView({ projects }) {
 
   return (
     <div
-      className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h"
+      className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h snap-x snap-mandatory"
       id="portfolio-gallery-view-container"
     >
       {projects.map((project) => {
         const { id, projectTitle, mainProjectImage } = project.node || {};
 
         return (
-          <Link to={`/${projectTitle}`} key={id}>
+          <div
+            className="min-w-[100vw]  max-h-[60vh] center relative snap-center"
+            key={id}
+          >
             <div
-              className="min-w-[100vw]  max-h-[60vh] center relative"
+              className="w-max center project-details"
               onClick={() => {
                 setPageChange(true);
+                navigate(`/${projectTitle}`);
               }}
             >
-              <div className="max-w-[60%] overflow-hidden">
+              <div className="max-w-[60%] image-container overflow-hidden">
                 <GatsbyImage
                   image={getImage(mainProjectImage)}
                   alt={mainProjectImage?.title}
@@ -34,7 +38,7 @@ export default function GalleryView({ projects }) {
                 {projectTitle}
               </h2>
             </div>
-          </Link>
+          </div>
         );
       })}
     </div>

@@ -1,32 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 function Footer({ isListView, setIsListView, totalCount }) {
   const [currentCount, setCurrentCount] = useState(1);
 
-  // const changeCount = () => {
-  //   let size = window.innerWidth;
-  //   // console.log(size);
-  //   window.scrollX > (size * currentCount)
-  //     ? setCurrentCount(currentCount + 1)
-  //     : setCurrentCount(currentCount);
-  // };
+  useLayoutEffect(() => {
+    const container = document.getElementById(
+      "portfolio-gallery-view-container"
+    );
+    const imageWidth = window.outerWidth;
 
-  // useEffect(() => {
-  //   document.getElementById("portfolio-gallery-view-container").addEventListener("scroll", changeCount);
-  // }, []);
+    container.addEventListener("scroll", () => {
+      const scrollLeft = container.scrollLeft;
+      const currentIndex = Math.floor(scrollLeft / imageWidth);
+      setCurrentCount(currentIndex + 1);
+    });
+  }, []);
 
   return (
-    <div className="between px-body bottom-[3%] absolute w-full small-text font-medium">
+    <div className="between px-body bottom-[3%] absolute w-full small-text font-bold">
       <button
         onClick={() => setIsListView(!isListView)}
         className="cursor-pointer"
       >
-        {isListView ? <span>Gallery</span> : <span>List</span>}
+        {isListView ? (
+          <span className="font-bold">Gallery</span>
+        ) : (
+          <span className="font-bold">List</span>
+        )}
       </button>
 
       <div>
-        {currentCount > 9 ? "" + currentCount : "0" + currentCount} /{" "}
-        {totalCount > 9 ? "" + totalCount : "0" + totalCount}
+        <span className="">
+          {currentCount > 9 ? "" + currentCount : "0" + currentCount}
+        </span>
+        / {totalCount > 9 ? "" + totalCount : "0" + totalCount}
       </div>
     </div>
   );

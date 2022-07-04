@@ -260,3 +260,14 @@
     word-spacing: normal;
   }
 }
+
+#portfolio-gallery-view-container .image-container,
+#portfolio-gallery-view-container .image-container img {
+  transition: transform 0.5s ease-in-out;
+}
+#portfolio-gallery-view-container .project-details:hover .image-container {
+  transform: scale(0.95);
+}
+#portfolio-gallery-view-container .project-details:hover .image-container img {
+  transform: scale(1.1);
+}
