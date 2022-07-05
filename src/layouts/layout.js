@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/project";
 
-function Layout({ children }) {
+function Layout({ children, className }) {
   useLayoutEffect(() => {
     textSplit();
 
@@ -31,7 +31,12 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden layout" theme="light">
+    <div
+      className={`min-h-screen overflow-x-hidden layout ${
+        className ? className : ``
+      }`}
+      theme="light"
+    >
       <Nav />
 
       <div className="md:pt-body min-h-screen">{children}</div>
