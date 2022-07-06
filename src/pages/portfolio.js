@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import * as React from "react";
 import Footer from "../components/footer";
 import Layout from "../layouts/layout";
@@ -6,6 +6,7 @@ import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
 import ListView from "../components/list-view";
 import GalleryView from "../components/gallery-view";
+import { AppContext } from "../controller/context";
 
 // markup
 const PortfolioPage = () => {
@@ -31,12 +32,14 @@ const PortfolioPage = () => {
 
   const [isListView, setIsListView] = useState(false);
 
+  const { setPageChange } = useContext(AppContext);
+
   return (
     <Layout>
       {!isListView ? (
-        <GalleryView projects={projects} />
+        <GalleryView projects={projects} setPageChange={setPageChange} />
       ) : (
-        <ListView projects={projects} />
+        <ListView projects={projects} setPageChange={setPageChange} />
       )}
 
       <Footer

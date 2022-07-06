@@ -1,12 +1,10 @@
-import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import React, { useCallback, useLayoutEffect, useMemo } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { imageGalleryLayout, openFocusImage } from "../animations/free-roam";
 
 const FreeRoam = () => {
-  // const [focusImage, setFocusImage] = useState(null);
-
   const data = useStaticQuery(graphql`
     query FreeRoamQuery {
       allContentfulFreeRoam {
@@ -34,11 +32,11 @@ const FreeRoam = () => {
   const imageRender = useMemo(() => {
     var allPos = [];
     imageArr.forEach((image, index) => {
-      let rowPosition = Math.floor((Math.random() * (1 - 0.1) + 0.1) * 8);
-
-      let colPosition = Math.floor(
-        (Math.random() * (1 - 0.1) + 0.1) * imageArr.length
+      let rowPosition = Math.floor(
+        (Math.random() * (1 - 0.1) + 0.1) * (imageArr.length - 1)
       );
+
+      let colPosition = Math.floor((Math.random() * (1 - 0.1) + 0.1) * 8);
 
       const checkPosition = allPos.findIndex(
         (elem) => elem.row === rowPosition && elem.col === colPosition
@@ -51,7 +49,7 @@ const FreeRoam = () => {
         finalCol = Math.floor((Math.random() * (1 - 0.1) + 0.1) * 8);
 
         finalRow = Math.floor(
-          (Math.random() * (1 - 0.1) + 0.1) * imageArr.length
+          (Math.random() * (1 - 0.1) + 0.1) * (imageArr.length - 1)
         );
 
         allPos.push({ row: finalRow, col: finalCol });
@@ -59,8 +57,11 @@ const FreeRoam = () => {
         allPos.push({ row: rowPosition, col: colPosition });
       }
     });
+
+    let focusState = true;
+    let focusMouse = "Open";
     return (
-      <div className="free-roam-grid py-[6.25rem] md:pt-0 flex flex-col md:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] w-full content-min-h overflow-hidden">
+      <div className="free-roam-grid py-[6.25rem] md:pt-0 flex flex-col md:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h overflow-hidden">
         {imageArr.map((image, index) => {
           return (
             <div
@@ -72,11 +73,12 @@ const FreeRoam = () => {
               }}
             >
               <div
-                className={`grid-item-img grid-item-image-${index} w-full h-full center`}
-                data-cursor-text="Open"
+                className={`grid-item-img grid-item-image-${index} w-full h-full center backdrop-blur-xl`}
+                data-cursor-text={focusMouse}
                 onClick={() => {
-                  // setFocusImage(image.node.image);
-                  // openFocusImage(index);
+                  focusState = !focusState;
+                  focusMouse = focusState ? "close" : "Close";
+                  openFocusImage(index, focusState);
                 }}
               >
                 <GatsbyImage
@@ -93,28 +95,7 @@ const FreeRoam = () => {
     );
   }, [data]);
 
-  return (
-    <Layout>
-      {/* <div
-        className={`fixed top-0 h-screen backdrop-blur-xl w-full ${
-          focusImage ? `z-50` : `-z-50`
-        }`}
-        data-cursor-text="Close"
-        onClick={() => {
-          setFocusImage(null);
-        }}
-      >
-        <GatsbyImage
-          image={getImage(focusImage)}
-          alt=""
-          className="h-full w-auto"
-          imgStyle={{ objectFit: "contain" }}
-        />
-      </div> */}
-
-      {imageRender}
-    </Layout>
-  );
+  return <Layout>{imageRender}</Layout>;
 };
 
 export default FreeRoam;

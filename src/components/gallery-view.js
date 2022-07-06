@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { AppContext } from "../controller/context";
 
-export default function GalleryView({ projects }) {
-  const { setPageChange } = useContext(AppContext);
-
+export default function GalleryView({ projects, setPageChange }) {
   return (
     <div
       className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h snap-x snap-mandatory"

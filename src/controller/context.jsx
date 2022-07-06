@@ -52,6 +52,7 @@ function AppState({ children }) {
     const cursor = document.querySelector(".mf-cursor");
     cursor.classList.remove("-text");
     cursor.classList.remove("-link-pointer");
+    cursor.classList.remove("-media");
 
     setPageChange(false);
   }, [pageChange]);

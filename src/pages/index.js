@@ -86,33 +86,29 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <Layout>
-      <div className="max-w-full relative start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h landing-container">
-        <div
-          className="min-w-[100vw] h-[60vh] center relative"
-          data-cursor-text="Click & Hold"
-          data-cursor={`${
-            theme === "dark" ? `-cusor-text-dark` : `-text-light`
-          }`}
-        >
-          <div className="scale-[0.8]">
-            <GatsbyImage
-              image={images}
-              alt=""
-              className="h-full w-auto object-contain"
-              imgStyle={{ objectPosition: "center" }}
-            />
-          </div>
-
-          <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-0 absolute z-10">
-            Melanish{" "}
-            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-          </h2>
+    <div className="w-full h-screen relative start overflow-x-auto overflow-y-hidden no-scrollbar landing-container">
+      <div
+        className="min-w-[100vw] h-[60vh] center relative"
+        data-cursor-text="Click & Hold"
+        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
+      >
+        <div className="scale-[0.8]">
+          <GatsbyImage
+            image={images}
+            alt=""
+            className="h-full w-auto object-contain"
+            imgStyle={{ objectPosition: "center" }}
+          />
         </div>
 
-        <TouchAndHold />
+        <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-0 absolute z-10">
+          Melanish{" "}
+          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
+        </h2>
       </div>
-    </Layout>
+
+      <TouchAndHold />
+    </div>
   );
 };
 
