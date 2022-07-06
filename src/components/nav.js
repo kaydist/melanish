@@ -18,7 +18,7 @@ function Nav() {
         <div className="cursor-pointer small-text font-medium col-span-1 start">
           {path === "/" || path === "/portfolio" ? (
             <Link to="/contact">Contact</Link>
-          ) : path === "/contact" ? (
+          ) : path === "/contact" || path === "/free-roam" ? (
             <Link to="/portfolio">Gallery</Link>
           ) : (
             <button onClick={() => navigate(-1)}>Back</button>
