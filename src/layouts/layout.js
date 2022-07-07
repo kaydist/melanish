@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/project";
 

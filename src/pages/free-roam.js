@@ -1,8 +1,10 @@
-import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import React, { useLayoutEffect, useMemo, useState } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { imageGalleryLayout, openFocusImage } from "../animations/free-roam";
+import { smoothScrollEffect } from "../animations/project";
+import { isMobile } from "../controller/utils";
 
 const FreeRoam = () => {
   const [openImage, setOpenImage] = useState(null);
@@ -27,10 +29,9 @@ const FreeRoam = () => {
   const imageArr = data.allContentfulFreeRoam.edges;
 
   useLayoutEffect(() => {
-    window.innerWidth > 768 && imageGalleryLayout();
+    smoothScrollEffect();
+    !isMobile() && imageGalleryLayout();
   }, []);
-
-  let focusState = false;
 
   const imageRender = useMemo(() => {
     var allPos = [];
@@ -76,15 +77,16 @@ const FreeRoam = () => {
                 className={`grid-item-img grid-item-image-${index} w-full h-full center backdrop-blur-xl`}
                 data-cursor-text="Open"
                 onClick={() => {
-                  setOpenImage({ image: image.node.image, index: index });
-                  openFocusImage(index, false);
+                  if (!isMobile()) {
+                    setOpenImage({ image: image.node.image, index: index });
+                    openFocusImage(index, false);
+                  }
                 }}
               >
                 <GatsbyImage
                   image={getImage(image.node.image)}
                   alt={image.node.title}
                   className="w-full h-full"
-                  loading="eager"
                   imgStyle={{ objectFit: "contain" }}
                 />
               </div>

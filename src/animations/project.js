@@ -1,7 +1,23 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
+
+export const smoothScrollEffect = (direction, destroy) => {
+  const lenis = new Lenis({
+    lerp: 0.03,
+    smooth: true,
+    direction: direction,
+  });
+  const scrollFn = () => {
+    lenis.raf();
+    requestAnimationFrame(scrollFn);
+  };
+  requestAnimationFrame(scrollFn);
+  window.lenis = lenis;
+  lenis.scrollTo(0, 0);
+};
 
 export const imageAnimation = () => {
   gsap.utils.toArray(".image-wrapper").forEach((wrapper, idx) => {
@@ -147,7 +163,8 @@ export const otherSectionAnimation = () => {
         trigger: otherImagesCon,
         pin: otherImagesCon,
         scrub: 1,
-        end: "+=3000px",
+        scroller: document.body,
+        end: "+=3500px",
         anticipatePin: 1,
         id: "otherImageSectionTrigger",
       },

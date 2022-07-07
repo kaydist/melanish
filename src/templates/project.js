@@ -9,8 +9,10 @@ import {
   imageAnimation,
   textVerticalAnimation,
   highlightTextAnimation,
+  smoothScrollEffect,
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
+import { preloadImages } from "../controller/utils";
 
 function Project(props) {
   const {
@@ -32,17 +34,21 @@ function Project(props) {
   const { theme } = useContext(AppContext);
 
   useLayoutEffect(() => {
-    otherSectionAnimation();
     textVerticalAnimation();
+    otherSectionAnimation();
+    smoothScrollEffect("vertical");
   }, []);
 
   useEffect(() => {
-    imageAnimation();
+    window.scrollTo(0, 0);
     highlightTextAnimation();
+    preloadImages().then(() => {
+      imageAnimation();
+    });
   }, []);
 
   return (
-    <Layout>
+    <Layout className="scroller">
       <div className="">
         <div className="w-full h-full pt-40 md:pt-[15vh]">
           <div className="hero md:px-body w-full col-center relative">
@@ -101,7 +107,7 @@ function Project(props) {
               <section className="px-body image-wrapper w-full h-fit">
                 <i className="image-wrapper-mask z-10" />
 
-                <div className="image-content mx-auto md:mx-0 w-full md:w-auto md:max-w-[80%] h-[25rem] md:h-[49.1vw]">
+                <div className="image-content mx-auto md:mx-0 w-full md:w-auto md:max-w-[80%] h-[40rem] md:h-[49.1vw]">
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
@@ -120,7 +126,7 @@ function Project(props) {
                 <section className="px-body image-wrapper w-full h-fit end mt-20 md:mt-body md:-mb-32">
                   <i className="image-wrapper-mask z-10" />
 
-                  <div className="image-content w-[70.14%] md:w-[46.14%] h-[25rem] md:h-[58.47vw]">
+                  <div className="image-content w-[70.14%] md:w-[46.14%] h-[40rem] md:h-[58.47vw]">
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -139,7 +145,7 @@ function Project(props) {
               <section className="">
                 {image4 || image5 ? (
                   <div className="max-w-max">
-                    <div className="image-wrapper w-[66.14%] md:w-[46.14vw] h-[25rem] md:h-[58.47vw] mt-20 md:mt-0">
+                    <div className="image-wrapper w-[66.14%] md:w-[46.14vw] h-[40rem] md:h-[58.47vw] mt-20 md:mt-0">
                       {image4 ? (
                         <>
                           <i className="image-wrapper-mask z-10" />
@@ -286,7 +292,7 @@ function Project(props) {
         </div>
 
         <div className="center md:mb-2xbody" id="project-other-images">
-          <div className="w-full absolute overflow-hidden">
+          <div className="w-full absolute overflow-hidden hidden md:block">
             <div className="highlight sticky top-1/2 text-center uppercase no-fill-text font-CormorantGaramond text-7xl md:text-[15.28vw] text-[15.28vw] whitespace-nowrap">
               <h2 className=" z-10 ">{projectTitle}</h2>
               <h2 className=" z-10 ">{projectTitle}</h2>

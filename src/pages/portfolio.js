@@ -7,6 +7,7 @@ import { graphql } from "gatsby";
 import ListView from "../components/list-view";
 import GalleryView from "../components/gallery-view";
 import { AppContext } from "../controller/context";
+import { smoothScrollEffect } from "../animations/project";
 
 // markup
 const PortfolioPage = () => {
@@ -33,6 +34,17 @@ const PortfolioPage = () => {
   const [isListView, setIsListView] = useState(false);
 
   const { setPageChange } = useContext(AppContext);
+
+  React.useLayoutEffect(() => {
+    if (isListView) {
+      smoothScrollEffect("vertical");
+    } else {
+      if (window.lenis) {
+        let lenis = window.lenis;
+        lenis.destroy();
+      }
+    }
+  }, [isListView]);
 
   return (
     <Layout>

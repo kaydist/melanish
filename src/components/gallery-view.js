@@ -1,21 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 export default function GalleryView({ projects, setPageChange }) {
   return (
     <div
-      className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar content-min-h snap-x snap-mandatory"
+      className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar snap-mandatory snap-x content-min-h"
       id="portfolio-gallery-view-container"
     >
       {projects.map((project) => {
         const { id, projectTitle, mainProjectImage } = project.node || {};
 
         return (
-          <div
-            className="min-w-[100vw]  max-h-[60vh] center relative snap-center"
-            key={id}
-          >
+          <div className="min-w-[100vw]  max-h-[60vh] center relative" key={id}>
             <div
               className="w-fit center project-details"
               onClick={() => {

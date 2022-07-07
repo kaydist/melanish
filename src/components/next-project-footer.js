@@ -21,16 +21,8 @@ export default function NextProject({ nextProject, theme }) {
       ".next-project-footer .next-project-title::after"
     );
 
-    gsap.set(line, { width: 0 });
 
     const nextProjectHoverIn = () => {
-      gsap.to(line, {
-        width: "0%",
-        left: "50%",
-        duration: 2,
-        ease: "power2.out",
-      });
-
       var tl = gsap.timeline({
         defaults: {
           ease: "ease.in",
@@ -78,22 +70,17 @@ export default function NextProject({ nextProject, theme }) {
 
     var tl = gsap.timeline();
     const nextProjectHoverActive = () => {
-      gsap.fromTo(
-        line,
+      tl.to(
+        footerImage[0],
         {
-          width: "0%",
-          left: "50%",
+          x: "0%",
+          y: "200%",
+          ease: "expo.in",
+          rotate: "-10deg",
+          duration: 1.5,
         },
-        { width: "100%", left: "0%", ease: "power2.out", duration: 2 }
+        "<"
       );
-
-      tl.to(footerImage[0], {
-        x: "0%",
-        y: "200%",
-        ease: "expo.in",
-        rotate: "-10deg",
-        duration: 1.5,
-      });
 
       tl.to(
         footerImage[1],

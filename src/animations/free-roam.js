@@ -1,33 +1,35 @@
 import { gsap } from "gsap";
-import { currentCursorPosition } from "./utils";
+import { preloadImages } from "../controller/utils";
 
 export const imageGalleryLayout = () => {
-  const gridItems = [
-    ...document.querySelectorAll(".free-roam-grid > .grid-item"),
-  ];
+  preloadImages().then(() => {
+    const gridItems = [
+      ...document.querySelectorAll(".free-roam-grid > .grid-item"),
+    ];
 
-  gridItems.forEach((item) => {
-    const image = item.querySelector(".grid-item-img");
+    gridItems.forEach((item) => {
+      const image = item.querySelector(".grid-item-img");
 
-    const yPercentRandomVal = gsap.utils.random(0, 100);
+      const yPercentRandomVal = gsap.utils.random(0, 100);
 
-    gsap
-      .timeline()
-      .addLabel("start", 0)
-      .to(
-        image,
-        {
-          ease: "none",
-          yPercent: yPercentRandomVal,
-          scrollTrigger: {
-            trigger: item,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
+      gsap
+        .timeline()
+        .addLabel("start", 0)
+        .to(
+          image,
+          {
+            ease: "none",
+            yPercent: yPercentRandomVal,
+            scrollTrigger: {
+              trigger: item,
+              start: "top bottom",
+              end: "top top",
+              scrub: true,
+            },
           },
-        },
-        "start"
-      );
+          "start"
+        );
+    });
   });
 };
 
