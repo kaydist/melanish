@@ -1,10 +1,11 @@
-import React, { useCallback, useLayoutEffect, useMemo } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { imageGalleryLayout, openFocusImage } from "../animations/free-roam";
 
 const FreeRoam = () => {
+  const [openImage, setOpenImage] = useState(null);
   const data = useStaticQuery(graphql`
     query FreeRoamQuery {
       allContentfulFreeRoam {
@@ -28,6 +29,8 @@ const FreeRoam = () => {
   useLayoutEffect(() => {
     window.innerWidth > 768 && imageGalleryLayout();
   }, []);
+
+  let focusState = false;
 
   const imageRender = useMemo(() => {
     var allPos = [];
@@ -57,9 +60,6 @@ const FreeRoam = () => {
         allPos.push({ row: rowPosition, col: colPosition });
       }
     });
-
-    let focusState = true;
-    let focusMouse = "Open";
     return (
       <div className="free-roam-grid py-[6.25rem] md:pt-0 flex flex-col md:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h overflow-hidden">
         {imageArr.map((image, index) => {
@@ -74,17 +74,17 @@ const FreeRoam = () => {
             >
               <div
                 className={`grid-item-img grid-item-image-${index} w-full h-full center backdrop-blur-xl`}
-                data-cursor-text={focusMouse}
+                data-cursor-text="Open"
                 onClick={() => {
-                  focusState = !focusState;
-                  focusMouse = focusState ? "close" : "Close";
-                  openFocusImage(index, focusState);
+                  setOpenImage({ image: image.node.image, index: index });
+                  openFocusImage(index, false);
                 }}
               >
                 <GatsbyImage
                   image={getImage(image.node.image)}
                   alt={image.node.title}
                   className="w-full h-full"
+                  loading="eager"
                   imgStyle={{ objectFit: "contain" }}
                 />
               </div>
@@ -95,7 +95,27 @@ const FreeRoam = () => {
     );
   }, [data]);
 
-  return <Layout>{imageRender}</Layout>;
+  return (
+    <Layout>
+      <div
+        className="w-full h-screen center backdrop-blur-xl open-image-container fixed top-0 -z-50"
+        onClick={() => {
+          openFocusImage(openImage?.index, true);
+          setOpenImage(null);
+        }}
+        data-cursor-text="Close"
+      >
+        <GatsbyImage
+          image={getImage(openImage?.image)}
+          alt=""
+          className="w-auto h-full"
+          loading="eager"
+          imgStyle={{ objectFit: "contain" }}
+        />
+      </div>
+      {imageRender}
+    </Layout>
+  );
 };
 
 export default FreeRoam;
