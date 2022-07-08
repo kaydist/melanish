@@ -7,15 +7,13 @@ import {
 import Layout from "../layouts/layout";
 
 export default function ContactPage() {
-  useLayoutEffect(() => {
-    pageTransitionEnd();
-  }, []);
-
   useEffect(() => {
-    setTimeout(() => {
+    const onCompleteFun = () => {
       textVerticalAnimation();
       textHorizontalAnimationIn();
-    }, 950);
+    };
+
+    pageTransitionEnd(onCompleteFun);
   }, []);
 
   return (
@@ -55,8 +53,9 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="text-center text-sm md:text-[1vw] center w-full">
-          Developed By: Kay
+        <div className="text-center text-sm md:text-[1vw] pr-body md:col-end w-full">
+          <div>Developed By: Kay</div>
+          <div>Designed By: Goke</div>
         </div>
       </div>
     </Layout>

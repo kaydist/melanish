@@ -3,6 +3,12 @@ import { currentCursorPosition } from "../controller/utils";
 import { navigate } from "gatsby";
 
 export const PageTransitionStart = (to, e) => {
+  //Manulally remove all cursor states
+  const cursor = document.querySelector(".mf-cursor");
+  cursor.classList.remove("-text");
+  cursor.classList.remove("-link-pointer");
+  cursor.classList.remove("-media");
+
   const tansitionElem = document.createElement("div");
   document.body.appendChild(tansitionElem);
   tansitionElem.classList.add("transition-elem");

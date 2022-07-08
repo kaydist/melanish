@@ -14,6 +14,7 @@ import {
 import NextProject from "../components/next-project-footer";
 import { preloadImages } from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
+import { gsap } from "gsap";
 
 function Project(props) {
   const {
@@ -36,20 +37,22 @@ function Project(props) {
 
   useLayoutEffect(() => {
     otherSectionAnimation();
-    preloadImages().then(() => {
-      pageTransitionEnd();
-    });
-
-    setTimeout(() => {
-      imageAnimation();
-      textVerticalAnimation();
-    }, 1450);
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     smoothScrollEffect();
     highlightTextAnimation();
+
+    const onCompleteFun = () => {
+      textVerticalAnimation();
+      imageAnimation();
+    };
+
+    preloadImages().then(() => {
+      pageTransitionEnd(onCompleteFun);
+    });
   }, []);
 
   return (

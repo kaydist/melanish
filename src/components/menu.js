@@ -29,7 +29,7 @@ function Menu({ menuOpen, toggleMenu }) {
                 { label: "Contact", link: "/contact" },
               ].map((item, idx) => {
                 return (
-                  <Link key={idx} to={item.link} onClick={toggleMenu}>
+                  <Link key={idx} to={item.link}>
                     <div className="animated-text vertical-anim capitalize menu-link relative">
                       {item.label}
                     </div>

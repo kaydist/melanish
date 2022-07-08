@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 import { PageTransitionStart } from "../animations/pageTransition";
+import { preloadImages } from "../controller/utils";
 
 export default function ListView({ projects, setPageChange }) {
+  useEffect(() => {
+    preloadImages();
+  }, []);
   return (
     <div className="content-min-h mt-20 md:mt-0">
       <div className="">
@@ -16,8 +20,8 @@ export default function ListView({ projects, setPageChange }) {
               className="py-8 md:py-[2.5vw] border-b uppercase relative project"
               data-cursor-img={`${mainProjectImage.url}`}
               onClick={() => {
-                PageTransitionStart(`${projectTitle}`);
                 setPageChange(true);
+                PageTransitionStart(`/${projectTitle}`);
               }}
             >
               <div className="font-CormorantGaramond text-xl md:text-[2vw] px-body">

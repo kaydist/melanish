@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/project";
+import { gsap } from "gsap";
 
 function Layout({ children, className }) {
   useLayoutEffect(() => {
@@ -17,7 +18,7 @@ function Layout({ children, className }) {
       let text = paragraph.querySelectorAll(".paragraph-word");
 
       text.forEach((text) => {
-        text.style.transform = "translateY: 500%";
+        gsap.set(text, { y: "500%" });
       });
     });
 
@@ -25,7 +26,7 @@ function Layout({ children, className }) {
       let text = paragraph.querySelectorAll(".paragraph-word");
 
       text.forEach((text) => {
-        text.style.transform = "translateX: 500%";
+        gsap.set(text, { x: "500%" });
       });
     });
   }, []);

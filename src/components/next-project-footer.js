@@ -114,9 +114,9 @@ export default function NextProject({ nextProject, theme }) {
 
     touchContainer.addEventListener("touchstart", (e) => {
       nextProjectHoverActive(footerImage);
-
+      console.log()
       timer = setTimeout(() => {
-        PageTransitionStart(`/${nextProject?.projectTitle}`, e);
+        PageTransitionStart(`/${nextProject?.projectTitle}`, e.touches[0]);
       }, 1500);
     });
 

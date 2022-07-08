@@ -27,6 +27,7 @@ function Nav() {
           {path === "/" || path === "/portfolio" ? (
             <button
               onClick={() => {
+                pageTransitionEnd()
                 PageTransitionStart(`/contact`);
               }}
             >
@@ -35,6 +36,7 @@ function Nav() {
           ) : path === "/contact" || path === "/free-roam" ? (
             <button
               onClick={() => {
+                pageTransitionEnd()
                 PageTransitionStart(`/portfolio`);
               }}
             >
@@ -44,6 +46,7 @@ function Nav() {
             <button
               onClick={() => {
                 if (window.history.length > 2) {
+                  pageTransitionEnd()
                   PageTransitionStart(-1);
                 }
               }}
