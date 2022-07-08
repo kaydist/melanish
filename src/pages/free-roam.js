@@ -1,10 +1,11 @@
-import React, { useLayoutEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import Layout from "../layouts/layout";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { imageGalleryLayout, openFocusImage } from "../animations/free-roam";
 import { smoothScrollEffect } from "../animations/project";
-import { isMobile } from "../controller/utils";
+import { isMobile, preloadImages } from "../controller/utils";
+import { pageTransitionEnd } from "../animations/pageTransition";
 
 const FreeRoam = () => {
   const [openImage, setOpenImage] = useState(null);
@@ -31,6 +32,12 @@ const FreeRoam = () => {
   useLayoutEffect(() => {
     smoothScrollEffect();
     !isMobile() && imageGalleryLayout();
+  }, []);
+
+  useEffect(() => {
+    preloadImages().then(() => {
+      pageTransitionEnd();
+    });
   }, []);
 
   const imageRender = useMemo(() => {

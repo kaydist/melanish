@@ -13,6 +13,7 @@ import {
 } from "../animations/project";
 import NextProject from "../components/next-project-footer";
 import { preloadImages } from "../controller/utils";
+import { pageTransitionEnd } from "../animations/pageTransition";
 
 function Project(props) {
   const {
@@ -34,17 +35,21 @@ function Project(props) {
   const { theme } = useContext(AppContext);
 
   useLayoutEffect(() => {
-    textVerticalAnimation();
     otherSectionAnimation();
-    smoothScrollEffect("vertical");
+    preloadImages().then(() => {
+      pageTransitionEnd();
+    });
+
+    setTimeout(() => {
+      imageAnimation();
+      textVerticalAnimation();
+    }, 1450);
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    smoothScrollEffect();
     highlightTextAnimation();
-    preloadImages().then(() => {
-      imageAnimation();
-    });
   }, []);
 
   return (

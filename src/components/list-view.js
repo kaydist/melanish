@@ -1,5 +1,6 @@
 import React from "react";
 import { navigate } from "gatsby";
+import { PageTransitionStart } from "../animations/pageTransition";
 
 export default function ListView({ projects, setPageChange }) {
   return (
@@ -15,7 +16,7 @@ export default function ListView({ projects, setPageChange }) {
               className="py-8 md:py-[2.5vw] border-b uppercase relative project"
               data-cursor-img={`${mainProjectImage.url}`}
               onClick={() => {
-                navigate(`/${projectTitle}`);
+                PageTransitionStart(`${projectTitle}`);
                 setPageChange(true);
               }}
             >

@@ -19,7 +19,7 @@ function Menu({ menuOpen, toggleMenu }) {
   return (
     <div className={`${menuOpen ? "" : `hidden`}`} id="menu">
       <div className="relative">
-        <div className="w-screen min-h-screen fixed z-40 bg-white dark:bg-[#030303] text-[#030303] dark:text-[#FFFFFF] px-body">
+        <div className="w-screen min-h-screen fixed z-[49] bg-transparent dark:text-[#030303] text-[#FFFFFF] px-body">
           <div className="flex items-center justify-start min-h-[80vh]">
             <ul className="text-5xl md:text-[3.8vw] space-y-2 md:space-y-[1vw] leading-[1] col-start">
               {[

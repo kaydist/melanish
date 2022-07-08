@@ -8,6 +8,8 @@ import ListView from "../components/list-view";
 import GalleryView from "../components/gallery-view";
 import { AppContext } from "../controller/context";
 import { smoothScrollEffect } from "../animations/project";
+import { pageTransitionEnd } from "../animations/pageTransition";
+import { preloadImages } from "../controller/utils";
 
 // markup
 const PortfolioPage = () => {
@@ -37,7 +39,7 @@ const PortfolioPage = () => {
 
   React.useLayoutEffect(() => {
     if (isListView) {
-      smoothScrollEffect("vertical");
+      smoothScrollEffect();
     } else {
       if (window.lenis) {
         let lenis = window.lenis;
@@ -45,6 +47,12 @@ const PortfolioPage = () => {
       }
     }
   }, [isListView]);
+
+  React.useEffect(() => {
+    preloadImages().then(() => {
+      pageTransitionEnd();
+    });
+  }, []);
 
   return (
     <Layout>

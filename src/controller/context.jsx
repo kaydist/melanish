@@ -1,13 +1,4 @@
-import React, {
-  useState,
-  useMemo,
-  useEffect,
-  createContext,
-  useCallback,
-  useLayoutEffect,
-} from "react";
-
-import { textSplit } from "../animations/project";
+import React, { useState, useEffect, createContext } from "react";
 
 export const AppContext = createContext("");
 
@@ -53,7 +44,6 @@ function AppState({ children }) {
     cursor.classList.remove("-text");
     cursor.classList.remove("-link-pointer");
     cursor.classList.remove("-media");
-
     setPageChange(false);
   }, [pageChange]);
 

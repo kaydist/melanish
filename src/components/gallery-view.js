@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { navigate } from "gatsby";
+import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { PageTransitionStart } from "../animations/pageTransition";
 
 export default function GalleryView({ projects, setPageChange }) {
   return (
@@ -12,12 +12,15 @@ export default function GalleryView({ projects, setPageChange }) {
         const { id, projectTitle, mainProjectImage } = project.node || {};
 
         return (
-          <div className="min-w-[100vw]  max-h-[60vh] center relative" key={id}>
+          <div
+            className="min-w-[100vw]  max-h-[60vh] center relative snap-center"
+            key={id}
+          >
             <div
               className="w-fit center project-details"
               onClick={() => {
                 setPageChange(true);
-                navigate(`/${projectTitle}`);
+                PageTransitionStart(`/${projectTitle}`);
               }}
             >
               <div className="max-w-[60%] image-container overflow-hidden">

@@ -184,11 +184,17 @@
   }
 
   .menu-link::after {
-    @apply dark:bg-white bg-[#030303] underline-hover transition-all duration-300 ease-in-out;
+    @apply bg-white dark:bg-[#030303] underline-hover transition-all duration-300 ease-in-out;
   }
 
   .menu-link:hover::after {
     @apply w-full left-0;
+  }
+
+  /* Page Transition */
+  .transition-elem {
+    @apply w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] fixed z-[48] dark:bg-white bg-[#030303] rounded-full;
+    pointer-events: none;
   }
 }
 

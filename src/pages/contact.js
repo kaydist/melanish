@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
+import { pageTransitionEnd } from "../animations/pageTransition";
 import {
   textVerticalAnimation,
   textHorizontalAnimationIn,
@@ -7,8 +8,14 @@ import Layout from "../layouts/layout";
 
 export default function ContactPage() {
   useLayoutEffect(() => {
-    textVerticalAnimation();
-    textHorizontalAnimationIn();
+    pageTransitionEnd();
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      textVerticalAnimation();
+      textHorizontalAnimationIn();
+    }, 950);
   }, []);
 
   return (

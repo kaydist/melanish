@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "./touch-and-hold";
 import { CSSRulePlugin } from "gsap/all";
+import { PageTransitionStart } from "../animations/pageTransition";
 
 export default function NextProject({ nextProject, theme }) {
   const { setPageChange } = useContext(AppContext);
@@ -20,7 +21,6 @@ export default function NextProject({ nextProject, theme }) {
     let line = CSSRulePlugin.getRule(
       ".next-project-footer .next-project-title::after"
     );
-
 
     const nextProjectHoverIn = () => {
       var tl = gsap.timeline({
@@ -103,19 +103,20 @@ export default function NextProject({ nextProject, theme }) {
       nextProjectHoverOut(footerImage);
     });
 
-    footerContainer.addEventListener("mousedown", () => {
+    footerContainer.addEventListener("mousedown", (e) => {
       nextProjectHoverActive(footerImage);
+
       timer = setTimeout(() => {
         setPageChange(true);
-        navigate(`/${nextProject?.projectTitle}`);
+        PageTransitionStart(`/${nextProject?.projectTitle}`, e);
       }, 1500);
     });
 
-    touchContainer.addEventListener("touchstart", () => {
+    touchContainer.addEventListener("touchstart", (e) => {
       nextProjectHoverActive(footerImage);
 
       timer = setTimeout(() => {
-        navigate(`/${nextProject?.projectTitle}`);
+        PageTransitionStart(`/${nextProject?.projectTitle}`, e);
       }, 1500);
     });
 

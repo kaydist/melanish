@@ -1,12 +1,20 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
-import { navigate } from "gatsby";
 import Menu from "./menu";
+import {
+  pageTransitionEnd,
+  PageTransitionStart,
+} from "../animations/pageTransition";
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
+    if (menuOpen === false) {
+      PageTransitionStart();
+    } else {
+      pageTransitionEnd();
+    }
     setMenuOpen(!menuOpen);
   };
 
@@ -17,11 +25,31 @@ function Nav() {
       <nav className="fixed w-full z-50 mt-body md:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body no-select">
         <div className="cursor-pointer small-text font-medium col-span-1 start">
           {path === "/" || path === "/portfolio" ? (
-            <Link to="/contact">Contact</Link>
+            <button
+              onClick={() => {
+                PageTransitionStart(`/contact`);
+              }}
+            >
+              Contact
+            </button>
           ) : path === "/contact" || path === "/free-roam" ? (
-            <Link to="/portfolio">Gallery</Link>
+            <button
+              onClick={() => {
+                PageTransitionStart(`/portfolio`);
+              }}
+            >
+              Gallery
+            </button>
           ) : (
-            <button onClick={() => navigate(-1)}>Back</button>
+            <button
+              onClick={() => {
+                if (window.history.length > 2) {
+                  PageTransitionStart(-1);
+                }
+              }}
+            >
+              Back
+            </button>
           )}
         </div>
 

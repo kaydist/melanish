@@ -14,13 +14,12 @@ export const currentCursorPosition = (e) => {
   let posx = 0;
   let posy = 0;
   if (!e) e = window.event;
-  posx = e.pageX;
-  posy = e.pageY;
+  posx = e.clientX;
+  posy = e.clientY;
 
   return { x: posx, y: posy };
 };
 
-
 export const isMobile = () => {
   return window.innerWidth < 768;
-}
+};

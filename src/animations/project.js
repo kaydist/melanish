@@ -4,11 +4,10 @@ import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const smoothScrollEffect = (direction, destroy) => {
+export const smoothScrollEffect = () => {
   const lenis = new Lenis({
     lerp: 0.03,
     smooth: true,
-    direction: direction,
   });
   const scrollFn = () => {
     lenis.raf();
@@ -16,7 +15,6 @@ export const smoothScrollEffect = (direction, destroy) => {
   };
   requestAnimationFrame(scrollFn);
   window.lenis = lenis;
-  lenis.scrollTo(0, 0);
 };
 
 export const imageAnimation = () => {
@@ -45,7 +43,7 @@ export const imageAnimation = () => {
         start: startPoint,
       },
       onComplete: () => {
-        if (idx === 0) {
+        if (idx === 0 && idx) {
           ScrollTrigger.getById("otherImageSectionTrigger").refresh();
         }
       },
