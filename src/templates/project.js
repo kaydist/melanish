@@ -7,7 +7,7 @@ import { AppContext } from "../controller/context";
 import {
   otherSectionAnimation,
   imageAnimation,
-  textVerticalAnimation,
+  textVerticalAnimationIn,
   highlightTextAnimation,
   smoothScrollEffect,
 } from "../animations/project";
@@ -45,7 +45,7 @@ function Project(props) {
     highlightTextAnimation();
 
     const onCompleteFun = () => {
-      textVerticalAnimation();
+      textVerticalAnimationIn();
       imageAnimation();
     };
 
@@ -56,7 +56,7 @@ function Project(props) {
 
   useMemo(() => {
     if (preloaded) {
-      textVerticalAnimation();
+      textVerticalAnimationIn();
       imageAnimation();
     }
   }, [preloaded]);
@@ -64,15 +64,15 @@ function Project(props) {
   return (
     <Layout className="scroller">
       <div className="">
-        <div className="w-full h-full pt-40 md:pt-[15vh]">
-          <div className="hero md:px-body w-full col-center relative">
+        <div className="w-full h-full pt-40 lg:pt-[15vh]">
+          <div className="hero lg:px-body w-full col-center relative">
             <div className="absolute top-0 z-10">
-              <h2 className="uppercase font-CormorantGaramond text-7xl md:text-[15.28vw] leading-[0.85] text-center animated-text vertical-anim">
+              <h2 className="uppercase font-CormorantGaramond text-7xl lg:text-[15.28vw] leading-[0.85] text-center animated-text vertical-anim">
                 {projectTitle}
               </h2>
             </div>
 
-            <div className="mt-[15%] w-full h-[30rem] md:h-[58.61vw] center relative">
+            <div className="mt-[15%] w-full h-[30rem] lg:h-[58.61vw] center relative">
               <div className="image-wrapper w-full h-full overflow-hidden">
                 <i className="image-wrapper-mask z-10" />
 
@@ -94,7 +94,7 @@ function Project(props) {
             </div>
           </div>
 
-          <div className="my-6 md:my-[8.625rem] px-body">
+          <div className="my-6 lg:my-[8.625rem] px-body">
             <p className="explainer animated-text vertical-anim">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam
               velit vel sed sit ullamcorper eget. Sapien ligula consectetur
@@ -121,7 +121,7 @@ function Project(props) {
               <section className="px-body image-wrapper w-full h-fit">
                 <i className="image-wrapper-mask z-10" />
 
-                <div className="image-content mx-auto md:mx-0 w-full md:w-auto md:max-w-[80%] h-[40rem] md:h-[49.1vw]">
+                <div className="image-content mx-auto lg:mx-0 w-full lg:w-auto lg:max-w-[80%] h-[40rem] lg:h-[49.1vw]">
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
@@ -137,10 +137,10 @@ function Project(props) {
               </section>
 
               {image3 ? (
-                <section className="px-body image-wrapper w-full h-fit end mt-20 md:mt-body md:-mb-32">
+                <section className="px-body image-wrapper w-full h-fit end mt-20 lg:mt-body lg:-mb-32">
                   <i className="image-wrapper-mask z-10" />
 
-                  <div className="image-content w-[70.14%] md:w-[46.14%] h-[40rem] md:h-[58.47vw]">
+                  <div className="image-content w-[70.14%] lg:w-[46.14%] h-[40rem] lg:h-[58.47vw]">
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -159,7 +159,7 @@ function Project(props) {
               <section className="">
                 {image4 || image5 ? (
                   <div className="max-w-max">
-                    <div className="image-wrapper w-[66.14%] md:w-[46.14vw] h-[40rem] md:h-[58.47vw] mt-20 md:mt-0">
+                    <div className="image-wrapper w-[66.14%] lg:w-[46.14vw] h-[40rem] lg:h-[58.47vw] mt-20 lg:mt-0">
                       {image4 ? (
                         <>
                           <i className="image-wrapper-mask z-10" />
@@ -181,8 +181,8 @@ function Project(props) {
 
                     {image5 ? (
                       <div
-                        className={`image-wrapper w-[100%] md:w-[26.14vw] h-auto max-h-[18rem] md:max-h-[26vw] overflow-hidden relative md:left-[50%] ${
-                          image6 ? `my-20 md:-my-[25%]` : `mt-20 md:-mt-[25%]`
+                        className={`image-wrapper w-[100%] lg:w-[26.14vw] h-auto max-h-[18rem] lg:max-h-[26vw] overflow-hidden relative lg:left-[50%] ${
+                          image6 ? `my-20 lg:-my-[25%]` : `mt-20 lg:-mt-[25%]`
                         }`}
                       >
                         <i className="image-wrapper-mask z-10" />
@@ -207,8 +207,8 @@ function Project(props) {
               </section>
 
               {image6 ? (
-                <div className="end mr-[10%] mt-20 md:mt-[10vw]">
-                  <div className="image-wrapper w-[66.16%] md:w-[46.14%] h-fit">
+                <div className="end mr-[10%] mt-20 lg:mt-[10vw]">
+                  <div className="image-wrapper w-[66.16%] lg:w-[46.14%] h-fit">
                     <i className="image-wrapper-mask z-10" />
 
                     <GatsbyImage
@@ -226,7 +226,7 @@ function Project(props) {
                 </div>
               ) : null}
 
-              <section className="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 mt-20 md:mt-[10vw] h-max gap-20 md:gap-[5vw]">
+              <section className="grid grid-rows-2 lg:grid-rows-none lg:grid-cols-2 mt-20 lg:mt-[10vw] h-max gap-20 lg:gap-[5vw]">
                 <div className="image-wrapper center">
                   <i className="image-wrapper-mask z-10" />
 
@@ -265,7 +265,7 @@ function Project(props) {
               </section>
 
               {image7 ? (
-                <section className="mx-auto w-full h-auto mt-20 md:mt-[10vw] image-wrapper">
+                <section className="mx-auto w-full h-auto mt-20 lg:mt-[10vw] image-wrapper">
                   <i className="image-wrapper-mask z-10" />
 
                   <GatsbyImage
@@ -283,10 +283,10 @@ function Project(props) {
               ) : null}
             </div>
 
-            <div className="col-center text-left md:text-center uppercase my-2xbody text-muted-class md:text-[1.2vw]">
+            <div className="col-center text-left lg:text-center uppercase my-2xbody text-muted-class lg:text-[1.2vw]">
               <h6 className="">CREDITS</h6>
 
-              <div className="around w-fit flex-wrap md:flex-nowrap gap-[7.177%] md:text-[1.5vw] leading-normal whitespace-nowrap">
+              <div className="around w-fit flex-wrap lg:flex-nowrap gap-[7.177%] lg:text-[1.5vw] leading-normal whitespace-nowrap">
                 {[creditNames, creditTitles].map((credit, idx) => {
                   return (
                     <div key={idx} className="col-center mt-[7.177%]">
@@ -305,9 +305,9 @@ function Project(props) {
           </div>
         </div>
 
-        <div className="center md:mb-2xbody" id="project-other-images">
-          <div className="w-full absolute overflow-hidden hidden md:block">
-            <div className="highlight sticky top-1/2 text-center uppercase no-fill-text font-CormorantGaramond text-7xl md:text-[15.28vw] text-[15.28vw] whitespace-nowrap">
+        <div className="center lg:mb-2xbody" id="project-other-images">
+          <div className="w-full absolute overflow-hidden hidden lg:block">
+            <div className="highlight sticky top-1/2 text-center uppercase no-fill-text font-CormorantGaramond text-7xl lg:text-[15.28vw] text-[15.28vw] whitespace-nowrap">
               <h2 className=" z-10 ">{projectTitle}</h2>
               <h2 className=" z-10 ">{projectTitle}</h2>
               <h2 className=" z-10 ">{projectTitle}</h2>
@@ -325,10 +325,10 @@ function Project(props) {
                 return (
                   <div
                     key={idx}
-                    className="w-[80vw] md:w-[70vw] min-h-full center panel"
+                    className="w-[80vw] lg:w-[70vw] min-h-full center panel"
                   >
                     <div
-                      className={`w-auto max-w-[90%] md:max-w-[48%] max-h-[80%] center overflow-hidden`}
+                      className={`w-auto max-w-[90%] lg:max-w-[48%] max-h-[80%] center overflow-hidden`}
                       style={{ transform: `rotate(${rotationAngle}deg)` }}
                     >
                       <GatsbyImage

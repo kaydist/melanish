@@ -8,7 +8,7 @@ export default function ListView({ projects, setPageChange }) {
     preloadImages();
   }, []);
   return (
-    <div className="content-min-h mt-20 md:mt-0">
+    <div className="content-min-h mt-20 lg:mt-0">
       <div className="">
         {projects.map((project) => {
           const { id, projectTitle, mainProjectImage } = project.node || {};
@@ -17,14 +17,14 @@ export default function ListView({ projects, setPageChange }) {
             <div
               id={id}
               key={id}
-              className="py-8 md:py-[2.5vw] border-b uppercase relative project"
+              className="py-8 lg:py-[2.5vw] border-b uppercase relative project"
               data-cursor-img={`${mainProjectImage.url}`}
               onClick={() => {
                 setPageChange(true);
                 PageTransitionStart(`/${projectTitle}`);
               }}
             >
-              <div className="font-CormorantGaramond text-xl md:text-[2vw] px-body">
+              <div className="font-CormorantGaramond text-xl lg:text-[2vw] px-body">
                 <p className="">{projectTitle}</p>
               </div>
             </div>

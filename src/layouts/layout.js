@@ -40,7 +40,7 @@ function Layout({ children, className }) {
     >
       <Nav />
 
-      <div className="md:pt-body min-h-screen">{children}</div>
+      <div className="lg:pt-body min-h-screen">{children}</div>
     </div>
   );
 }

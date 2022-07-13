@@ -136,7 +136,7 @@ export default function NextProject({ nextProject, theme }) {
   return (
     <div className="relative">
       <div
-        className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] md:h-[66.46vw] md:max-h-[80vh] relative cursor-pointer next-project-footer"
+        className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] lg:h-[66.46vw] lg:max-h-[80vh] relative cursor-pointer next-project-footer"
         data-cursor-text="Click & Hold"
         data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
       >
@@ -148,7 +148,7 @@ export default function NextProject({ nextProject, theme }) {
         </div>
 
         <div className="absolute center w-full h-full">
-          <div className="w-[40%] md:w-[25%] h-[50%] rotate-6 overflow-hidden -mt-16 next-project-image">
+          <div className="w-[40%] lg:w-[25%] h-[50%] rotate-6 overflow-hidden -mt-16 next-project-image">
             <div className="absolute min-w-full min-h-full bg-[#00000090] z-10" />
             <GatsbyImage
               image={getImage(nextProject?.image2.gatsbyImageData)}
@@ -161,7 +161,7 @@ export default function NextProject({ nextProject, theme }) {
             />
           </div>
 
-          <div className="w-[40%] md:w-[25%] h-[50%] -rotate-[4deg] overflow-hidden -mx-5 z-10">
+          <div className="w-[40%] lg:w-[25%] h-[50%] -rotate-[4deg] overflow-hidden -mx-5 z-10">
             <GatsbyImage
               image={getImage(nextProject?.mainProjectImage?.gatsbyImageData)}
               alt={nextProject?.mainProjectImage?.title}
@@ -173,7 +173,7 @@ export default function NextProject({ nextProject, theme }) {
             />
           </div>
 
-          <div className="w-[40%] md:w-[25%] h-[50%] -rotate-[8deg] overflow-hidden mt-24 next-project-image">
+          <div className="w-[40%] lg:w-[25%] h-[50%] -rotate-[8deg] overflow-hidden mt-24 next-project-image">
             <div className="absolute min-w-full min-h-full bg-[#00000090] z-10" />
             <GatsbyImage
               image={getImage(nextProject?.otherImages[0]?.gatsbyImageData)}

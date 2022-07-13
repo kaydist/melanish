@@ -94,8 +94,8 @@ const IndexPage = () => {
 
   return (
     <div className="w-full h-screen relative overflow-hidden no-scrollbar landing-container">
-      <div className="w-full z-50 mt-body md:mt-half-body text-white mix-blend-difference center px-body no-select">
-        <div className="text-2xl md:text-[2vw] font-bold cursor-pointer relative">
+      <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference center px-body no-select">
+        <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
           MELANISH
           <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
         </div>

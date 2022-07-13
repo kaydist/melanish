@@ -91,7 +91,7 @@ export const textSplit = () => {
   });
 };
 
-export const textVerticalAnimation = () => {
+export const textVerticalAnimationIn = () => {
   const allParagragh = document.querySelectorAll(
     ".animated-text.vertical-anim"
   );
@@ -110,6 +110,34 @@ export const textVerticalAnimation = () => {
           y: 0,
           duration: 1.5,
           ease: "expo.out",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: paragraph,
+            start: "top 90%",
+          },
+        }
+      );
+    });
+  });
+};
+
+export const textVerticalAnimationOut = (elem) => {
+  const allParagragh = elem;
+
+  allParagragh.forEach((paragraph) => {
+    let text = paragraph.querySelectorAll(".paragraph-word");
+
+    text.forEach((text) => {
+      var y = "500%";
+      text.style.transform = "translateY:" + y;
+
+      gsap.fromTo(
+        text,
+        { y: 0 },
+        {
+          y: y,
+          duration: 1.5,
+          ease: "expo.in",
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
@@ -140,6 +168,33 @@ export const textHorizontalAnimationIn = () => {
           x: 0,
           duration: 1.5,
           ease: "expo.out",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: paragraph,
+            start: "top 90%",
+          },
+        }
+      );
+    });
+  });
+};
+
+export const textHorizontalAnimationOut = (elem) => {
+  const allParagragh = elem
+
+  allParagragh.forEach((paragraph) => {
+    let text = paragraph.querySelectorAll(".paragraph-word");
+
+    text.forEach((text) => {
+      var x = "500%";
+
+      gsap.fromTo(
+        text,
+        { x: 0 },
+        {
+          x: x,
+          duration: 1.5,
+          ease: "expo.in",
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,

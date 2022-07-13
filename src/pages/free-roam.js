@@ -69,12 +69,12 @@ const FreeRoam = () => {
       }
     });
     return (
-      <div className="free-roam-grid py-[6.25rem] md:pt-0 flex flex-col md:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h overflow-hidden">
+      <div className="free-roam-grid py-[6.25rem] lg:pt-0 flex flex-col lg:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h overflow-hidden">
         {imageArr.map((image, index) => {
           return (
             <div
               key={index}
-              className={`grid-item md:h-[15vw] overflow-visible`}
+              className={`grid-item lg:h-[15vw] overflow-visible`}
               style={{
                 gridColumn: allPos[index].col,
                 gridRow: allPos[index].row,
