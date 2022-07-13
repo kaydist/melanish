@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useEffect } from "react";
+import React, { useContext, useLayoutEffect, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import Layout from "../layouts/layout";
 import { graphql } from "gatsby";
@@ -14,7 +14,6 @@ import {
 import NextProject from "../components/next-project-footer";
 import { preloadImages } from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
-import { gsap } from "gsap";
 
 function Project(props) {
   const {
@@ -33,7 +32,7 @@ function Project(props) {
 
   const nextProject = props?.pageContext?.nextProject?.node;
 
-  const { theme } = useContext(AppContext);
+  const { theme, preloaded } = useContext(AppContext);
 
   useLayoutEffect(() => {
     otherSectionAnimation();
@@ -54,6 +53,13 @@ function Project(props) {
       pageTransitionEnd(onCompleteFun);
     });
   }, []);
+
+  useMemo(() => {
+    if (preloaded) {
+      textVerticalAnimation();
+      imageAnimation();
+    }
+  }, [preloaded]);
 
   return (
     <Layout className="scroller">

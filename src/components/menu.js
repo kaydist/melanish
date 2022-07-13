@@ -5,14 +5,22 @@ import {
   textHorizontalAnimationIn,
   textVerticalAnimation,
 } from "../animations/project";
+import {
+  pageTransitionEnd,
+  PageTransitionStart,
+} from "../animations/pageTransition";
 
 function Menu({ menuOpen, toggleMenu }) {
   const { theme, setTheme } = useContext(AppContext);
 
   useLayoutEffect(() => {
     if (menuOpen === true) {
+      PageTransitionStart();
+      document.querySelector(".loading-indicator").classList.add("hidden");
       textVerticalAnimation();
       textHorizontalAnimationIn();
+    } else {
+      pageTransitionEnd();
     }
   }, [menuOpen]);
 
@@ -48,10 +56,7 @@ function Menu({ menuOpen, toggleMenu }) {
             {theme === "light" ? "Dark Mode" : "Light Mode"}
           </button>
 
-          <div
-            className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block"
-            data-cursor="-inverse"
-          >
+          <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden md:block">
             <span className="animated-text horizontal-anim">MELA-</span>
             <br />
             <div className="mr-[15vw] relative">

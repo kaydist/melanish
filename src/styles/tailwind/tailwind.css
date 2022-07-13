@@ -196,6 +196,10 @@
     @apply w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] fixed z-[48] dark:bg-white bg-[#030303] rounded-full;
     pointer-events: none;
   }
+
+  .loading-indicator {
+    @apply text-white dark:text-[#030303] fixed z-[49] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
 }
 
 @layer utilities {

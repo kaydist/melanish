@@ -10,11 +10,6 @@ function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    if (menuOpen === false) {
-      PageTransitionStart();
-    } else {
-      pageTransitionEnd();
-    }
     setMenuOpen(!menuOpen);
   };
 
@@ -27,7 +22,7 @@ function Nav() {
           {path === "/" || path === "/portfolio" ? (
             <button
               onClick={() => {
-                pageTransitionEnd()
+                pageTransitionEnd();
                 PageTransitionStart(`/contact`);
               }}
             >
@@ -36,7 +31,7 @@ function Nav() {
           ) : path === "/contact" || path === "/free-roam" ? (
             <button
               onClick={() => {
-                pageTransitionEnd()
+                pageTransitionEnd();
                 PageTransitionStart(`/portfolio`);
               }}
             >
@@ -46,7 +41,7 @@ function Nav() {
             <button
               onClick={() => {
                 if (window.history.length > 2) {
-                  pageTransitionEnd()
+                  pageTransitionEnd();
                   PageTransitionStart(-1);
                 }
               }}

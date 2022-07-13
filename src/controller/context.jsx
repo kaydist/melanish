@@ -5,6 +5,7 @@ export const AppContext = createContext("");
 function AppState({ children }) {
   const [theme, setTheme] = useState("");
   const [pageChange, setPageChange] = useState(false);
+  const [preloaded, setPreloaded] = useState(false);
 
   useEffect(() => {
     let lastTheme = JSON.parse(window.localStorage.getItem("theme"));
@@ -48,7 +49,7 @@ function AppState({ children }) {
   }, [pageChange]);
 
   return (
-    <AppContext.Provider value={{ theme, setTheme, pageChange, setPageChange }}>
+    <AppContext.Provider value={{ theme, setTheme, pageChange, setPageChange, preloaded, setPreloaded }}>
       {children}
     </AppContext.Provider>
   );

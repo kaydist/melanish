@@ -5,13 +5,14 @@ import React, {
   useContext,
   useMemo,
 } from "react";
-import Layout from "../layouts/layout";
 import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "../components/touch-and-hold";
+import { preloadImages } from "../controller/utils";
+import { pageTransitionEnd } from "../animations/pageTransition";
 
 // markup
 const IndexPage = () => {
@@ -85,26 +86,35 @@ const IndexPage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    preloadImages().then(() => {
+      pageTransitionEnd();
+    });
+  }, []);
+
   return (
-    <div className="w-full h-screen relative start overflow-x-auto overflow-y-hidden no-scrollbar landing-container">
+    <div className="w-full h-screen relative overflow-hidden no-scrollbar landing-container">
+      <div className="w-full z-50 mt-body md:mt-half-body text-white mix-blend-difference center px-body no-select">
+        <div className="text-2xl md:text-[2vw] font-bold cursor-pointer relative">
+          MELANISH
+          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
+        </div>
+      </div>
+
       <div
-        className="min-w-[100vw] h-[60vh] center relative"
+        className="w-[100vw] h-[95vh] center relative"
         data-cursor-text="Click & Hold"
         data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
       >
-        <div className="scale-[0.8]">
-          <GatsbyImage
-            image={images}
-            alt=""
-            className="h-full w-auto object-contain"
-            imgStyle={{ objectPosition: "center" }}
-          />
-        </div>
-
-        <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-0 absolute z-10">
-          Melanish{" "}
-          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-        </h2>
+        <GatsbyImage
+          image={images}
+          alt=""
+          className="max-h-full w-auto object-contain"
+          imgStyle={{
+            objectPosition: "center",
+            objectFit: "contain",
+          }}
+        />
       </div>
 
       <TouchAndHold />
