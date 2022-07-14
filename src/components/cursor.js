@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useMemo } from "react";
+import React, { useContext } from "react";
 import MouseFollower from "mouse-follower";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";

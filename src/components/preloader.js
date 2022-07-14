@@ -1,7 +1,6 @@
-import React, { useEffect, useLayoutEffect, useContext } from "react";
+import React, { useLayoutEffect, useContext } from "react";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";
-import { textHorizontalAnimationIn } from "../animations/project";
 
 function Preloader() {
   const { setPreloaded } = useContext(AppContext);
@@ -18,7 +17,7 @@ function Preloader() {
 
     function animateValue(start, end, duration) {
       var PercentageID = document.getElementById("progress");
-      var circularProgress = document.querySelector(".transition-elem");
+      var circularProgress = document.querySelector(".circular-progress");
       var range = end - start;
       var current = start;
       var increment = end > start ? 1 : -1;
@@ -30,7 +29,7 @@ function Preloader() {
         gsap.set(circularProgress, {
           transformOrigin: "center center",
         });
-        const tl = gsap
+        gsap
           .timeline({})
           .fromTo(
             obj,
@@ -76,7 +75,6 @@ function Preloader() {
                 let gatsbyBody = document.getElementById("___gatsby");
                 gatsbyBody.removeChild(document.querySelector(".preloader"));
                 setPreloaded(true);
-                console.log("preloaded");
               },
             });
         }
@@ -95,7 +93,7 @@ function Preloader() {
         </p>
       </div>
 
-      <div className="transition-elem bg-white mix-blend-difference" />
+      <div className="circular-progress bg-white mix-blend-difference" />
 
       <div className="absolute right-0 bottom-[5vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
         <span className="">

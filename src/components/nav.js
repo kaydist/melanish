@@ -11,7 +11,7 @@ import {
   textHorizontalAnimationOut,
   textVerticalAnimationIn,
   textVerticalAnimationOut,
-} from "../animations/project";
+} from "../animations/text-animations";
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);

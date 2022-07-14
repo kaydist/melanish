@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Link } from "gatsby";
 import { AppContext } from "../controller/context";
+import { PageTransitionStart } from "../animations/pageTransition";
 
-function Menu({ menuOpen }) {
+function Menu({ menuOpen, toggleMenu }) {
   const { theme, setTheme } = useContext(AppContext);
 
   return (
@@ -18,11 +18,17 @@ function Menu({ menuOpen }) {
                 { label: "Contact", link: "/contact" },
               ].map((item, idx) => {
                 return (
-                  <Link key={idx} to={item.link}>
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      menuOpen === true && toggleMenu();
+                      PageTransitionStart(item.link);
+                    }}
+                  >
                     <div className="animated-text vertical-anim capitalize menu-link relative">
                       {item.label}
                     </div>
-                  </Link>
+                  </button>
                 );
               })}
             </ul>

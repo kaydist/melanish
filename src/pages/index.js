@@ -66,6 +66,7 @@ const IndexPage = () => {
     landingContainer.addEventListener("mousedown", () => {
       timer = setTimeout(() => {
         navigate(`/portfolio`);
+        document.querySelector(".mf-cursor").classList.remove("-text");
         setPageChange(true);
       }, 1500);
     });

@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useContext } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { navigate } from "gatsby";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "./touch-and-hold";

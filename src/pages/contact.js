@@ -1,41 +1,87 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect, useMemo, useContext } from "react";
 import { pageTransitionEnd } from "../animations/pageTransition";
 import {
   textVerticalAnimationIn,
+  textVerticalAnimationOut,
   textHorizontalAnimationIn,
-} from "../animations/project";
+} from "../animations/text-animations";
+import { imageAnimation } from "../animations/project";
 import Layout from "../layouts/layout";
 import profileImage from "../images/1.jpg";
+import Credits from "../components/credits";
+import gsap from "gsap";
+import {
+  TransitionAnimationIn,
+  TransitionAnimationOut,
+} from "../animations/pageTransition";
+import { AppContext } from "../controller/context";
 
 export default function ContactPage() {
+  const { preloaded } = useContext(AppContext);
+
   useLayoutEffect(() => {
     const onCompleteFun = () => {
       textVerticalAnimationIn();
       textHorizontalAnimationIn();
+      imageAnimation();
     };
 
     pageTransitionEnd(onCompleteFun);
   }, []);
 
+  useMemo(() => {
+    if (preloaded) {
+      textHorizontalAnimationIn();
+      textVerticalAnimationIn();
+      imageAnimation();
+    }
+  }, [preloaded]);
+
+  const [creditsOpen, setCreditsOpen] = useState(false);
+
+  const toggleCredits = () => {
+    setCreditsOpen(!creditsOpen);
+    document.querySelectorAll("nav button").forEach((btn) => {
+      btn.classList.toggle("hidden");
+    });
+
+    if (creditsOpen === false) {
+      TransitionAnimationIn();
+      document.querySelector(".credits").classList.remove("hidden");
+      textVerticalAnimationIn();
+    } else {
+      let onComplete = () => {
+        document.querySelector(".credits").classList.add("hidden");
+      };
+      let verticalTextElem = document.querySelectorAll(
+        ".credits .animated-text.vertical-anim"
+      );
+      gsap
+        .timeline({})
+        .add(textVerticalAnimationOut(verticalTextElem))
+        .add(TransitionAnimationOut(onComplete), "<");
+    }
+  };
+
   return (
     <Layout>
       <div className="w-full ">
-        <div className="w-full py-40 lg:py-[10vh] content-min-h">
-          <div className="px-body lg:px-0 text-left lg:text-center text-[5.5rem] lg:text-[15vw] font-bold w-full leading-[5rem] lg:leading-[13vw] block">
+        <div className="w-full pt-40 md:pt-[10vh] content-min-h">
+          <div className="px-body md:px-0 text-left md:text-center text-[5.5rem] md:text-[15vw] font-bold w-full leading-[5rem] md:leading-[13vw] block">
             <span className="animated-text horizontal-anim">ABOUT</span>
             <span className="animated-text horizontal-anim">ME</span>
           </div>
 
-          <div className="flex flex-col-reverse lg:grid grid-cols-2 pt-[5vw] px-body">
-            <div className="pr-body col-center">
-              <p className="text-lg lg:text-[1vw] animated-text vertical-anim">
+          <div className="flex flex-col-reverse md:grid grid-cols-2 pt-[5vw] px-body">
+            <div className="pr-body col-center text-md md:text-[1vw] md:leading-normal">
+              <p className="animated-text vertical-anim">
                 Reprehenderit magna proident cupidatat occaecat. Ea sunt velit
                 ut sit officia consequat. Aliquip ea nulla amet incididunt
                 pariatur laborum est quis id mollit consectetur est Lorem. Elit
                 ad duis magna adipisicing labore ad nostrud.
               </p>
               <br />
-              <p className="text-lg lg:text-[1vw] animated-text vertical-anim">
+              <p className="animated-text vertical-anim">
                 Reprehenderit magna proident cupidatat occaecat. Ea sunt velit
                 ut sit officia consequat. Aliquip ea nulla amet incididunt
                 pariatur laborum est quis id mollit consectetur est Lorem. Elit
@@ -43,20 +89,21 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="center">
+            <div className="center image-wrapper">
+              <i className="image-wrapper-mask z-10" />
               <img
                 src={profileImage}
                 alt="profile"
-                className="w-auto h-full object-contain max-h-[400px]"
+                className="w-auto max-w-full h-full object-contain max-h-[500px] image-content"
               />
             </div>
           </div>
         </div>
 
-        <div className="min-h-screen w-full">
+        <div className="w-full">
           <div className="w-full content-min-h center overflow-hidden">
-            <div className="flex flex-col-reverse lg:flex-row lg:between w-full">
-              <div className="pl-body space-y-5 text-lg lg:text-[1vw] lg:space-y-[2vw] mt-14">
+            <div className="flex flex-col-reverse md:flex-row md:between w-full">
+              <div className="pl-body space-y-5 text-md md:text-[1vw] md:space-y-[2vw] mt-14">
                 <div>
                   <div className="block animated-text vertical-anim">
                     LAGOS, NIGERIA
@@ -80,7 +127,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="px-body lg:px-0 text-[5.5rem] lg:text-[15vw] font-bold w-fit text-left leading-[5rem] lg:leading-[13vw]">
+              <div className="px-body md:px-0 text-[5.5rem] md:text-[15vw] font-bold w-fit text-left leading-[5rem] md:leading-[13vw]">
                 <span className="animated-text horizontal-anim">WORK</span>{" "}
                 <br />
                 <span className="animated-text horizontal-anim">WITH</span>
@@ -89,17 +136,26 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="text-lg lg:text-[1vw] start space-x-5 pl-body py-5 lg:py-[2vw] w-full">
+          <div className="text-md md:text-[1vw] start space-x-5 pl-body py-5 md:py-[2vw] w-full">
             <div>
-              <button>Credits</button>
+              <button
+                className="menu-link relative underline decoration-dotted underline-offset-2"
+                onClick={toggleCredits}
+              >
+                Credits
+              </button>
             </div>
 
             <div>
-              <a>Request Content Removal</a>
+              <a className="menu-link relative underline decoration-dotted underline-offset-2">
+                Request Content Removal
+              </a>
             </div>
           </div>
         </div>
       </div>
+
+      <Credits creditsOpen={creditsOpen} toggleCredits={toggleCredits} />
     </Layout>
   );
 }

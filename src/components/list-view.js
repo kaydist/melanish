@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { navigate } from "gatsby";
 import { PageTransitionStart } from "../animations/pageTransition";
 import { preloadImages } from "../controller/utils";
 

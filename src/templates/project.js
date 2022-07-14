@@ -7,10 +7,10 @@ import { AppContext } from "../controller/context";
 import {
   otherSectionAnimation,
   imageAnimation,
-  textVerticalAnimationIn,
   highlightTextAnimation,
   smoothScrollEffect,
 } from "../animations/project";
+import { textVerticalAnimationIn } from "../animations/text-animations";
 import NextProject from "../components/next-project-footer";
 import { preloadImages } from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
@@ -121,7 +121,7 @@ function Project(props) {
               <section className="px-body image-wrapper w-full h-fit">
                 <i className="image-wrapper-mask z-10" />
 
-                <div className="image-content mx-auto lg:mx-0 w-full lg:w-auto lg:max-w-[80%] h-[40rem] lg:h-[49.1vw]">
+                <div className="image-content mx-auto lg:mx-0 w-full lg:w-auto lg:max-w-[80%] h-auto lg:h-[49.1vw]">
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
@@ -140,7 +140,7 @@ function Project(props) {
                 <section className="px-body image-wrapper w-full h-fit end mt-20 lg:mt-body lg:-mb-32">
                   <i className="image-wrapper-mask z-10" />
 
-                  <div className="image-content w-[70.14%] lg:w-[46.14%] h-[40rem] lg:h-[58.47vw]">
+                  <div className="image-content w-full h-auto lg:w-[46.14%] lg:h-[58.47vw]">
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -159,7 +159,7 @@ function Project(props) {
               <section className="">
                 {image4 || image5 ? (
                   <div className="max-w-max">
-                    <div className="image-wrapper w-[66.14%] lg:w-[46.14vw] h-[40rem] lg:h-[58.47vw] mt-20 lg:mt-0">
+                    <div className="image-wrapper w-full lg:w-[46.14vw] h-auto lg:h-[58.47vw] mt-20 lg:mt-0">
                       {image4 ? (
                         <>
                           <i className="image-wrapper-mask z-10" />
@@ -208,7 +208,7 @@ function Project(props) {
 
               {image6 ? (
                 <div className="end mr-[10%] mt-20 lg:mt-[10vw]">
-                  <div className="image-wrapper w-[66.16%] lg:w-[46.14%] h-fit">
+                  <div className="image-wrapper w-full lg:w-[46.14%] h-fit">
                     <i className="image-wrapper-mask z-10" />
 
                     <GatsbyImage

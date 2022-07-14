@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import Nav from "../components/nav";
-import { textSplit } from "../animations/project";
+import { textSplit } from "../animations/text-animations";
 import { gsap } from "gsap";
 
 function Layout({ children, className }) {
