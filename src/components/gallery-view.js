@@ -1,11 +1,12 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { PageTransitionStart } from "../animations/pageTransition";
+import { innerHeight } from "../controller/utils";
 
 export default function GalleryView({ projects, setPageChange }) {
   return (
     <div
-      className="max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar snap-mandatory snap-x content-min-h"
+      className={`max-w-full start overflow-x-auto overflow-y-hidden no-scrollbar snap-mandatory snap-x content-min-h min-h-[${innerHeight()}px]`}
       id="portfolio-gallery-view-container"
     >
       {projects.map((project) => {

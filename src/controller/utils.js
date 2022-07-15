@@ -23,3 +23,8 @@ export const currentCursorPosition = (e) => {
 export const isMobile = () => {
   return window.innerWidth < 768;
 };
+
+export const innerHeight = () => {
+  let x = document.innerHeight;
+  return x;
+};

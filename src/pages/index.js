@@ -11,8 +11,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "../components/touch-and-hold";
-import { preloadImages } from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
+import { innerHeight, preloadImages } from "../controller/utils";
 
 // markup
 const IndexPage = () => {
@@ -94,7 +94,9 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen relative overflow-hidden no-scrollbar landing-container">
+    <div
+      className={`w-full h-[${innerHeight()}px] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
+    >
       <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference center px-body no-select">
         <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
           MELANISH
@@ -110,10 +112,12 @@ const IndexPage = () => {
         <GatsbyImage
           image={images}
           alt=""
-          className="max-h-full w-auto object-contain"
+          className="max-h-full h-full w-full"
           imgStyle={{
             objectPosition: "center",
-            objectFit: "contain",
+            objectFit: "cover",
+            height: "100%",
+            width: "100%",
           }}
         />
       </div>
