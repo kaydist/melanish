@@ -17,7 +17,7 @@ function Footer({ isListView, setIsListView, totalCount }) {
   }, []);
 
   return (
-    <div className="between px-body bottom-[3%] absolute w-full small-text font-bold">
+    <div className="between px-body bottom-[3%] fixed w-full small-text font-bold">
       <button
         onClick={() => setIsListView(!isListView)}
         className="cursor-pointer"

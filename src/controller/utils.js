@@ -25,6 +25,6 @@ export const isMobile = () => {
 };
 
 export const innerHeight = () => {
-  let x = document.innerHeight;
+  let x = typeof window !== "undefined" ? window.innerHeight : ""
   return x;
 };
