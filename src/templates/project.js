@@ -118,7 +118,7 @@ function Project(props) {
             </div>
 
             <div className="z-20 relative">
-              <section className="px-body image-wrapper w-full h-fit">
+              <section className="lg:px-body image-wrapper w-full h-fit">
                 <i className="image-wrapper-mask z-10" />
 
                 <div className="image-content mx-auto lg:mx-0 w-full lg:w-auto lg:max-w-[80%] h-auto lg:h-[49.1vw]">
@@ -137,7 +137,7 @@ function Project(props) {
               </section>
 
               {image3 ? (
-                <section className="px-body image-wrapper w-full h-fit end mt-20 lg:mt-body lg:-mb-32">
+                <section className="lg:px-body image-wrapper w-full h-fit end mt-20 lg:mt-body lg:-mb-32">
                   <i className="image-wrapper-mask z-10" />
 
                   <div className="image-content w-full h-auto lg:w-[46.14%] lg:h-[58.47vw]">
@@ -181,7 +181,7 @@ function Project(props) {
 
                     {image5 ? (
                       <div
-                        className={`image-wrapper w-[100%] lg:w-[26.14vw] h-auto max-h-[18rem] lg:max-h-[26vw] overflow-hidden relative lg:left-[50%] ${
+                        className={`image-wrapper w-[100%] lg:w-[26.14vw] h-auto lg:max-h-[26vw] overflow-hidden relative lg:left-[50%] ${
                           image6 ? `my-20 lg:-my-[25%]` : `mt-20 lg:-mt-[25%]`
                         }`}
                       >

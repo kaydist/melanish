@@ -16,7 +16,7 @@ import {
 } from "../animations/pageTransition";
 import { AppContext } from "../controller/context";
 
-export default function ContactPage() {
+export default function AboutPage() {
   const { preloaded } = useContext(AppContext);
 
   useLayoutEffect(() => {

@@ -183,12 +183,12 @@
     @apply bg-white underline-hover;
   }
 
-  .menu-link::after {
+  .menu-link .paragraph-word::after {
     @apply bg-white dark:bg-[#030303] underline-hover transition-all duration-300 ease-in-out;
   }
 
-  .menu-link:hover::after,
-  .menu-link.active::after {
+  .menu-link:hover .paragraph-word::after,
+  .menu-link.active .paragraph-word::after {
     @apply w-full left-0;
   }
 

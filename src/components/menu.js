@@ -17,8 +17,8 @@ function Menu({ menuOpen, toggleMenu }) {
               {[
                 { label: "Home", link: "/" },
                 { label: "Portfolio", link: "/portfolio" },
-                { label: "Free Roam", link: "/free-roam" },
-                { label: "Contact", link: "/contact" },
+                { label: "Free-Roam", link: "/free-roam" },
+                { label: "About", link: "/about" },
               ].map((item, idx) => {
                 return (
                   <button
@@ -34,7 +34,7 @@ function Menu({ menuOpen, toggleMenu }) {
                     <div
                       className={`animated-text vertical-anim capitalize menu-link ${
                         activeLink === item?.link.substring(1)
-                          ? `active opacity-75`
+                          ? `active opacity-50`
                           : ``
                       } relative`}
                     >

@@ -107,15 +107,17 @@ export default function NextProject({ nextProject, theme }) {
 
       timer = setTimeout(() => {
         setPageChange(true);
-        PageTransitionStart(`/${nextProject?.projectTitle}`, e);
+        PageTransitionStart(`/portfolio/${nextProject?.projectTitle}`, e);
       }, 1500);
     });
 
     touchContainer.addEventListener("touchstart", (e) => {
       nextProjectHoverActive(footerImage);
-      console.log()
       timer = setTimeout(() => {
-        PageTransitionStart(`/${nextProject?.projectTitle}`, e.touches[0]);
+        PageTransitionStart(
+          `/portfolio/${nextProject?.projectTitle}`,
+          e.touches[0]
+        );
       }, 1500);
     });
 

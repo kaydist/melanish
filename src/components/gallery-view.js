@@ -21,7 +21,7 @@ export default function GalleryView({ projects, setPageChange }) {
               className="w-fit center project-details"
               onClick={() => {
                 setPageChange(true);
-                PageTransitionStart(`/${projectTitle}`);
+                PageTransitionStart(`${projectTitle}`);
               }}
             >
               <div className="max-w-[60%] image-container overflow-hidden">

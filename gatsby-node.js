@@ -66,7 +66,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           createPage({
-            path: edge.node.projectTitle,
+            path: `/portfolio/${edge.node.projectTitle}`,
             component: projectTemplate,
             context: {
               id: edge.node.id,

@@ -20,7 +20,7 @@ export default function ListView({ projects, setPageChange }) {
               data-cursor-img={`${mainProjectImage.url}`}
               onClick={() => {
                 setPageChange(true);
-                PageTransitionStart(`/${projectTitle}`);
+                PageTransitionStart(`${projectTitle}`);
               }}
             >
               <div className="font-CormorantGaramond text-xl lg:text-[2vw] px-body">
