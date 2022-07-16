@@ -7,7 +7,7 @@ import Preloader from "./src/components/preloader";
 export const wrapRootElement = ({ element }) => (
   <>
     <AppState>
-      <div className="hidden element">{element}</div>
+      {element}
 
       <Preloader />
 
