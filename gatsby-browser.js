@@ -4,12 +4,13 @@ import React from "react";
 import AppState from "./src/controller/context";
 import Cursor from "./src/components/cursor";
 import Preloader from "./src/components/preloader";
-export const wrapRootElement = ({ element }) => (
+
+export const wrapPageElement = ({ element }) => (
   <>
     <AppState>
-      {element}
-
       <Preloader />
+
+      {element}
 
       <Cursor />
     </AppState>
