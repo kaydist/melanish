@@ -72,6 +72,7 @@ function Preloader() {
               ease: "expo.out",
               duration: 1.5,
               onComplete: () => {
+                document.querySelector(".element").classList.remove("hidden");
                 let gatsbyBody = document.getElementById("___gatsby");
                 gatsbyBody.removeChild(document.querySelector(".preloader"));
                 setPreloaded(true);
