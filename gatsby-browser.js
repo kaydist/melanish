@@ -7,10 +7,11 @@ import Preloader from "./src/components/preloader";
 export const wrapRootElement = ({ element }) => (
   <>
     <AppState>
-      <Preloader />
       {element}
-    </AppState>
 
-    <Cursor />
+      <Preloader />
+
+      <Cursor />
+    </AppState>
   </>
 );

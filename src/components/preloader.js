@@ -83,25 +83,23 @@ function Preloader() {
   }, []);
 
   return (
-    <div>
-      <div className="h-screen w-screen fixed top-0 left-0 z-[51] dark:bg-white bg-[#030303] center preloader">
-        <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
-          <p className="">
-            <span id="progress" className="inline-block">
-              00
-            </span>{" "}
-            %
-          </p>
-        </div>
+    <div className="h-screen w-screen fixed top-0 left-0 z-[51] dark:bg-white bg-[#030303] center preloader">
+      <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
+        <p className="">
+          <span id="progress" className="inline-block">
+            00
+          </span>{" "}
+          %
+        </p>
+      </div>
 
-        <div className="circular-progress bg-white mix-blend-difference" />
+      <div className="circular-progress bg-white mix-blend-difference" />
 
-        <div className="absolute right-0 bottom-[5vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
-          <span className="">
-            MELANISH
-            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-          </span>
-        </div>
+      <div className="absolute right-0 bottom-[5vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
+        <span className="">
+          MELANISH
+          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
+        </span>
       </div>
     </div>
   );
