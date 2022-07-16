@@ -5,6 +5,9 @@ import { PageTransitionStart } from "../animations/pageTransition";
 function Menu({ menuOpen, toggleMenu }) {
   const { theme, setTheme } = useContext(AppContext);
 
+  const path = typeof window !== "undefined" ? window.location.pathname : "";
+
+  let activeLink = path.split("/")[1];
   return (
     <div className="menu hidden" id="menu">
       <div className="relative">
@@ -24,8 +27,17 @@ function Menu({ menuOpen, toggleMenu }) {
                       menuOpen === true && toggleMenu();
                       PageTransitionStart(item.link);
                     }}
+                    disabled={
+                      activeLink === item?.link.substring(1) ? true : false
+                    }
                   >
-                    <div className="animated-text vertical-anim capitalize menu-link relative">
+                    <div
+                      className={`animated-text vertical-anim capitalize menu-link ${
+                        activeLink === item?.link.substring(1)
+                          ? `active opacity-75`
+                          : ``
+                      } relative`}
+                    >
                       {item.label}
                     </div>
                   </button>

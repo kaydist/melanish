@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
+import { useMemo } from "react";
 
 export const AppContext = createContext("");
 
@@ -49,7 +50,16 @@ function AppState({ children }) {
   }, [pageChange]);
 
   return (
-    <AppContext.Provider value={{ theme, setTheme, pageChange, setPageChange, preloaded, setPreloaded }}>
+    <AppContext.Provider
+      value={{
+        theme,
+        setTheme,
+        pageChange,
+        setPageChange,
+        preloaded,
+        setPreloaded,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

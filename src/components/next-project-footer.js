@@ -187,7 +187,7 @@ export default function NextProject({ nextProject, theme }) {
         </div>
       </div>
 
-      <TouchAndHold />
+      <TouchAndHold className="absolute" />
     </div>
   );
 }

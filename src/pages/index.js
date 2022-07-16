@@ -122,7 +122,7 @@ const IndexPage = () => {
         />
       </div>
 
-      <TouchAndHold />
+      <TouchAndHold className="fixed" />
     </div>
   );
 };
