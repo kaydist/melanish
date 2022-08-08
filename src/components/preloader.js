@@ -84,7 +84,7 @@ function Preloader() {
   }, []);
 
   return (
-    <div className="h-screen w-screen fixed top-0 left-0 z-[51] dark:bg-white bg-[#030303] center preloader">
+    <div className="h-screen w-screen fixed top-0 left-0 z-[999] dark:bg-white bg-[#030303] center preloader">
       <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
         <p className="">
           <span id="progress" className="inline-block">
