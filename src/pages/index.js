@@ -13,10 +13,11 @@ import { AppContext } from "../controller/context";
 import TouchAndHold from "../components/touch-and-hold";
 import { pageTransitionEnd } from "../animations/pageTransition";
 import { innerHeight, preloadImages } from "../controller/utils";
+import Preloader from "../components/preloader";
 
 // markup
 const IndexPage = () => {
-  const { theme, setPageChange } = useContext(AppContext);
+  const { theme, setPageChange, preloaded } = useContext(AppContext);
 
   const data = useStaticQuery(graphql`
     query IndexQuery {
@@ -57,35 +58,37 @@ const IndexPage = () => {
   }, [currentImage]);
 
   useLayoutEffect(() => {
-    let timer = 0;
+    if (preloaded) {
+      let timer = 0;
 
-    const landingContainer = document.querySelector(".landing-container");
+      const landingContainer = document.querySelector(".landing-container");
 
-    const touchContainer = document.querySelector(".touch-action");
+      const touchContainer = document.querySelector(".touch-action");
 
-    landingContainer.addEventListener("mousedown", () => {
-      timer = setTimeout(() => {
-        navigate(`/portfolio`);
-        document.querySelector(".mf-cursor").classList.remove("-text");
-        setPageChange(true);
-      }, 1500);
-    });
+      landingContainer.addEventListener("mousedown", () => {
+        timer = setTimeout(() => {
+          navigate(`/portfolio`);
+          document.querySelector(".mf-cursor").classList.remove("-text");
+          setPageChange(true);
+        }, 1500);
+      });
 
-    touchContainer.addEventListener("touchstart", () => {
-      timer = setTimeout(() => {
-        navigate(`/portfolio`);
-        setPageChange(true);
-      }, 1500);
-    });
+      touchContainer.addEventListener("touchstart", () => {
+        timer = setTimeout(() => {
+          navigate(`/portfolio`);
+          setPageChange(true);
+        }, 1500);
+      });
 
-    landingContainer.addEventListener("mouseup", () => {
-      clearTimeout(timer);
-    });
+      landingContainer.addEventListener("mouseup", () => {
+        clearTimeout(timer);
+      });
 
-    touchContainer.addEventListener("touchend", () => {
-      clearTimeout(timer);
-    });
-  }, []);
+      touchContainer.addEventListener("touchend", () => {
+        clearTimeout(timer);
+      });
+    }
+  }, [preloaded]);
 
   useEffect(() => {
     preloadImages().then(() => {
@@ -93,38 +96,44 @@ const IndexPage = () => {
     });
   }, []);
 
-  return (
-    <div
-      className={`w-full h-[${innerHeight()}px] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
-    >
-      <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference center px-body no-select">
-        <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
-          MELANISH
-          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-        </div>
-      </div>
-
+  if (preloaded === false) {
+    return <Preloader />;
+  } else {
+    return (
       <div
-        className="w-[100vw] h-[95vh] center relative"
-        data-cursor-text="Click & Hold"
-        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
+        className={`w-full h-[${innerHeight()}px] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
       >
-        <GatsbyImage
-          image={images}
-          alt=""
-          className="max-h-full h-full w-full"
-          imgStyle={{
-            objectPosition: "center",
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
-        />
-      </div>
+        <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference center px-body no-select">
+          <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
+            MELANISH
+            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
+          </div>
+        </div>
 
-      <TouchAndHold className="fixed" />
-    </div>
-  );
+        <div
+          className="w-[100vw] h-[95vh] center relative"
+          data-cursor-text="Click & Hold"
+          data-cursor={`${
+            theme === "dark" ? `-cusor-text-dark` : `-text-light`
+          }`}
+        >
+          <GatsbyImage
+            image={images}
+            alt=""
+            className="max-h-full h-full w-full"
+            imgStyle={{
+              objectPosition: "center",
+              objectFit: "cover",
+              height: "100%",
+              width: "100%",
+            }}
+          />
+        </div>
+
+        <TouchAndHold className="fixed" />
+      </div>
+    );
+  }
 };
 
 export default IndexPage;

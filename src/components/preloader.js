@@ -72,9 +72,6 @@ function Preloader() {
               ease: "expo.out",
               duration: 1.5,
               onComplete: () => {
-                // document.querySelector(".pages-element").classList.remove("hidden");
-                let gatsbyBody = document.getElementById("___gatsby");
-                gatsbyBody.removeChild(document.querySelector(".preloader"));
                 setPreloaded(true);
               },
             });
@@ -84,7 +81,7 @@ function Preloader() {
   }, []);
 
   return (
-    <div className="h-screen w-screen fixed top-0 left-0 z-[999] dark:bg-white bg-[#030303] center preloader">
+    <div className="h-screen w-screen fixed top-0 left-0 z-[999] dark:bg-white bg-[#030303] center preloader hidden" id="preloader">
       <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
         <p className="">
           <span id="progress" className="inline-block">
