@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useContext } from "react";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";
+import { textSplit } from "../animations/text-animations";
 
 function Preloader() {
   const { setPreloaded } = useContext(AppContext);
@@ -72,6 +73,31 @@ function Preloader() {
               ease: "expo.out",
               duration: 1.5,
               onComplete: () => {
+                textSplit();
+
+                const allVerticalParagragh = document.querySelectorAll(
+                  ".animated-text.vertical-anim"
+                );
+                const allHorizontalParagragh = document.querySelectorAll(
+                  ".animated-text.horizontal-anim"
+                );
+
+                allVerticalParagragh.forEach((paragraph) => {
+                  let text = paragraph.querySelectorAll(".paragraph-word");
+
+                  text.forEach((text) => {
+                    gsap.set(text, { y: "500%" });
+                  });
+                });
+
+                allHorizontalParagragh.forEach((paragraph) => {
+                  let text = paragraph.querySelectorAll(".paragraph-word");
+
+                  text.forEach((text) => {
+                    gsap.set(text, { x: "500%" });
+                  });
+                });
+
                 setPreloaded(true);
               },
             });
@@ -81,7 +107,10 @@ function Preloader() {
   }, []);
 
   return (
-    <div className="h-screen w-screen fixed top-0 left-0 z-[999] dark:bg-white bg-[#030303] center preloader hidden" id="preloader">
+    <div
+      className="h-screen w-screen fixed top-0 left-0 z-[999] dark:bg-white bg-[#030303] center preloader hidden"
+      id="preloader"
+    >
       <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
         <p className="">
           <span id="progress" className="inline-block">

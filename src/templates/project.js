@@ -36,28 +36,21 @@ function Project(props) {
 
   useLayoutEffect(() => {
     otherSectionAnimation();
-  }, []);
+  }, [preloaded]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    smoothScrollEffect();
-    highlightTextAnimation();
-
-    const onCompleteFun = () => {
-      textVerticalAnimationIn();
-      imageAnimation();
-    };
-
-    preloadImages().then(() => {
-      pageTransitionEnd(onCompleteFun);
-    });
-  }, []);
-
-  useMemo(() => {
     if (preloaded) {
-      textVerticalAnimationIn();
-      imageAnimation();
+      smoothScrollEffect();
+      highlightTextAnimation();
+
+      const onCompleteFun = () => {
+        textVerticalAnimationIn();
+        imageAnimation();
+      };
+      preloadImages().then(() => {
+        pageTransitionEnd(onCompleteFun);
+      });
     }
   }, [preloaded]);
 

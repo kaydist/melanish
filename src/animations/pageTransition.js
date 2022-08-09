@@ -39,6 +39,11 @@ export const TransitionAnimationIn = (to, e) => {
 };
 
 export const TransitionAnimationOut = (onCompleteFun) => {
+  const cursor = document.querySelector(".mf-cursor");
+  cursor.classList.remove("-text");
+  cursor.classList.remove("-link-pointer");
+  cursor.classList.remove("-media");
+
   let transitionElem = document.querySelector(".transition-elem");
   gsap.to(transitionElem, {
     scale: 0,

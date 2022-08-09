@@ -1,5 +1,12 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+  useContext,
+} from "react";
 import Layout from "../layouts/layout";
+import { AppContext } from "../controller/context";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { imageGalleryLayout, openFocusImage } from "../animations/free-roam";
@@ -8,6 +15,7 @@ import { isMobile, preloadImages } from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
 
 const FreeRoam = () => {
+  const { preloaded } = useContext(AppContext);
   const [openImage, setOpenImage] = useState(null);
   const data = useStaticQuery(graphql`
     query FreeRoamQuery {
@@ -30,9 +38,11 @@ const FreeRoam = () => {
   const imageArr = data.allContentfulFreeRoam.edges;
 
   useLayoutEffect(() => {
-    smoothScrollEffect();
-    !isMobile() && imageGalleryLayout();
-  }, []);
+    if (preloaded) {
+      smoothScrollEffect();
+      !isMobile() && imageGalleryLayout();
+    }
+  }, [preloaded]);
 
   useEffect(() => {
     preloadImages().then(() => {
@@ -69,7 +79,7 @@ const FreeRoam = () => {
       }
     });
     return (
-      <div className="free-roam-grid py-[6.25rem] lg:pt-0 flex flex-col lg:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h overflow-hidden">
+      <div className="free-roam-grid py-[6.25rem] lg:pt-0 flex flex-col lg:grid grid-cols-8 gap-x-10 gap-y-[6.25rem] max-w-full content-min-h ">
         {imageArr.map((image, index) => {
           return (
             <div
