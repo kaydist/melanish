@@ -137,7 +137,7 @@ function Preloader() {
           %
         </p>
 
-        <div id="company-name" className="hidden">
+        <div  className="hidden">
           <div className=" text-5xl lg:text-[5vw] font-bold dark:text-[#030303] relative mb-4 lg:mb-[1vw]">
             MELANISH
             <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
