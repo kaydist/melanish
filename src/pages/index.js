@@ -104,17 +104,21 @@ const IndexPage = () => {
         <Preloader />
       ) : (
         <>
-          <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference center px-body no-select">
-            <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
+          <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference text-center px-body no-select fixed left-1/2 top-[40%] -translate-x-1/2 -translate-y-[40%]">
+            <div className="text-5xl lg:text-[5vw] font-bold cursor-pointer relative">
               MELANISH
               <sup className="text-[30%] absolute top-[30%] -right-[10%]">
                 o
               </sup>
             </div>
+
+            <div className="mt-4 lg:mt-[1vw]">
+              A nigerian-based creative and innovative <br /> Photography Agency
+            </div>
           </div>
 
           <div
-            className="w-[100vw] h-[95vh] center relative"
+            className="w-[100vw] h-[100vh] center relative"
             data-cursor-text="Click & Hold"
             data-cursor={`${
               theme === "dark" ? `-cusor-text-dark` : `-text-light`
