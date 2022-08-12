@@ -20,7 +20,7 @@ import { textVerticalAnimationIn } from "../animations/text-animations";
 const IndexPage = () => {
   const { theme, setPageChange, preloaded, setPreloaded } =
     useContext(AppContext);
-  const [preloadedState, setPreloadedState] = useState(preloaded);
+  const [preloadedState, setPreloadedState] = useState(false);
 
   const data = useStaticQuery(graphql`
     query IndexQuery {
@@ -105,49 +105,40 @@ const IndexPage = () => {
     <div
       className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
     >
-      {preloadedState === false ? (
-        <Preloader />
-      ) : (
-        <>
-          <div
-            className="w-[100vw] h-[100vh] center relative"
-            data-cursor-text="Click & Hold"
-            data-cursor={`${
-              theme === "dark" ? `-cusor-text-dark` : `-text-light`
-            }`}
-          >
-            <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="text-5xl lg:text-[5vw] font-bold relative mb-4 lg:mb-[1vw]">
-                MELANISH
-                <sup className="text-[30%] absolute top-[30%] -right-[10%]">
-                  o
-                </sup>
-              </div>
-            </div>
+      <Preloader />
 
-            <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[6rem] lg:pt-[7.5vw] ">
-              <p className="animated-text vertical-anim">
-                A nigeria-based creative and innovative <br /> Photography
-                Agency
-              </p>
-            </div>
-
-            <GatsbyImage
-              image={images}
-              alt=""
-              className="max-h-full h-full w-full"
-              imgStyle={{
-                objectPosition: "center",
-                objectFit: "cover",
-                height: "100%",
-                width: "100%",
-              }}
-            />
+      <div
+        className="w-[100vw] h-[100vh] center relative"
+        data-cursor-text="Click & Hold"
+        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
+      >
+        <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="text-5xl lg:text-[5vw] font-bold relative mb-4 lg:mb-[1vw]">
+            MELANISH
+            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
           </div>
+        </div>
 
-          <TouchAndHold className="fixed" />
-        </>
-      )}
+        <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[6rem] lg:pt-[7.5vw] ">
+          <p className="animated-text vertical-anim">
+            A nigeria-based creative and innovative <br /> Photography Agency
+          </p>
+        </div>
+
+        <GatsbyImage
+          image={images}
+          alt=""
+          className="max-h-full h-full w-full"
+          imgStyle={{
+            objectPosition: "center",
+            objectFit: "cover",
+            height: "100%",
+            width: "100%",
+          }}
+        />
+      </div>
+
+      <TouchAndHold className="fixed" />
     </div>
   );
 };
