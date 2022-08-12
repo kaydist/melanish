@@ -90,7 +90,7 @@ function Preloader() {
             .to(title, {
               opacity: 1,
               display: "block",
-              duration: 0.5,
+              duration: 0.75,
               onComplete: () => {
                 textSplit();
 
