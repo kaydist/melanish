@@ -103,28 +103,10 @@ const IndexPage = () => {
     <div
       className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
     >
-      {preloaded === false ? (
-        <div
-        className="h-[100vh] w-[100vw] dark:bg-white bg-[#030303] center"
-      >
-        <div className="overflow-hidden col-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <p className="progress-container text-white dark:text-[#030303] font-black text-5xl lg:text-[5vw]">
-            <span className="inline-block">
-              00
-            </span>{" "}
-            %
-          </p>
-  
-          <div className="hidden">
-            <div className=" text-5xl lg:text-[5vw] font-bold dark:text-[#030303] relative mb-4 lg:mb-[1vw]">
-              MELANISH
-              <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-            </div>
-          </div>
-        </div>
-  
-        <div className="circular-progress w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[48] rounded-full bg-white mix-blend-difference" />
-      </div>
+      <Preloader />
+      
+      {/* {preloaded === false ? (
+        <Preloader />
       ) : (
         <>
           <div
@@ -165,7 +147,7 @@ const IndexPage = () => {
 
           <TouchAndHold className="fixed" />
         </>
-      )}
+      )} */}
     </div>
   );
 };
