@@ -2,7 +2,7 @@ import React, { useContext, useLayoutEffect } from "react";
 import Nav from "../components/nav";
 import { textSplit } from "../animations/text-animations";
 import { gsap } from "gsap";
-import Preloader from "../components/preloader";
+import Preloader from "./preloader";
 import { AppContext } from "../controller/context";
 
 function Layout({ children, className }) {
@@ -41,14 +41,8 @@ function Layout({ children, className }) {
       className={`overflow-x-hidden layout ${className ? className : ``}`}
       theme="light"
     >
-      {preloaded === false ? (
-        <Preloader />
-      ) : (
-        <>
           <Nav />
           <div className="lg:pt-body min-h-[100svh] center">{children}</div>
-        </>
-      )}
     </div>
   );
 }

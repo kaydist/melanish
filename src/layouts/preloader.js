@@ -130,13 +130,13 @@ function Preloader() {
     >
       <div className="overflow-hidden col-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <p className="progress-container text-white dark:text-[#030303] font-black text-5xl lg:text-[5vw]">
-          <span id="progress" className="inline-block">
+          <span className="inline-block">
             00
           </span>{" "}
           %
         </p>
 
-        <div  className="hidden">
+        <div className="hidden">
           <div className=" text-5xl lg:text-[5vw] font-bold dark:text-[#030303] relative mb-4 lg:mb-[1vw]">
             MELANISH
             <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
