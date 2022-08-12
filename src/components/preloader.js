@@ -126,8 +126,7 @@ function Preloader() {
 
   return (
     <div
-      className="h-[100vh] w-[100vw] fixed top-0 left-0 z-[9999] dark:bg-white bg-[#030303] center preloader"
-      id="preloader"
+      className="h-[100vh] w-[100vw] fixed top-0 left-0 z-[9999] dark:bg-white bg-[#030303] center"
     >
       <div className="overflow-hidden col-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <p className="progress-container text-white dark:text-[#030303] font-black text-5xl lg:text-[5vw]">
