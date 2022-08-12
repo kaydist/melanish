@@ -98,7 +98,7 @@ const IndexPage = () => {
 
   return (
     <div
-      className={`w-full h-[${innerHeight()}px] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
+      className={`w-full h-[100svh] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
     >
       {preloaded === false ? (
         <Preloader />
