@@ -1,10 +1,11 @@
-import React, { useLayoutEffect, useContext } from "react";
+import React, { useLayoutEffect, useContext, useState } from "react";
 import gsap from "gsap";
 import { AppContext } from "../controller/context";
 import { textSplit } from "../animations/text-animations";
 
 function Preloader() {
-  const { preloaded, setPreloaded } = useContext(AppContext);
+  const { setPreloaded } = useContext(AppContext);
+  const [preloadedState, setPreloadedState] = useState(false);
 
   useLayoutEffect(() => {
     var circularProgress = document.querySelector(".circular-progress");
@@ -117,6 +118,7 @@ function Preloader() {
                 });
 
                 setPreloaded(true);
+                setPreloadedState(true);
               },
             });
         }
@@ -127,7 +129,7 @@ function Preloader() {
   return (
     <div
       className={`h-[100vh] w-[100vw] dark:bg-white bg-[#030303] fixed z-[9999] ${
-        preloaded === false ? `center` : `hidden`
+        preloadedState === false ? `center` : `hidden`
       } `}
     >
       <div className="overflow-hidden col-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
