@@ -104,7 +104,7 @@ const IndexPage = () => {
         <Preloader />
       ) : (
         <>
-          <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference text-center px-body no-select fixed left-1/2 top-[40%] -translate-x-1/2 -translate-y-[40%]">
+          <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-[40%]">
             <div className="text-5xl lg:text-[5vw] font-bold cursor-pointer relative">
               MELANISH
               <sup className="text-[30%] absolute top-[30%] -right-[10%]">
