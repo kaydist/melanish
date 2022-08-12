@@ -36,22 +36,21 @@ function Layout({ children, className }) {
     }
   }, [preloaded]);
 
-  if (preloaded === false) {
-    return <Preloader />;
-  } else {
-    return (
-      <div
-        className={`min-h-screen overflow-x-hidden layout ${
-          className ? className : ``
-        }`}
-        theme="light"
-      >
-        <Nav />
-
-        <div className="lg:pt-body min-h-screen">{children}</div>
-      </div>
-    );
-  }
+  return (
+    <div
+      className={`overflow-x-hidden layout ${className ? className : ``}`}
+      theme="light"
+    >
+      {preloaded === false ? (
+        <Preloader />
+      ) : (
+        <>
+          <Nav />
+          <div className="lg:pt-body min-h-[100svh] center">{children}</div>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Layout;
