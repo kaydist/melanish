@@ -18,7 +18,8 @@ import { textVerticalAnimationIn } from "../animations/text-animations";
 
 // markup
 const IndexPage = () => {
-  const { theme, setPageChange, preloaded } = useContext(AppContext);
+  const { theme, setPageChange } = useContext(AppContext);
+  const [preloaded, setPreloaded] = useState(false);
 
   const data = useStaticQuery(graphql`
     query IndexQuery {
