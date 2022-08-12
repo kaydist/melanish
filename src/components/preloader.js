@@ -7,9 +7,18 @@ function Preloader() {
   const { setPreloaded } = useContext(AppContext);
 
   useLayoutEffect(() => {
+    var circularProgress = document.querySelector(".circular-progress");
+    var title = document.getElementById("company-name");
     var perfData = window.performance.timing;
     var EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart);
     var time = parseInt((EstimatedTime / 1000) % 60) * 100;
+    gsap.set(circularProgress, {
+      transformOrigin: "center center",
+    });
+    gsap.set(title, {
+      opacity: 0,
+      display: "none",
+    });
 
     var start = 0;
     var end = 100;
@@ -18,8 +27,6 @@ function Preloader() {
 
     function animateValue(start, end, duration) {
       var PercentageID = document.getElementById("progress");
-      var circularProgress = document.querySelector(".circular-progress");
-      var title = document.getElementById("company-name");
       var range = end - start;
       var current = start;
       var increment = end > start ? 1 : -1;
@@ -28,13 +35,6 @@ function Preloader() {
       var timer = setInterval(function () {
         current += increment;
 
-        gsap.set(circularProgress, {
-          transformOrigin: "center center",
-        });
-        gsap.set(title, {
-          opacity: 0,
-          display: "none",
-        });
         gsap
           .timeline({})
           .fromTo(
@@ -145,7 +145,7 @@ function Preloader() {
         </div>
       </div>
 
-      <div className="circular-progress w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] fixed z-[48] dark:bg-white bg-[#030303] rounded-full bg-white mix-blend-difference" />
+      <div className="circular-progress w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] fixed z-[48]   rounded-full bg-white mix-blend-difference" />
     </div>
   );
 }

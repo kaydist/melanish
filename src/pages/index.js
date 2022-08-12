@@ -125,7 +125,7 @@ const IndexPage = () => {
 
             <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[6rem] lg:pt-[7.5vw] ">
               <p className="animated-text vertical-anim">
-                A nigerian-based creative and innovative <br /> Photography
+                A nigeria-based creative and innovative <br /> Photography
                 Agency
               </p>
             </div>

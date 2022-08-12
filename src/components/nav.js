@@ -50,13 +50,13 @@ function Nav() {
           {path === "/" || path === "/portfolio" ? (
             <button
               onClick={() => {
-                PageTransitionStart(`/contact`);
+                PageTransitionStart(`/about`);
                 menuOpen === true && toggleMenu();
               }}
             >
-              Contact
+              About
             </button>
-          ) : path === "/contact" || path === "/free-roam" ? (
+          ) : path === "/about" || path === "/free-roam" ? (
             <button
               onClick={() => {
                 PageTransitionStart(`/portfolio`);
