@@ -122,7 +122,7 @@ function Preloader() {
 
       <div className="circular-progress bg-white mix-blend-difference" />
 
-      <div className="absolute right-0 bottom-[5vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
+      <div className="absolute right-0 bottom-[1vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
         <span className="">
           MELANISH
           <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
