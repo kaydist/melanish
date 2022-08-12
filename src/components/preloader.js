@@ -19,6 +19,7 @@ function Preloader() {
     function animateValue(start, end, duration) {
       var PercentageID = document.getElementById("progress");
       var circularProgress = document.querySelector(".circular-progress");
+      var title = document.getElementById("company-name");
       var range = end - start;
       var current = start;
       var increment = end > start ? 1 : -1;
@@ -29,6 +30,10 @@ function Preloader() {
 
         gsap.set(circularProgress, {
           transformOrigin: "center center",
+        });
+        gsap.set(title, {
+          opacity: 0,
+          display: "none",
         });
         gsap
           .timeline({})
@@ -58,7 +63,11 @@ function Preloader() {
 
           gsap
             .timeline({})
-            .to(".progress-container", { opacity: 0, duration: 0.5 })
+            .to(".progress-container", {
+              opacity: 0,
+              display: "none",
+              duration: 0.5,
+            })
             .to(
               circularProgress,
               {
@@ -68,10 +77,19 @@ function Preloader() {
               },
               "<"
             )
-            .to(circularProgress, {
-              scale: 110,
-              ease: "expo.out",
-              duration: 1.5,
+            .to(
+              circularProgress,
+              {
+                scale: 110,
+                ease: "expo.out",
+                duration: 1.5,
+              },
+              "<"
+            )
+            .to(title, {
+              opacity: 1,
+              display: "block",
+              duration: 0.5,
               onComplete: () => {
                 textSplit();
 
@@ -108,26 +126,26 @@ function Preloader() {
 
   return (
     <div
-      className="min-h-[100vh] min-w-[100vw] fixed top-0 left-0 z-[9999] dark:bg-white bg-[#030303] center preloader"
+      className="h-[100vh] w-[100vw] fixed top-0 left-0 z-[9999] dark:bg-white bg-[#030303] center preloader"
       id="preloader"
     >
-      <div className="overflow-hidden text-white text-5xl lg:text-[3vw] font-black dark:text-[#030303] text-center progress-container">
-        <p className="">
+      <div className="overflow-hidden text-white text-5xl lg:text-[5vw] font-black dark:text-[#030303] col-center  absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <p className="progress-container">
           <span id="progress" className="inline-block">
             00
           </span>{" "}
           %
         </p>
+
+        <div id="company-name" className="hidden">
+          <div className=" text-5xl lg:text-[5vw] font-bold dark:text-[#030303] relative mb-4 lg:mb-[1vw]">
+            MELANISH
+            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
+          </div>
+        </div>
       </div>
 
       <div className="circular-progress bg-white mix-blend-difference" />
-
-      <div className="absolute right-0 bottom-[1vh] text-[15vw] font-bold w-fit text-right leading-[13vw] dark:text-[#030303] text-white">
-        <span className="">
-          MELANISH
-          <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-        </span>
-      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import TouchAndHold from "../components/touch-and-hold";
 import { pageTransitionEnd } from "../animations/pageTransition";
 import { innerHeight, preloadImages } from "../controller/utils";
 import Preloader from "../components/preloader";
+import { textVerticalAnimationIn } from "../animations/text-animations";
 
 // markup
 const IndexPage = () => {
@@ -59,6 +60,8 @@ const IndexPage = () => {
 
   useLayoutEffect(() => {
     if (preloaded) {
+      textVerticalAnimationIn();
+
       let timer = 0;
 
       const landingContainer = document.querySelector(".landing-container");
@@ -98,25 +101,12 @@ const IndexPage = () => {
 
   return (
     <div
-      className={`w-full h-[100svh] lg:h-screen relative overflow-hidden no-scrollbar landing-container`}
+      className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
     >
       {preloaded === false ? (
         <Preloader />
       ) : (
         <>
-          <div className="w-full z-50 mt-body lg:mt-half-body text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-[40%]">
-            <div className="text-5xl lg:text-[5vw] font-bold cursor-pointer relative">
-              MELANISH
-              <sup className="text-[30%] absolute top-[30%] -right-[10%]">
-                o
-              </sup>
-            </div>
-
-            <div className="mt-4 lg:mt-[1vw]">
-              A nigerian-based creative and innovative <br /> Photography Agency
-            </div>
-          </div>
-
           <div
             className="w-[100vw] h-[100vh] center relative"
             data-cursor-text="Click & Hold"
@@ -124,6 +114,22 @@ const IndexPage = () => {
               theme === "dark" ? `-cusor-text-dark` : `-text-light`
             }`}
           >
+            <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="text-5xl lg:text-[5vw] font-bold relative mb-4 lg:mb-[1vw]">
+                MELANISH
+                <sup className="text-[30%] absolute top-[30%] -right-[10%]">
+                  o
+                </sup>
+              </div>
+            </div>
+
+            <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[4rem] lg:pt-[7vw] ">
+              <p className="animated-text vertical-anim">
+                A nigerian-based creative and innovative <br /> Photography
+                Agency
+              </p>
+            </div>
+
             <GatsbyImage
               image={images}
               alt=""
