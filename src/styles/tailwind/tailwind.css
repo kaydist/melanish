@@ -193,8 +193,7 @@
   }
 
   /* Page Transition */
-  .transition-elem,
-  .circular-progress {
+  .transition-elem {
     @apply w-[2.5vh] h-[2.5vh] lg:w-[2.5vw] lg:h-[2.5vw] fixed z-[48] dark:bg-white bg-[#030303] rounded-full;
     pointer-events: none;
   }

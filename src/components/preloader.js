@@ -6,123 +6,123 @@ import { textSplit } from "../animations/text-animations";
 function Preloader() {
   const { setPreloaded } = useContext(AppContext);
 
-  useLayoutEffect(() => {
-    var circularProgress = document.querySelector(".circular-progress");
-    var title = document.getElementById("company-name");
-    var perfData = window.performance.timing;
-    var EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart);
-    var time = parseInt((EstimatedTime / 1000) % 60) * 100;
-    gsap.set(circularProgress, {
-      transformOrigin: "center center",
-    });
-    gsap.set(title, {
-      opacity: 0,
-      display: "none",
-    });
+  // useLayoutEffect(() => {
+  //   var circularProgress = document.querySelector(".circular-progress");
+  //   var title = document.getElementById("company-name");
+  //   var perfData = window.performance.timing;
+  //   var EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart);
+  //   var time = parseInt((EstimatedTime / 1000) % 60) * 100;
+  //   gsap.set(circularProgress, {
+  //     transformOrigin: "center center",
+  //   });
+  //   gsap.set(title, {
+  //     opacity: 0,
+  //     display: "none",
+  //   });
 
-    var start = 0;
-    var end = 100;
-    var durataion = time;
-    animateValue(start, end, durataion);
+  //   var start = 0;
+  //   var end = 100;
+  //   var durataion = time;
+  //   animateValue(start, end, durataion);
 
-    function animateValue(start, end, duration) {
-      var PercentageID = document.getElementById("progress");
-      var range = end - start;
-      var current = start;
-      var increment = end > start ? 1 : -1;
-      var stepTime = Math.abs(Math.floor(duration / range));
-      var obj = PercentageID;
-      var timer = setInterval(function () {
-        current += increment;
+  //   function animateValue(start, end, duration) {
+  //     var PercentageID = document.getElementById("progress");
+  //     var range = end - start;
+  //     var current = start;
+  //     var increment = end > start ? 1 : -1;
+  //     var stepTime = Math.abs(Math.floor(duration / range));
+  //     var obj = PercentageID;
+  //     var timer = setInterval(function () {
+  //       current += increment;
 
-        gsap
-          .timeline({})
-          .fromTo(
-            obj,
-            { y: 0 },
-            {
-              y: "100%",
-              ease: "expo.out",
-              onComplete: () => {
-                obj.textContent = current;
-              },
-            }
-          )
-          .to(
-            circularProgress,
-            {
-              scale: `${current} ` * 0.075,
-              ease: "expo.out",
-            },
-            "<"
-          )
-          .fromTo(obj, { y: "-100%" }, { y: 0, ease: "expo.out" });
+  //       gsap
+  //         .timeline({})
+  //         .fromTo(
+  //           obj,
+  //           { y: 0 },
+  //           {
+  //             y: "100%",
+  //             ease: "expo.out",
+  //             onComplete: () => {
+  //               obj.textContent = current;
+  //             },
+  //           }
+  //         )
+  //         .to(
+  //           circularProgress,
+  //           {
+  //             scale: `${current} ` * 0.075,
+  //             ease: "expo.out",
+  //           },
+  //           "<"
+  //         )
+  //         .fromTo(obj, { y: "-100%" }, { y: 0, ease: "expo.out" });
 
-        if (current === end) {
-          clearInterval(timer);
+  //       if (current === end) {
+  //         clearInterval(timer);
 
-          gsap
-            .timeline({})
-            .to(".progress-container", {
-              opacity: 0,
-              display: "none",
-              duration: 0.5,
-            })
-            .to(
-              circularProgress,
-              {
-                scale: `${current}` * 0.5,
-                ease: "expo.in",
-                duration: 1.5,
-              },
-              "<"
-            )
-            .to(
-              circularProgress,
-              {
-                scale: 110,
-                ease: "expo.out",
-                duration: 1.5,
-              },
-              "<"
-            )
-            .to(title, {
-              opacity: 1,
-              display: "block",
-              duration: 0.5,
-              onComplete: () => {
-                textSplit();
+  //         gsap
+  //           .timeline({})
+  //           .to(".progress-container", {
+  //             opacity: 0,
+  //             display: "none",
+  //             duration: 0.5,
+  //           })
+  //           .to(
+  //             circularProgress,
+  //             {
+  //               scale: `${current}` * 0.5,
+  //               ease: "expo.in",
+  //               duration: 1.5,
+  //             },
+  //             "<"
+  //           )
+  //           .to(
+  //             circularProgress,
+  //             {
+  //               scale: 110,
+  //               ease: "expo.out",
+  //               duration: 1.5,
+  //             },
+  //             "<"
+  //           )
+  //           .to(title, {
+  //             opacity: 1,
+  //             display: "block",
+  //             duration: 0.5,
+  //             onComplete: () => {
+  //               textSplit();
 
-                const allVerticalParagragh = document.querySelectorAll(
-                  ".animated-text.vertical-anim"
-                );
-                const allHorizontalParagragh = document.querySelectorAll(
-                  ".animated-text.horizontal-anim"
-                );
+  //               const allVerticalParagragh = document.querySelectorAll(
+  //                 ".animated-text.vertical-anim"
+  //               );
+  //               const allHorizontalParagragh = document.querySelectorAll(
+  //                 ".animated-text.horizontal-anim"
+  //               );
 
-                allVerticalParagragh.forEach((paragraph) => {
-                  let text = paragraph.querySelectorAll(".paragraph-word");
+  //               allVerticalParagragh.forEach((paragraph) => {
+  //                 let text = paragraph.querySelectorAll(".paragraph-word");
 
-                  text.forEach((text) => {
-                    gsap.set(text, { y: "500%" });
-                  });
-                });
+  //                 text.forEach((text) => {
+  //                   gsap.set(text, { y: "500%" });
+  //                 });
+  //               });
 
-                allHorizontalParagragh.forEach((paragraph) => {
-                  let text = paragraph.querySelectorAll(".paragraph-word");
+  //               allHorizontalParagragh.forEach((paragraph) => {
+  //                 let text = paragraph.querySelectorAll(".paragraph-word");
 
-                  text.forEach((text) => {
-                    gsap.set(text, { x: "500%" });
-                  });
-                });
+  //                 text.forEach((text) => {
+  //                   gsap.set(text, { x: "500%" });
+  //                 });
+  //               });
 
-                setPreloaded(true);
-              },
-            });
-        }
-      }, 100);
-    }
-  }, []);
+  //               setPreloaded(true);
+  //             },
+  //           });
+  //       }
+  //     }, 100);
+  //   }
+  // }, []);
 
   return (
     <div
