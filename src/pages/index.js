@@ -103,9 +103,7 @@ const IndexPage = () => {
     <div
       className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
     >
-      <Preloader />
-      
-      {/* {preloaded === false ? (
+      {preloaded === false ? (
         <Preloader />
       ) : (
         <>
@@ -147,7 +145,7 @@ const IndexPage = () => {
 
           <TouchAndHold className="fixed" />
         </>
-      )} */}
+      )}
     </div>
   );
 };
