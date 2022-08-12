@@ -105,7 +105,7 @@ const IndexPage = () => {
     <div
       className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
     >
-      {preloaded === false ? (
+      {preloadedState === false ? (
         <Preloader />
       ) : (
         <>
