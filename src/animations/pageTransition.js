@@ -92,6 +92,9 @@ export const pageTransitionEnd = (onCompleteFun) => {
     onComplete: () => {
       if (loadingIndicator) {
         document.body.removeChild(loadingIndicator);
+        document.querySelectorAll("nav button").forEach((btn) => {
+          btn.classList.remove("hidden");
+        });
       }
     },
   });

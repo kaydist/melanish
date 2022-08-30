@@ -21,7 +21,7 @@ export default function GalleryView({ projects, setPageChange }) {
               className="w-fit center project-details"
               onClick={() => {
                 setPageChange(true);
-                PageTransitionStart(`${projectTitle}`);
+                PageTransitionStart(`portfolio/${projectTitle}`);
               }}
             >
               <div className="max-w-[60%] image-container overflow-hidden">
@@ -32,7 +32,7 @@ export default function GalleryView({ projects, setPageChange }) {
                 />
               </div>
 
-              <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-[25%] lg:bottom-[0] absolute z-10">
+              <h2 className="uppercase font-CormorantGaramond text-[10.69vw] bottom-[25%] lg:bottom-[0] absolute z-10 text-white mix-blend-difference">
                 {projectTitle}
               </h2>
             </div>

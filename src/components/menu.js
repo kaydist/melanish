@@ -15,8 +15,7 @@ function Menu({ menuOpen, toggleMenu }) {
           <div className="flex items-center justify-start min-h-[80vh]">
             <ul className="text-5xl lg:text-[3.8vw] space-y-2 lg:space-y-[1vw] leading-[1] col-start">
               {[
-                { label: "Home", link: "/" },
-                { label: "Portfolio", link: "/portfolio" },
+                { label: "Portfolio", link: "/" },
                 { label: "Free-Roam", link: "/free-roam" },
                 { label: "About", link: "/about" },
               ].map((item, idx) => {
@@ -28,12 +27,16 @@ function Menu({ menuOpen, toggleMenu }) {
                       PageTransitionStart(item.link);
                     }}
                     disabled={
-                      activeLink === item?.link.substring(1) ? true : false
+                      activeLink === item?.link.substring(1) ||
+                      (activeLink === "portfolio" && idx === 0)
+                        ? true
+                        : false
                     }
                   >
                     <div
                       className={`animated-text vertical-anim capitalize menu-link ${
-                        activeLink === item?.link.substring(1)
+                        activeLink === item?.link.substring(1) ||
+                        (activeLink === "portfolio" && idx === 0)
                           ? `active opacity-50`
                           : ``
                       } relative`}
@@ -60,10 +63,10 @@ function Menu({ menuOpen, toggleMenu }) {
           </button>
 
           <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden lg:block">
-            <span className="animated-text horizontal-anim">MELA-</span>
+            <span className="animated-text horizontal-anim">XTREME-</span>
             <br />
             <div className="mr-[15vw] relative">
-              <div className="animated-text horizontal-anim">NISH</div>
+              <div className="animated-text horizontal-anim">FOTO</div>
 
               <sup className="text-[30%] absolute top-[30%] -right-[10%]">
                 o

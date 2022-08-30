@@ -36,23 +36,22 @@ function Project(props) {
 
   useLayoutEffect(() => {
     otherSectionAnimation();
-  }, [preloaded]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (preloaded) {
-      smoothScrollEffect();
-      highlightTextAnimation();
 
-      const onCompleteFun = () => {
-        textVerticalAnimationIn();
-        imageAnimation();
-      };
-      preloadImages().then(() => {
-        pageTransitionEnd(onCompleteFun);
-      });
-    }
-  }, [preloaded]);
+    smoothScrollEffect();
+    highlightTextAnimation();
+
+    const onCompleteFun = () => {
+      textVerticalAnimationIn();
+      imageAnimation();
+    };
+    preloadImages().then(() => {
+      pageTransitionEnd(onCompleteFun);
+    });
+  }, []);
 
   return (
     <Layout className="scroller">

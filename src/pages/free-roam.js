@@ -38,11 +38,9 @@ const FreeRoam = () => {
   const imageArr = data.allContentfulFreeRoam.edges;
 
   useLayoutEffect(() => {
-    if (preloaded) {
       smoothScrollEffect();
       !isMobile() && imageGalleryLayout();
-    }
-  }, [preloaded]);
+  }, []);
 
   useEffect(() => {
     preloadImages().then(() => {

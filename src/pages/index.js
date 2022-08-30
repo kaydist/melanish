@@ -1,39 +1,26 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useContext,
-  useMemo,
-} from "react";
+import { useState, useContext } from "react";
+import * as React from "react";
+import Footer from "../components/footer";
+import Layout from "../layouts/layout";
 import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { navigate } from "gatsby";
+import ListView from "../components/list-view";
+import GalleryView from "../components/gallery-view";
 import { AppContext } from "../controller/context";
-import TouchAndHold from "../components/touch-and-hold";
+import { smoothScrollEffect } from "../animations/project";
 import { pageTransitionEnd } from "../animations/pageTransition";
-import { innerHeight, preloadImages } from "../controller/utils";
-import Preloader from "../layouts/preloader";
-import { textVerticalAnimationIn } from "../animations/text-animations";
+import { preloadImages } from "../controller/utils";
 
 // markup
 const IndexPage = () => {
-  const { theme, setPageChange, preloaded, setPreloaded } =
-    useContext(AppContext);
-  const [preloadedState, setPreloadedState] = useState(false);
-
   const data = useStaticQuery(graphql`
-    query IndexQuery {
+    query PortfolioQuery {
       allContentfulProjects {
         edges {
           node {
+            projectTitle
+            id
             mainProjectImage {
-              title
-              url
-              gatsbyImageData
-            }
-
-            image2 {
               title
               url
               gatsbyImageData
@@ -44,102 +31,43 @@ const IndexPage = () => {
     }
   `);
 
-  const [currentImage, setCurrentImage] = useState(0);
-
   const projects = data.allContentfulProjects.edges;
 
-  let images = getImage(projects[currentImage].node?.image2) || {};
+  const [isListView, setIsListView] = useState(false);
 
-  useMemo(() => {
-    setTimeout(() => {
-      if (currentImage === projects.length - 1) {
-        setCurrentImage(0);
-      } else {
-        setCurrentImage(currentImage + 1);
+  const { setPageChange } = useContext(AppContext);
+
+  React.useLayoutEffect(() => {
+    if (isListView) {
+      smoothScrollEffect();
+    } else {
+      if (window.lenis) {
+        let lenis = window.lenis;
+        lenis.destroy();
       }
-    }, 1500);
-  }, [currentImage]);
-
-  useLayoutEffect(() => {
-    if (preloaded) {
-      textVerticalAnimationIn();
-
-      let timer = 0;
-
-      const landingContainer = document.querySelector(".landing-container");
-
-      const touchContainer = document.querySelector(".touch-action");
-
-      landingContainer.addEventListener("mousedown", () => {
-        timer = setTimeout(() => {
-          navigate(`/portfolio`);
-          document.querySelector(".mf-cursor").classList.remove("-text");
-          setPageChange(true);
-        }, 1500);
-      });
-
-      touchContainer.addEventListener("touchstart", () => {
-        timer = setTimeout(() => {
-          navigate(`/portfolio`);
-          setPageChange(true);
-        }, 1500);
-      });
-
-      landingContainer.addEventListener("mouseup", () => {
-        clearTimeout(timer);
-      });
-
-      touchContainer.addEventListener("touchend", () => {
-        clearTimeout(timer);
-      });
     }
-  }, [preloaded]);
+  }, [isListView]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     preloadImages().then(() => {
       pageTransitionEnd();
     });
   }, []);
 
   return (
-    <div
-      className={`w-full h-screen overflow-hidden no-scrollbar landing-container`}
-    >
-      <Preloader />
+    <Layout>
+      {!isListView ? (
+        <GalleryView projects={projects} setPageChange={setPageChange} />
+      ) : (
+        <ListView projects={projects} setPageChange={setPageChange} />
+      )}
 
-      <div
-        className="w-[100vw] h-[100vh] center relative"
-        data-cursor-text="Click & Hold"
-        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
-      >
-        <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="text-5xl lg:text-[5vw] font-bold relative mb-4 lg:mb-[1vw]">
-            MELANISH
-            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
-          </div>
-        </div>
-
-        <div className="w-full z-50 text-white mix-blend-difference text-center px-body no-select absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pt-[6rem] lg:pt-[7.5vw] ">
-          <p className="animated-text vertical-anim">
-            A nigeria-based creative and innovative <br /> Photography Agency
-          </p>
-        </div>
-
-        <GatsbyImage
-          image={images}
-          alt=""
-          className="max-h-full h-full w-full"
-          imgStyle={{
-            objectPosition: "center",
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
-        />
-      </div>
-
-      <TouchAndHold className="fixed" />
-    </div>
+      <Footer
+        isListView={isListView}
+        setIsListView={setIsListView}
+        totalCount={projects.length}
+      />
+    </Layout>
   );
 };
 

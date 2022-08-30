@@ -13,7 +13,7 @@ export const preloadImages = (selector = "img") => {
 export const currentCursorPosition = (e) => {
   let posx = 0;
   let posy = 0;
-  if (!e) e = window.event;
+  if (!e) e = window.event || MouseEvent || TouchEvent;
   posx = e.clientX;
   posy = e.clientY;
 
@@ -25,6 +25,6 @@ export const isMobile = () => {
 };
 
 export const innerHeight = () => {
-  let x = typeof window !== "undefined" ? window.innerHeight : ""
+  let x = typeof window !== "undefined" ? window.innerHeight : "";
   return x;
 };

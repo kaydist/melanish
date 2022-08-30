@@ -45,9 +45,9 @@ function Nav() {
 
   return (
     <>
-      <nav className="fixed w-full mt-body lg:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body no-select z-50">
+      <nav className="fixed w-full mt-body lg:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body no-select z-50 nav-bar">
         <div className="cursor-pointer small-text font-medium col-span-1 start">
-          {path === "/" || path === "/portfolio" ? (
+          {path === "/" ? (
             <button
               onClick={() => {
                 PageTransitionStart(`/about`);
@@ -56,32 +56,21 @@ function Nav() {
             >
               About
             </button>
-          ) : path === "/about" || path === "/free-roam" ? (
+          ) : (
             <button
               onClick={() => {
-                PageTransitionStart(`/portfolio`);
+                PageTransitionStart(`/`);
                 menuOpen === true && toggleMenu();
               }}
             >
               Gallery
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                if (window.history.length > 2) {
-                  PageTransitionStart(-1);
-                  menuOpen === true && toggleMenu();
-                }
-              }}
-            >
-              Back
             </button>
           )}
         </div>
 
         <div className="col-span-2 center">
           <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
-            MELANISH
+            XTREME-FOTO
             <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
           </div>
         </div>
