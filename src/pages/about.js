@@ -135,7 +135,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="text-md md:text-[1vw] start space-x-5 pl-body py-5 md:py-[2vw] w-full">
+          <div className="text-md md:text-[1.2vw] start space-x-5 pl-body py-5 md:py-[2vw] w-full">
             <div>
               <button
                 className="menu-link relative underline decoration-dotted underline-offset-2"

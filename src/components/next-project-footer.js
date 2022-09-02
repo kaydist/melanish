@@ -13,13 +13,9 @@ export default function NextProject({ nextProject, theme }) {
   useLayoutEffect(() => {
     const footerContainer = document.querySelector(".next-project-footer");
 
-    const touchContainer = document.querySelector(".touch-action");
+    const touchContainer = document.querySelector(".next-project-footer-container .touch-action");
 
     const footerImage = document.querySelectorAll(".next-project-image");
-
-    let line = CSSRulePlugin.getRule(
-      ".next-project-footer .next-project-title::after"
-    );
 
     const nextProjectHoverIn = () => {
       var tl = gsap.timeline({
@@ -112,6 +108,7 @@ export default function NextProject({ nextProject, theme }) {
     });
 
     touchContainer.addEventListener("touchstart", (e) => {
+      console.log(e);
       nextProjectHoverActive(footerImage);
       timer = setTimeout(() => {
         PageTransitionStart(
@@ -135,7 +132,7 @@ export default function NextProject({ nextProject, theme }) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative next-project-footer-container">
       <div
         className="overflow-hidden center dark:bg-[#0C0C0C] bg-[#e8e8e8] h-[70vh] lg:h-[66.46vw] lg:max-h-[80vh] relative cursor-pointer next-project-footer"
         data-cursor-text="Click & Hold"
@@ -189,7 +186,7 @@ export default function NextProject({ nextProject, theme }) {
         </div>
       </div>
 
-      <TouchAndHold className="absolute" />
+      <TouchAndHold className="absolute z-30" />
     </div>
   );
 }
