@@ -88,10 +88,10 @@ function Project(props) {
 
           <div className="my-6 lg:my-[8.625rem] px-body">
             <p className="explainer animated-text vertical-anim">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam
-              velit vel sed sit ullamcorper eget. Sapien ligula consectetur
-              cursus sagittis vulputate aliquam tellus. Felis vitae, enim auctor
-              urna quam facilisis. Aenean nec consequat in odio non ut.
+              The Content of the {projectTitle} are from Pexel, FreeStock and
+              unsplash as we are still working to acquire the actual content
+              that is to be used. Incase of content removal, check on the about
+              page.
             </p>
           </div>
 

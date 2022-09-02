@@ -7,7 +7,7 @@ export default function ListView({ projects, setPageChange }) {
     preloadImages();
   }, []);
   return (
-    <div className="content-min-h mt-20 lg:mt-0">
+    <div className="content-min-h mt-20 lg:mt-0 w-full">
       <div className="">
         {projects.map((project) => {
           const { id, projectTitle, mainProjectImage } = project.node || {};

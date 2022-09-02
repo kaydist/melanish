@@ -73,20 +73,19 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-col-reverse md:grid grid-cols-2 pt-[5vw] px-body">
-            <div className="pr-body col-center text-md md:text-[1vw] md:leading-normal">
+            <div className="pr-body col-start text-md md:text-[1.2vw] md:leading-normal">
               <p className="animated-text vertical-anim">
-                Reprehenderit magna proident cupidatat occaecat. Ea sunt velit
-                ut sit officia consequat. Aliquip ea nulla amet incididunt
-                pariatur laborum est quis id mollit consectetur est Lorem. Elit
-                ad duis magna adipisicing labore ad nostrud.
+                I am highly enthusiastic about building and improving solutions
+                to every individual and building products to improve everyone's
+                living experience. This makes me always eager to learn and adapt
+                to new technologies as required to achieve goals.
               </p>
               <br />
               <p className="animated-text vertical-anim">
-                Reprehenderit magna proident cupidatat occaecat. Ea sunt velit
-                ut sit officia consequat. Aliquip ea nulla amet incididunt
-                pariatur laborum est quis id mollit consectetur est Lorem. Elit
-                ad duis magna adipisicing labore ad nostrud.
+                Mood right now is all about the money, being a boy.
               </p>
+              <br />
+              <p className="animated-text vertical-anim">PS: FUCK ASUU</p>
             </div>
 
             <div className="center image-wrapper">
@@ -103,7 +102,7 @@ export default function AboutPage() {
         <div className="w-full">
           <div className="w-full content-min-h center overflow-hidden">
             <div className="flex flex-col-reverse md:flex-row md:between w-full">
-              <div className="pl-body space-y-5 text-md md:text-[1vw] md:space-y-[2vw] mt-14">
+              <div className="pl-body space-y-5 text-md md:text-[1.2vw] md:space-y-[2vw] mt-14">
                 <div>
                   <div className="block animated-text vertical-anim">
                     LAGOS, NIGERIA
