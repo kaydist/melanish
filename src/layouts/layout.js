@@ -7,6 +7,7 @@ import { AppContext } from "../controller/context";
 import WelcomePage from "../components/welcome";
 
 function Layout({ children, className }) {
+  const [preloaded] = useContext(AppContext);
   useLayoutEffect(() => {
     textSplit();
 
@@ -36,7 +37,9 @@ function Layout({ children, className }) {
 
   return (
     <div
-      className={`overflow-x-hidden layout ${className ? className : ``}`}
+      className={`overflow-x-hidden layout ${className ? className : ``}  ${
+        preloaded ? `block` : `hidden`
+      }`}
       theme="light"
     >
       <WelcomePage />

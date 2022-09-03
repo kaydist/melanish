@@ -65,12 +65,8 @@ function Menu({ menuOpen, toggleMenu }) {
           <div className="absolute right-0 top-[30vh] text-[15vw] font-bold w-fit text-right leading-[13vw] hidden lg:block">
             <span className="animated-text horizontal-anim">XTREME-</span>
             <br />
-            <div className="mr-[15vw] relative">
+            <div className="relative">
               <div className="animated-text horizontal-anim">FOTO</div>
-
-              <sup className="text-[30%] absolute top-[30%] -right-[10%]">
-                o
-              </sup>
             </div>
           </div>
         </div>

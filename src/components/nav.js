@@ -71,7 +71,6 @@ function Nav() {
         <div className="col-span-2 center">
           <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
             XTREME-FOTO
-            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
           </div>
         </div>
 

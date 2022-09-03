@@ -100,7 +100,7 @@ const WelcomePage = () => {
 
   useLayoutEffect(() => {
     window.addEventListener("load", () => {
-      if(!preloaded){
+      if (!preloaded) {
         textVerticalAnimationIn();
       }
     });
@@ -124,7 +124,6 @@ const WelcomePage = () => {
         >
           <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]">
             <p className="animated-text vertical-anim">XTREME-FOTO</p>
-            <sup className="text-[30%] absolute top-[30%] -right-[10%]">o</sup>
           </div>
         </div>
 
