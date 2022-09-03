@@ -125,7 +125,7 @@ const WelcomePage = () => {
         <video
           className="min-w-[100vw] min-h-[80vh] object-cover landing-video"
           src={LandingVideo}
-          poster={LandingVideoPoster}
+          // poster={LandingVideoPoster}
           autoPlay
           loop
           muted
