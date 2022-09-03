@@ -28,33 +28,29 @@ const WelcomePage = () => {
     useContext(AppContext);
   const [preloadedState, setPreloadedState] = useState(false);
 
-  const data = useStaticQuery(graphql`
-    query IndexQuery {
-      allContentfulProjects {
-        edges {
-          node {
-            mainProjectImage {
-              title
-              url
-              gatsbyImageData
-            }
+  // const data = useStaticQuery(graphql`
+  //   query IndexQuery {
+  //     allContentfulProjects {
+  //       edges {
+  //         node {
+  //           mainProjectImage {
+  //             title
+  //             url
+  //             gatsbyImageData
+  //           }
 
-            image2 {
-              title
-              url
-              gatsbyImageData
-            }
-          }
-        }
-      }
-    }
-  `);
+  //           image2 {
+  //             title
+  //             url
+  //             gatsbyImageData
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
   useLayoutEffect(() => {
-    if (!preloaded) {
-      document.querySelector(".nav-bar").classList.add("hidden");
-    }
-
     let timer = 0;
 
     const landingContainer = document.querySelector(".landing-container");
@@ -97,12 +93,10 @@ const WelcomePage = () => {
     });
   }, []);
 
-  useLayoutEffect(() => {
-    window.addEventListener("load", () => {
-      if (!preloaded) {
-        textVerticalAnimationIn();
-      }
-    });
+  useEffect(() => {
+    if (!preloaded) {
+      textVerticalAnimationIn();
+    }
   }, []);
 
   return (
