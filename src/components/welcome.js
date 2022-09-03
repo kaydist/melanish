@@ -107,18 +107,16 @@ const WelcomePage = () => {
 
   return (
     <div
-      className={`w-full h-screen fixed z-[48] overflow-hidden no-scrollbar landing-container ${
-        theme === "dark" ? `bg-[#030303]` : `bg-[#ffffff]`
-      } ${preloaded ? `hidden` : `block`}`}
+      className={`w-full h-screen fixed z-[48] overflow-hidden no-scrollbar landing-container  ${
+        preloaded ? `hidden` : `block`
+      }`}
     >
       <div
         className="w-[100vw] h-[100vh] col-center relative"
         data-cursor-text="Click & Hold"
         data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
       >
-        <div
-          className={`w-full  h-[20vh] text-center px-body no-select `}
-        >
+        <div className={`w-full  h-[20vh] text-center px-body no-select `}>
           <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]">
             <p className="animated-text vertical-anim">XTREME-FOTO</p>
           </div>
@@ -132,17 +130,6 @@ const WelcomePage = () => {
           loop
           muted
         />
-
-        {/* <GatsbyImage
-          image={images}
-          alt=""
-          imgStyle={{
-            objectPosition: "center",
-            objectFit: "cover",
-            height: "100%",
-            width: "100%",
-          }}
-        /> */}
       </div>
 
       <TouchAndHold className="fixed" />

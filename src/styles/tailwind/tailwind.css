@@ -201,6 +201,10 @@
   .loading-indicator {
     @apply text-white dark:text-[#030303] fixed z-[49] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
   }
+
+  .landing-container {
+    @apply dark:bg-[#030303]  bg-white;
+  }
 }
 
 @layer utilities {
@@ -266,7 +270,8 @@
     @apply flex flex-col items-start justify-between;
   }
 
-  .no-select, * {
+  .no-select,
+  * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
