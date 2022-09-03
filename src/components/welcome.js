@@ -1,14 +1,9 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useContext,
-  useMemo,
-} from "react";
+import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 import { useStaticQuery } from "gatsby";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { navigate } from "gatsby";
+import gsap from "gsap";
 import { AppContext } from "../controller/context";
 import TouchAndHold from "./touch-and-hold";
 import {
@@ -20,7 +15,6 @@ import {
   textSplit,
 } from "../animations/text-animations";
 import LandingVideo from "../images/melanish-bg-video.mp4";
-import LandingVideoPoster from "../images/video-poster.jpg";
 
 // markup
 const WelcomePage = () => {
@@ -49,6 +43,26 @@ const WelcomePage = () => {
   //     }
   //   }
   // `);
+  useLayoutEffect(() => {
+    const allVerticalParagragh = document.querySelector(
+      ".landing-container .landing-animated-text"
+    );
+
+    var y = "500%";
+
+    gsap.set(allVerticalParagragh, { y: y });
+
+    gsap.fromTo(
+      allVerticalParagragh,
+      { y: y },
+      {
+        y: 0,
+        duration: 1.5,
+        ease: "expo.out",
+        overwrite: "auto",
+      }
+    );
+  }, []);
 
   useLayoutEffect(() => {
     let timer = 0;
@@ -93,31 +107,25 @@ const WelcomePage = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (!preloaded) {
-      textVerticalAnimationIn();
-    }
-  }, []);
-
   return (
     <div
       className={`w-full h-screen fixed z-[48] overflow-hidden no-scrollbar landing-container  ${
-        preloaded ? `hidden` : `block`
+        !preloaded ? `block` : `hidden`
       }`}
+      data-cursor-text="Click & Hold"
+      data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
     >
       <div
         className="w-[100vw] h-[100vh] col-center relative"
-        data-cursor-text="Click & Hold"
-        data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
       >
-        <div className={`w-full  h-[20vh] text-center px-body no-select `}>
-          <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]">
-            <p className="animated-text vertical-anim">XTREME-FOTO</p>
+        <div className={`w-full  h-[20vh] text-center px-body no-select`}>
+          <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]  overflow-y-hidden">
+            <p className="landing-animated-text relative z-[9] translate-y-[500%]">XTREME-FOTO</p>
           </div>
         </div>
 
         <video
-          className="min-w-[100vw] min-h-[80vh] object-cover landing-video"
+          className="min-w-[100vw] min-h-[80vh] object-cover landing-video z-10"
           src={LandingVideo}
           // poster={LandingVideoPoster}
           autoPlay

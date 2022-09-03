@@ -34,7 +34,7 @@ export const textVerticalAnimationIn = () => {
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
-            start: "top 90%",
+            start: "top 95%",
           },
         }
       );
@@ -62,7 +62,7 @@ export const textVerticalAnimationOut = (elem) => {
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
-            start: "top 90%",
+            start: "top 95%",
           },
         }
       );
@@ -92,7 +92,7 @@ export const textHorizontalAnimationIn = () => {
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
-            start: "top 90%",
+            start: "top 95%",
           },
         }
       );
@@ -119,7 +119,7 @@ export const textHorizontalAnimationOut = (elem) => {
           overwrite: "auto",
           scrollTrigger: {
             trigger: paragraph,
-            start: "top 90%",
+            start: "top 95%",
           },
         }
       );
