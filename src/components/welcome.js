@@ -119,13 +119,13 @@ const WelcomePage = () => {
         className="w-[100vw] h-[100vh] col-center relative"
       >
         <div className={`w-full  h-[20vh] text-center px-body no-select`}>
-          <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]  overflow-y-hidden">
-            <p className="landing-animated-text relative z-[9] translate-y-[500%]">XTREME-FOTO</p>
+          <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw] overflow-y-hidden">
+            <p className="landing-animated-text translate-y-[500%]">XTREME-FOTO</p>
           </div>
         </div>
 
         <video
-          className="min-w-[100vw] min-h-[80vh] object-cover landing-video z-10"
+          className="min-w-[100vw] min-h-[80vh] object-cover landing-video"
           src={LandingVideo}
           // poster={LandingVideoPoster}
           autoPlay
