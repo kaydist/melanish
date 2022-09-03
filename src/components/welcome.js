@@ -21,7 +21,6 @@ import {
 } from "../animations/text-animations";
 import LandingVideo from "../images/melanish-bg-video.mp4";
 import LandingVideoPoster from "../images/video-poster.jpg";
-import gsap from "gsap";
 
 // markup
 const WelcomePage = () => {

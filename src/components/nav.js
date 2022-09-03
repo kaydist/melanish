@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Menu from "./menu";
 import gsap from "gsap";
 import {
@@ -12,9 +12,12 @@ import {
   textVerticalAnimationIn,
   textVerticalAnimationOut,
 } from "../animations/text-animations";
+import { AppContext } from "../controller/context";
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { preloaded } = useContext(AppContext);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -45,7 +48,11 @@ function Nav() {
 
   return (
     <>
-      <nav className="fixed w-full mt-body lg:mt-half-body text-white mix-blend-difference grid grid-flow-col px-body no-select z-50 nav-bar">
+      <nav
+        className={`fixed w-full mt-body lg:mt-half-body text-white mix-blend-difference  grid-flow-col px-body no-select z-50 nav-bar ${
+          preloaded ? `grid` : `hidden`
+        }`}
+      >
         <div className="cursor-pointer small-text font-medium col-span-1 start">
           {path === "/" ? (
             <button
