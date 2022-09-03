@@ -117,9 +117,7 @@ const WelcomePage = () => {
         data-cursor={`${theme === "dark" ? `-cusor-text-dark` : `-text-light`}`}
       >
         <div
-          className={`w-full  ${
-            theme === "dark" ? `text-[#ffffff]` : `text-[#030303]`
-          } h-[20vh] text-center px-body no-select `}
+          className={`w-full  h-[20vh] text-center px-body no-select `}
         >
           <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw]">
             <p className="animated-text vertical-anim">XTREME-FOTO</p>
