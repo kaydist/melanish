@@ -84,7 +84,7 @@
   }
 
   .explainer {
-    @apply text-base lg:text-[2.5vw] leading-normal mb-10 font-Assistant lg:mx-[1.94em];
+    @apply text-base lg:text-[2.5vw] leading-[1.2] mb-10 font-Assistant lg:mx-[1.94em];
   }
 
   .small-text {

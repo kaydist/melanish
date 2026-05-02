@@ -35,10 +35,77 @@ html.dark {
       transition-duration: 0.2s;
     }
   }
+
+  // Smoother image-preview cursor for the list view
+  &-media-box {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s ease 0.05s;
+  }
+
+  &.-media .mf-cursor-media-box {
+    transition-duration: 0.6s, 0.45s;
+    transition-delay: 0s, 0s;
+  }
+
+  &-media img {
+    transition: opacity 0.3s ease;
+  }
 }
 
 @media screen and (max-width: 1023px) {
   .mf-cursor {
     display: none;
+  }
+}
+
+// Hold-to-confirm progress ring on .touch-action containers.
+// Circumference ≈ 2π·46 = 289.03
+.touch-action {
+  .hold-progress-ring__circle {
+    stroke-dasharray: 289.03;
+    stroke-dashoffset: 289.03;
+    opacity: 0.85;
+  }
+
+  &.is-holding .hold-progress-ring__circle {
+    animation: hold-progress 1.5s linear forwards;
+  }
+}
+
+@keyframes hold-progress {
+  from {
+    stroke-dashoffset: 289.03;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// Desktop click-and-hold ring that snaps to mousedown coords.
+// Circumference ≈ 2π·48 = 301.59
+.hold-progress-cursor {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+
+  .hold-progress-cursor__circle {
+    stroke-dasharray: 301.59;
+    stroke-dashoffset: 301.59;
+  }
+
+  &.is-holding {
+    opacity: 1;
+  }
+
+  &.is-holding .hold-progress-cursor__circle {
+    animation: hold-progress-cursor 1.5s linear forwards;
+  }
+}
+
+@keyframes hold-progress-cursor {
+  from {
+    stroke-dashoffset: 301.59;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }

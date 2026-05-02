@@ -99,16 +99,23 @@ export default function NextProject({ nextProject, theme }) {
     });
 
     footerContainer.addEventListener("mousedown", (e) => {
+      touchContainer.classList.add("is-holding");
+      window.dispatchEvent(
+        new CustomEvent("hold:start", {
+          detail: { x: e.clientX, y: e.clientY },
+        })
+      );
       nextProjectHoverActive(footerImage);
 
       timer = setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("hold:end"));
         setPageChange(true);
         PageTransitionStart(`/portfolio/${nextProject?.projectTitle}`, e);
       }, 1500);
     });
 
     touchContainer.addEventListener("touchstart", (e) => {
-      console.log(e);
+      touchContainer.classList.add("is-holding");
       nextProjectHoverActive(footerImage);
       timer = setTimeout(() => {
         PageTransitionStart(
@@ -119,12 +126,15 @@ export default function NextProject({ nextProject, theme }) {
     });
 
     footerContainer.addEventListener("mouseup", () => {
+      touchContainer.classList.remove("is-holding");
+      window.dispatchEvent(new CustomEvent("hold:end"));
       tl.clear();
       clearTimeout(timer);
       nextProjectHoverIn(footerImage);
     });
 
     touchContainer.addEventListener("touchend", () => {
+      touchContainer.classList.remove("is-holding");
       tl.clear();
       clearTimeout(timer);
       nextProjectHoverIn(footerImage);

@@ -9,10 +9,16 @@ import {
   imageAnimation,
   highlightTextAnimation,
   smoothScrollEffect,
+  dynamicProjectImageAnimation,
 } from "../animations/project";
 import { textVerticalAnimationIn } from "../animations/text-animations";
 import NextProject from "../components/next-project-footer";
-import { preloadImages } from "../controller/utils";
+import {
+  preloadImages,
+  getProjectDescriptions,
+  getProjectImageAnimations,
+  getProjectLayout,
+} from "../controller/utils";
 import { pageTransitionEnd } from "../animations/pageTransition";
 
 function Project(props) {
@@ -34,6 +40,17 @@ function Project(props) {
 
   const { theme, preloaded } = useContext(AppContext);
 
+  const descriptions = useMemo(
+    () => getProjectDescriptions(projectTitle, 4),
+    [projectTitle]
+  );
+
+  const imgAnims = useMemo(
+    () => getProjectImageAnimations(projectTitle),
+    [projectTitle]
+  );
+  const layout = useMemo(() => getProjectLayout(projectTitle), [projectTitle]);
+
   useLayoutEffect(() => {
     otherSectionAnimation();
   }, []);
@@ -47,6 +64,7 @@ function Project(props) {
     const onCompleteFun = () => {
       textVerticalAnimationIn();
       imageAnimation();
+      dynamicProjectImageAnimation();
     };
     preloadImages().then(() => {
       pageTransitionEnd(onCompleteFun);
@@ -88,10 +106,7 @@ function Project(props) {
 
           <div className="my-6 lg:my-[8.625rem] px-body">
             <p className="explainer animated-text vertical-anim">
-              The Content of the {projectTitle} are from Pexel, FreeStock and
-              unsplash as we are still working to acquire the actual content
-              that is to be used. Incase of content removal, check on the about
-              page.
+              {descriptions[0]}
             </p>
           </div>
 
@@ -110,10 +125,16 @@ function Project(props) {
             </div>
 
             <div className="z-20 relative">
-              <section className="lg:px-body image-wrapper w-full h-fit">
+              <section
+                className="lg:px-body image-wrapper dynamic-image w-full h-fit"
+                data-enter={imgAnims[0].enter}
+                data-rotate={imgAnims[0].rotate}
+              >
                 <i className="image-wrapper-mask z-10" />
 
-                <div className="image-content mx-auto lg:mx-0 w-full lg:w-auto lg:max-w-[80%] h-auto lg:h-[49.1vw]">
+                <div
+                  className={`image-content w-full lg:w-auto h-auto lg:h-[49.1vw] ${layout.image2}`}
+                >
                   <GatsbyImage
                     image={getImage(image2?.gatsbyImageData)}
                     alt={image2?.title}
@@ -129,10 +150,16 @@ function Project(props) {
               </section>
 
               {image3 ? (
-                <section className="lg:px-body image-wrapper w-full h-fit end mt-20 lg:mt-body lg:-mb-32">
+                <section
+                  className={`lg:px-body image-wrapper dynamic-image w-full h-fit mt-20 lg:mt-body lg:-mb-32 ${layout.image3Justify}`}
+                  data-enter={imgAnims[1].enter}
+                  data-rotate={imgAnims[1].rotate}
+                >
                   <i className="image-wrapper-mask z-10" />
 
-                  <div className="image-content w-full h-auto lg:w-[46.14%] lg:h-[58.47vw]">
+                  <div
+                    className={`image-content w-full h-auto lg:h-[58.47vw] ${layout.image3Width}`}
+                  >
                     <GatsbyImage
                       image={getImage(image3?.gatsbyImageData)}
                       alt={image3?.title}
@@ -148,10 +175,20 @@ function Project(props) {
                 </section>
               ) : null}
 
+              <div className="my-6 lg:my-[8.625rem] px-body">
+                <p className="explainer animated-text vertical-anim">
+                  {descriptions[1]}
+                </p>
+              </div>
+
               <section className="">
                 {image4 || image5 ? (
                   <div className="max-w-max">
-                    <div className="image-wrapper w-full lg:w-[46.14vw] h-auto lg:h-[58.47vw] mt-20 lg:mt-0">
+                    <div
+                      className="image-wrapper dynamic-image w-full lg:w-[46.14vw] h-auto lg:h-[58.47vw] mt-20 lg:mt-0"
+                      data-enter={imgAnims[2].enter}
+                      data-rotate={imgAnims[2].rotate}
+                    >
                       {image4 ? (
                         <>
                           <i className="image-wrapper-mask z-10" />
@@ -173,9 +210,13 @@ function Project(props) {
 
                     {image5 ? (
                       <div
-                        className={`image-wrapper w-[100%] lg:w-[26.14vw] h-auto lg:max-h-[26vw] overflow-hidden relative lg:left-[50%] ${
+                        className={`image-wrapper dynamic-image w-[100%] lg:w-[26.14vw] h-auto lg:max-h-[26vw] overflow-hidden relative ${
+                          layout.image5Side
+                        } ${
                           image6 ? `my-20 lg:-my-[25%]` : `mt-20 lg:-mt-[25%]`
                         }`}
+                        data-enter={imgAnims[3].enter}
+                        data-rotate={imgAnims[3].rotate}
                       >
                         <i className="image-wrapper-mask z-10" />
 
@@ -199,8 +240,12 @@ function Project(props) {
               </section>
 
               {image6 ? (
-                <div className="end mr-[10%] mt-20 lg:mt-[10vw]">
-                  <div className="image-wrapper w-full lg:w-[46.14%] h-fit">
+                <div className={`mt-20 lg:mt-[10vw] ${layout.image6Justify}`}>
+                  <div
+                    className="image-wrapper dynamic-image w-full lg:w-[46.14%] h-fit"
+                    data-enter={imgAnims[4].enter}
+                    data-rotate={imgAnims[4].rotate}
+                  >
                     <i className="image-wrapper-mask z-10" />
 
                     <GatsbyImage
@@ -217,6 +262,12 @@ function Project(props) {
                   </div>
                 </div>
               ) : null}
+
+              <div className="my-6 lg:my-[8.625rem] px-body">
+                <p className="explainer animated-text vertical-anim">
+                  {descriptions[2]}
+                </p>
+              </div>
 
               <section className="grid grid-rows-2 lg:grid-rows-none lg:grid-cols-2 mt-20 lg:mt-[10vw] h-max gap-20 lg:gap-[5vw]">
                 <div className="image-wrapper center">
@@ -257,7 +308,11 @@ function Project(props) {
               </section>
 
               {image7 ? (
-                <section className="mx-auto w-full h-auto mt-20 lg:mt-[10vw] image-wrapper">
+                <section
+                  className={`mx-auto h-auto mt-20 lg:mt-[10vw] image-wrapper dynamic-image ${layout.image7Width}`}
+                  data-enter={imgAnims[5].enter}
+                  data-rotate={imgAnims[5].rotate}
+                >
                   <i className="image-wrapper-mask z-10" />
 
                   <GatsbyImage
@@ -273,6 +328,12 @@ function Project(props) {
                   />
                 </section>
               ) : null}
+
+              <div className="my-6 lg:my-[8.625rem] px-body">
+                <p className="explainer animated-text vertical-anim">
+                  {descriptions[3]}
+                </p>
+              </div>
             </div>
 
             <div className="col-center text-left lg:text-center uppercase my-2xbody text-muted-class lg:text-[1.2vw]">

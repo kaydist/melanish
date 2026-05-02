@@ -72,7 +72,14 @@ const WelcomePage = () => {
     const touchContainer = document.querySelector(".touch-action");
 
     landingContainer.addEventListener("mousedown", (e) => {
+      touchContainer.classList.add("is-holding");
+      window.dispatchEvent(
+        new CustomEvent("hold:start", {
+          detail: { x: e.clientX, y: e.clientY },
+        })
+      );
       timer = setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("hold:end"));
         document.querySelector(".mf-cursor").classList.remove("-text");
         PageTransitionStart("#", e);
         setTimeout(() => {
@@ -86,6 +93,7 @@ const WelcomePage = () => {
     });
 
     touchContainer.addEventListener("touchstart", (e) => {
+      touchContainer.classList.add("is-holding");
       timer = setTimeout(() => {
         PageTransitionStart("#", e);
         setTimeout(() => {
@@ -99,10 +107,13 @@ const WelcomePage = () => {
     });
 
     landingContainer.addEventListener("mouseup", () => {
+      touchContainer.classList.remove("is-holding");
+      window.dispatchEvent(new CustomEvent("hold:end"));
       clearTimeout(timer);
     });
 
     touchContainer.addEventListener("touchend", () => {
+      touchContainer.classList.remove("is-holding");
       clearTimeout(timer);
     });
   }, []);
@@ -120,7 +131,7 @@ const WelcomePage = () => {
       >
         <div className={`w-full  h-[20vh] text-center px-body no-select`}>
           <div className="text-6xl lg:text-[10vw] font-bold relative mb-4 lg:mb-[1vw] overflow-y-hidden">
-            <p className="landing-animated-text translate-y-[500%]">XTREME-FOTO</p>
+            <p className="landing-animated-text translate-y-[500%]">Melanish</p>
           </div>
         </div>
 

@@ -69,23 +69,22 @@ export default function AboutPage() {
         <div className="w-full pt-40 md:pt-[10vh] content-min-h">
           <div className="px-body md:px-0 text-left md:text-center text-[5.5rem] md:text-[15vw] font-bold w-full leading-[5rem] md:leading-[13vw] block">
             <span className="animated-text horizontal-anim">ABOUT</span>
-            <span className="animated-text horizontal-anim">ME</span>
+            <br />
+            <span className="animated-text horizontal-anim">THE</span>{" "}
+            <span className="animated-text horizontal-anim">PROJECT</span>
           </div>
 
           <div className="flex flex-col-reverse md:grid grid-cols-2 pt-[5vw] px-body">
             <div className="pr-body col-start text-md md:text-[1.2vw] md:leading-normal">
               <p className="animated-text vertical-anim">
-                I am highly enthusiastic about building and improving solutions
-                to every individual and building products to improve everyone's
-                living experience. This makes me always eager to learn and adapt
-                to new technologies as required to achieve goals.
+                Melanish is a portfolio of image-led work campaigns,
+                editorial, and commissioned projects built with a small group
+                of collaborators. The site is being filled in as new work is
+                signed off, so the visuals shown here are temporary stand-ins
+                drawn from Pexels, Unsplash, and FreeStock. If one of those
+                images is yours and you'd rather it wasn't here, use the
+                request link below.
               </p>
-              <br />
-              <p className="animated-text vertical-anim">
-                Mood right now is all about the money, being a boy.
-              </p>
-              <br />
-              <p className="animated-text vertical-anim">PS: FUCK ASUU</p>
             </div>
 
             <div className="center image-wrapper">
@@ -108,21 +107,9 @@ export default function AboutPage() {
                     LAGOS, NIGERIA
                   </div>
 
-                  <a className="block animated-text vertical-anim">
-                    +2348 123 3578
+                  <a href="https://kayode.dev" target="_blank" className="block animated-text vertical-anim">
+                    kayode.dev
                   </a>
-
-                  <a className="block animated-text vertical-anim">
-                    JOHN@ABURODOE.COM
-                  </a>
-                </div>
-
-                <div>
-                  <a className="block animated-text vertical-anim">Instagram</a>
-
-                  <a className="block animated-text vertical-anim">Behance</a>
-
-                  <a className="block animated-text vertical-anim">Facebook</a>
                 </div>
               </div>
 

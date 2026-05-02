@@ -77,7 +77,7 @@ function Nav() {
 
         <div className="col-span-2 center">
           <div className="text-2xl lg:text-[2vw] font-bold cursor-pointer relative">
-            XTREME-FOTO
+            Melanish
           </div>
         </div>
 

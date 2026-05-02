@@ -103,6 +103,74 @@ export const otherSectionAnimation = () => {
   }
 };
 
+// Layered on top of imageAnimation(): scroll-driven tilt drift plus a
+// one-shot transform-only entrance. The initial rotation is locked in via
+// gsap.set so there's no snap when the trigger first fires.
+export const dynamicProjectImageAnimation = () => {
+  gsap.utils.toArray(".dynamic-image").forEach((el) => {
+    const enter = el.dataset.enter || "";
+    const rotate = parseFloat(el.dataset.rotate) || 0;
+    const image = el.querySelector(".image-content");
+    if (!image) return;
+
+    // Lock in the resting tilt immediately so the image is already rotated
+    // before the scroll trigger ever evaluates. Skip when the entrance is
+    // "tilt" since that animation sets its own starting rotation.
+    if (rotate !== 0 && enter !== "tilt") {
+      gsap.set(image, { rotation: rotate, transformOrigin: "50% 50%" });
+
+      // Scroll-driven counter-rotation. Use `gsap.to` (not fromTo) so we
+      // smoothly lerp from the value already on the element, never
+      // teleporting to a "from" state.
+      gsap.to(image, {
+        rotation: -rotate * 0.5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.5,
+          invalidateOnRefresh: true,
+        },
+      });
+    }
+
+    const trigger = { trigger: el, start: "top 85%" };
+
+    if (enter === "scale") {
+      gsap.fromTo(
+        image,
+        { scale: 0.88 },
+        { scale: 1, duration: 1.6, ease: "expo.out", scrollTrigger: trigger }
+      );
+    } else if (enter === "left") {
+      gsap.fromTo(
+        image,
+        { x: -120 },
+        { x: 0, duration: 1.6, ease: "expo.out", scrollTrigger: trigger }
+      );
+    } else if (enter === "right") {
+      gsap.fromTo(
+        image,
+        { x: 120 },
+        { x: 0, duration: 1.6, ease: "expo.out", scrollTrigger: trigger }
+      );
+    } else if (enter === "tilt") {
+      const startAngle = rotate ? rotate * 3 : 10;
+      gsap.fromTo(
+        image,
+        { rotation: startAngle, transformOrigin: "50% 50%" },
+        {
+          rotation: rotate,
+          duration: 1.6,
+          ease: "expo.out",
+          scrollTrigger: trigger,
+        }
+      );
+    }
+  });
+};
+
 export const highlightTextAnimation = () => {
   const highlightText = gsap.utils.toArray(".highlight h2");
   highlightText.forEach((text, idx) => {
